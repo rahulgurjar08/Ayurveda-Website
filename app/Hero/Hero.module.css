@@ -1,0 +1,2766 @@
+/* =========================================================
+   AYURVEDA WEBSITE - COMPLETE RESPONSIVE CSS
+   CLEAN VERSION + PROPER FONT SIZES
+========================================================= */
+
+:global(*) {
+  box-sizing: border-box;
+}
+
+:global(html) {
+  scroll-behavior: smooth;
+}
+
+:global(body) {
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+  color: #24352a;
+  font-family:
+    Inter,
+    Arial,
+    Helvetica,
+    sans-serif;
+}
+
+:global(a) {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.hero,
+.treatmentsSection,
+.whySection,
+.appointmentSection,
+.testimonialSection,
+.blogHero {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.hero *,
+.treatmentsSection *,
+.whySection *,
+.appointmentSection *,
+.testimonialSection *,
+.blogHero * {
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   COMMON CONTAINER
+========================================================= */
+
+.heroContainer,
+.treatmentContainer,
+.whyContainer,
+.appointmentContainer,
+.testimonialContainer {
+  width: min(1180px, calc(100% - 70px));
+  margin: 0 auto;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: #ffffff;
+  padding: 55px 0 52px;
+}
+
+.heroContainer {
+  min-height: 470px;
+
+  display: grid;
+  grid-template-columns: minmax(0, 0.96fr) minmax(430px, 1.04fr);
+
+  align-items: center;
+  gap: 45px;
+}
+
+/* =========================================================
+   HERO LEFT
+========================================================= */
+
+.left {
+  position: relative;
+  z-index: 2;
+
+  max-width: 590px;
+}
+
+/* =========================================================
+   HERO BADGE
+========================================================= */
+
+.badge {
+  width: fit-content;
+  min-height: 34px;
+
+  display: inline-flex;
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 7px 14px 7px 10px;
+
+  margin-bottom: 19px;
+
+  border-radius: 999px;
+
+  background: #f0f6ec;
+
+  color: #315c29;
+
+  font-size: 13px;
+  line-height: 1.2;
+  font-weight: 700;
+
+  letter-spacing: 0.2px;
+}
+
+.badge svg {
+  width: 18px;
+  height: 18px;
+
+  flex: 0 0 18px;
+}
+
+/* =========================================================
+   HERO TITLE
+========================================================= */
+
+.title {
+  margin: 0;
+
+  color: #203f25;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: clamp(46px, 5vw, 66px);
+
+  line-height: 1.03;
+
+  font-weight: 500;
+
+  letter-spacing: -2.2px;
+}
+
+.title span {
+  display: block;
+
+  margin-top: 3px;
+
+  color: #648b3b;
+
+  font-style: italic;
+
+  font-weight: 500;
+}
+
+/* =========================================================
+   HERO DESCRIPTION
+========================================================= */
+
+.description {
+  max-width: 540px;
+
+  margin: 21px 0 0;
+
+  color: #69756a;
+
+  font-size: 16px;
+
+  line-height: 1.75;
+
+  font-weight: 400;
+}
+
+/* =========================================================
+   HERO BUTTONS
+========================================================= */
+
+.buttons {
+  display: flex;
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 13px;
+
+  margin-top: 27px;
+}
+
+.primaryButton,
+.secondaryButton {
+  min-height: 46px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 9px;
+
+  padding: 0 20px;
+
+  border-radius: 6px;
+
+  text-decoration: none;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.primaryButton {
+  background: #315c29;
+
+  color: #ffffff;
+
+  box-shadow:
+    0 8px 20px rgba(49, 92, 41, 0.16);
+}
+
+.primaryButton:hover {
+  transform: translateY(-2px);
+
+  background: #274d21;
+
+  box-shadow:
+    0 12px 25px rgba(49, 92, 41, 0.22);
+}
+
+.secondaryButton {
+  background: #ffffff;
+
+  color: #315c29;
+
+  border: 1px solid #d6e0d2;
+}
+
+.secondaryButton:hover {
+  transform: translateY(-2px);
+
+  background: #f5f8f2;
+
+  border-color: #b9cdb3;
+}
+
+.primaryButton svg,
+.secondaryButton svg {
+  width: 17px;
+  height: 17px;
+
+  flex: 0 0 17px;
+}
+
+/* =========================================================
+   HERO FEATURES
+========================================================= */
+
+.features {
+  max-width: 590px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 16px;
+
+  margin-top: 31px;
+}
+
+.feature {
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+}
+
+.featureIcon {
+  width: 36px;
+  height: 36px;
+
+  flex: 0 0 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #f0f6ed;
+
+  color: #648b3b;
+}
+
+.featureIcon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.featureText {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+.featureText strong {
+  color: #29462d;
+
+  font-size: 12px;
+
+  line-height: 1.25;
+
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+.featureText span {
+  color: #899289;
+
+  font-size: 10px;
+
+  line-height: 1.25;
+
+  white-space: nowrap;
+}
+
+/* =========================================================
+   HERO RIGHT
+========================================================= */
+
+.right {
+  min-height: 470px;
+
+  position: relative;
+
+  display: flex;
+
+  align-items: flex-end;
+
+  justify-content: center;
+}
+
+.imageWrapper {
+  width: min(490px, 100%);
+
+  height: 470px;
+
+  position: relative;
+
+  display: flex;
+
+  align-items: flex-end;
+
+  justify-content: center;
+
+  z-index: 1;
+}
+
+.imageWrapper::before {
+  content: "";
+
+  position: absolute;
+
+  width: 390px;
+  height: 390px;
+
+  right: 20px;
+  bottom: 18px;
+
+  border-radius: 50%;
+
+  background: #eef5e9;
+
+  z-index: -1;
+}
+
+.doctorImage {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: contain;
+
+  object-position: center bottom;
+}
+
+/* =========================================================
+   EXPERIENCE CARD
+========================================================= */
+
+.experienceCard {
+  position: absolute;
+
+  left: 8px;
+  bottom: 68px;
+
+  z-index: 5;
+
+  min-width: 155px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 12px 14px;
+
+  border-radius: 9px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 12px 30px rgba(39, 66, 42, 0.14);
+}
+
+.experienceCard > svg {
+  width: 29px;
+  height: 29px;
+
+  flex: 0 0 29px;
+
+  color: #c5a33f;
+}
+
+.experienceCard div {
+  display: flex;
+  flex-direction: column;
+
+  gap: 2px;
+}
+
+.experienceCard strong {
+  color: #315c29;
+
+  font-size: 13px;
+
+  line-height: 1.2;
+}
+
+.experienceCard span {
+  color: #8a928a;
+
+  font-size: 10px;
+
+  line-height: 1.2;
+}
+
+/* =========================================================
+   TREATMENTS SECTION
+========================================================= */
+
+.treatmentsSection {
+  position: relative;
+
+  background: #f8faf6;
+
+  padding: 65px 0 70px;
+}
+
+/* =========================================================
+   COMMON HEADING
+========================================================= */
+
+.headingArea {
+  text-align: center;
+
+  margin: 0 auto 38px;
+}
+
+.smallHeading {
+  display: block;
+
+  color: #718b58;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  letter-spacing: 2.5px;
+
+  line-height: 1.4;
+}
+
+.mainHeading {
+  margin: 9px 0 0;
+
+  color: #28482d;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: clamp(31px, 3vw, 40px);
+
+  line-height: 1.2;
+
+  font-weight: 500;
+
+  letter-spacing: -0.7px;
+}
+
+/* =========================================================
+   HEADING DECORATION
+========================================================= */
+
+.headingDecoration {
+  width: 125px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 9px;
+
+  margin: 13px auto 0;
+}
+
+.line {
+  width: 40px;
+  height: 1px;
+
+  display: block;
+
+  background: #b8c8ae;
+}
+
+.decorationLeaf {
+  width: 23px;
+  height: 23px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  color: #648b3b;
+}
+
+.decorationLeaf svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* =========================================================
+   TREATMENT CARDS
+========================================================= */
+
+.cardsGrid {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(5, minmax(0, 1fr));
+
+  gap: 15px;
+}
+
+.treatmentCard {
+  min-height: 275px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  padding: 27px 17px 21px;
+
+  background: #ffffff;
+
+  border: 1px solid #e5ebe1;
+
+  border-radius: 12px;
+
+  text-align: center;
+
+  box-shadow:
+    0 5px 18px rgba(46, 76, 49, 0.045);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.treatmentCard:hover {
+  transform: translateY(-6px);
+
+  border-color: #cfddc8;
+
+  box-shadow:
+    0 15px 32px rgba(46, 76, 49, 0.11);
+}
+
+/* =========================================================
+   CARD ICON
+========================================================= */
+
+.cardIconCircle {
+  width: 68px;
+  height: 68px;
+
+  flex: 0 0 68px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #f0f5e9;
+}
+
+.cardIconCircle svg {
+  width: 42px;
+  height: 42px;
+}
+
+/* =========================================================
+   CARD TITLE
+========================================================= */
+
+.cardTitle {
+  min-height: 42px;
+
+  margin: 16px 0 0;
+
+  color: #315c29;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 17px;
+
+  line-height: 1.3;
+
+  font-weight: 600;
+}
+
+.cardDescription {
+  margin: 10px 0 0;
+
+  color: #7c867c;
+
+  font-size: 13px;
+
+  line-height: 1.65;
+}
+
+.learnMore {
+  margin-top: auto;
+
+  padding-top: 17px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 6px;
+
+  color: #648b3b;
+
+  text-decoration: none;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  transition: gap 0.2s ease;
+}
+
+.learnMore:hover {
+  gap: 10px;
+}
+
+.arrowIcon {
+  width: 15px;
+  height: 15px;
+
+  flex: 0 0 15px;
+}
+
+/* =========================================================
+   WHY CHOOSE SECTION
+========================================================= */
+
+.whySection {
+  position: relative;
+
+  overflow: hidden;
+
+  background: #ffffff;
+
+  padding: 75px 0;
+}
+
+.whyContainer {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 0.9fr)
+    minmax(420px, 1.1fr);
+
+  align-items: center;
+
+  gap: 65px;
+}
+
+/* =========================================================
+   WHY CONTENT
+========================================================= */
+
+.whyContent {
+  position: relative;
+
+  z-index: 2;
+}
+
+.whySmallTitle {
+  display: block;
+
+  color: #718b58;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  letter-spacing: 2.5px;
+}
+
+.whyHeading {
+  margin: 10px 0 0;
+
+  color: #28482d;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: clamp(34px, 3.5vw, 45px);
+
+  line-height: 1.15;
+
+  font-weight: 500;
+
+  letter-spacing: -0.8px;
+}
+
+.whyDescription {
+  max-width: 500px;
+
+  margin: 19px 0 0;
+
+  color: #737d74;
+
+  font-size: 14px;
+
+  line-height: 1.75;
+}
+
+/* =========================================================
+   WHY FEATURES
+========================================================= */
+
+.whyFeaturesGrid {
+  max-width: 550px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 12px 14px;
+
+  margin-top: 24px;
+}
+
+.whyFeature {
+  min-height: 52px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 7px 9px;
+
+  border-radius: 8px;
+
+  background: #f7faf5;
+}
+
+.whyFeatureIcon {
+  width: 34px;
+  height: 34px;
+
+  flex: 0 0 34px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #eaf2e4;
+
+  color: #648b3b;
+}
+
+.whyFeatureIcon svg {
+  width: 17px;
+  height: 17px;
+}
+
+.whyFeature > span {
+  color: #405642;
+
+  font-size: 12px;
+
+  line-height: 1.4;
+
+  font-weight: 600;
+}
+
+/* =========================================================
+   READ MORE
+========================================================= */
+
+.readMoreButton {
+  width: fit-content;
+
+  min-height: 43px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  margin-top: 25px;
+
+  padding: 0 19px;
+
+  border-radius: 6px;
+
+  background: #315c29;
+
+  color: #ffffff;
+
+  text-decoration: none;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.readMoreButton:hover {
+  transform: translateY(-2px);
+
+  background: #274d21;
+}
+
+.readMoreButton .arrowIcon {
+  color: #ffffff;
+}
+
+/* =========================================================
+   WHY VISUAL
+========================================================= */
+
+.whyVisual {
+  min-height: 390px;
+
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+.whyGreenCircle {
+  position: absolute;
+
+  width: 350px;
+  height: 350px;
+
+  border-radius: 50%;
+
+  background: #eff5e9;
+}
+
+.whyGreenCircle::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 24px;
+
+  border: 1px solid #dce8d6;
+
+  border-radius: 50%;
+}
+
+.whyImageWrapper {
+  width: 100%;
+
+  max-width: 540px;
+
+  position: relative;
+
+  z-index: 2;
+}
+
+.ayurvedicImage {
+  width: 100%;
+  height: auto;
+
+  display: block;
+
+  object-fit: contain;
+}
+
+/* =========================================================
+   NATURAL BADGE
+========================================================= */
+
+.naturalBadge {
+  position: absolute;
+
+  right: 8px;
+
+  bottom: 20px;
+
+  z-index: 4;
+
+  width: 105px;
+  height: 105px;
+
+  padding: 7px;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 12px 30px rgba(43, 73, 44, 0.15);
+}
+
+.naturalBadgeInner {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border: 1px dashed #b7c8ad;
+
+  border-radius: 50%;
+
+  text-align: center;
+}
+
+.naturalBadgeInner strong {
+  color: #315c29;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 20px;
+
+  line-height: 1;
+}
+
+.naturalBadgeInner span {
+  margin-top: 4px;
+
+  color: #648b3b;
+
+  font-size: 10px;
+
+  font-weight: 700;
+}
+
+.naturalBadgeInner small {
+  margin-top: 3px;
+
+  color: #929b91;
+
+  font-size: 8px;
+}
+
+/* =========================================================
+   APPOINTMENT CTA
+========================================================= */
+
+.appointmentSection {
+  background: #315c29;
+
+  padding: 34px 0;
+}
+
+.appointmentContainer {
+  display: grid;
+
+  grid-template-columns: auto 1fr auto;
+
+  align-items: center;
+
+  gap: 20px;
+}
+
+.appointmentIcon {
+  width: 60px;
+  height: 60px;
+
+  flex: 0 0 60px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+
+  border-radius: 50%;
+
+  color: #e2d187;
+}
+
+.appointmentIcon svg {
+  width: 27px;
+  height: 27px;
+}
+
+.appointmentContent {
+  min-width: 0;
+}
+
+.appointmentContent > span {
+  display: block;
+
+  color: #cbd8c6;
+
+  font-size: 11px;
+
+  font-weight: 600;
+
+  letter-spacing: 1px;
+}
+
+.appointmentContent h3 {
+  margin: 4px 0 0;
+
+  color: #ffffff;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: clamp(24px, 2.5vw, 32px);
+
+  line-height: 1.2;
+
+  font-weight: 500;
+}
+
+.appointmentContent p {
+  margin: 6px 0 0;
+
+  color: #c4d0c0;
+
+  font-size: 12px;
+
+  line-height: 1.55;
+}
+
+.appointmentButton {
+  min-height: 45px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  padding: 0 20px;
+
+  border-radius: 6px;
+
+  background: #ffffff;
+
+  color: #315c29;
+
+  text-decoration: none;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  white-space: nowrap;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.appointmentButton:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 10px 24px rgba(0, 0, 0, 0.15);
+}
+
+.appointmentButton svg {
+  width: 17px;
+  height: 17px;
+}
+
+/* =========================================================
+   TESTIMONIAL SECTION
+========================================================= */
+
+.testimonialSection {
+  background: #f8faf6;
+
+  padding: 68px 0 62px;
+
+  overflow: hidden;
+}
+
+.testimonialHeadingArea {
+  text-align: center;
+
+  margin-bottom: 36px;
+}
+
+.testimonialSmallHeading {
+  display: block;
+
+  color: #718b58;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  letter-spacing: 2.5px;
+}
+
+.testimonialMainHeading {
+  margin: 9px 0 0;
+
+  color: #28482d;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: clamp(31px, 3vw, 40px);
+
+  line-height: 1.2;
+
+  font-weight: 500;
+}
+
+.testimonialHeadingDecoration {
+  width: 125px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 9px;
+
+  margin: 13px auto 0;
+}
+
+.testimonialLine {
+  width: 40px;
+  height: 1px;
+
+  background: #b8c8ae;
+}
+
+.testimonialLeaf {
+  width: 23px;
+  height: 23px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  color: #648b3b;
+}
+
+.testimonialLeaf svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* =========================================================
+   TESTIMONIAL CARDS
+========================================================= */
+
+.sliderWrapper {
+  width: 100%;
+}
+
+.testimonialCardsGrid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 19px;
+}
+
+.patientCard {
+  min-height: 245px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  padding: 24px 23px 20px;
+
+  background: #ffffff;
+
+  border: 1px solid #e4ebe0;
+
+  border-radius: 11px;
+
+  box-shadow:
+    0 5px 19px rgba(45, 76, 47, 0.045);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.patientCard:hover {
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 14px 30px rgba(45, 76, 47, 0.1);
+}
+
+.quoteBox {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #edf4e8;
+
+  color: #648b3b;
+}
+
+.quoteIcon {
+  width: 21px;
+  height: 21px;
+}
+
+.message {
+  min-height: 82px;
+
+  margin: 15px 0 0;
+
+  color: #6f796f;
+
+  font-size: 13px;
+
+  line-height: 1.75;
+}
+
+.patientInfo {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin-top: auto;
+
+  padding-top: 15px;
+
+  border-top: 1px solid #edf1eb;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+
+  flex: 0 0 40px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #eaf2e4;
+
+  color: #315c29;
+
+  font-size: 11px;
+
+  font-weight: 800;
+}
+
+.patientDetails {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+.patientDetails strong {
+  color: #365139;
+
+  font-size: 12px;
+
+  line-height: 1.3;
+}
+
+.patientDetails span {
+  color: #939b93;
+
+  font-size: 10px;
+}
+
+/* =========================================================
+   TESTIMONIAL DOTS
+========================================================= */
+
+.dots {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 7px;
+
+  margin-top: 24px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+
+  padding: 0;
+
+  border: 0;
+
+  border-radius: 50%;
+
+  background: #cbd6c6;
+
+  cursor: pointer;
+
+  transition:
+    width 0.2s ease,
+    background 0.2s ease;
+}
+
+.dot:hover {
+  background: #8fa588;
+}
+
+.activeDot {
+  width: 24px;
+
+  border-radius: 999px;
+
+  background: #648b3b;
+}
+
+/* =========================================================
+   BLOG HERO
+========================================================= */
+
+.blogHero {
+  width: 100%;
+
+  min-height: 430px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  background: #f5f6ed;
+}
+
+.blogHeroContainer {
+  width: 100%;
+
+  min-height: 430px;
+
+  display: grid;
+
+  grid-template-columns: 48% 52%;
+
+  position: relative;
+}
+
+/* =========================================================
+   BLOG CONTENT
+========================================================= */
+
+.blogContent {
+  position: relative;
+
+  z-index: 5;
+
+  padding:
+    45px
+    45px
+    45px
+    70px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  background: #f5f6ed;
+}
+
+/* =========================================================
+   BLOG BADGE
+========================================================= */
+
+.blogBadge {
+  width: fit-content;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  margin-bottom: 14px;
+
+  padding: 7px 13px;
+
+  color: #285f25;
+
+  background: #edf3e8;
+
+  border-radius: 20px;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.3px;
+}
+
+.blogBadge svg {
+  width: 15px;
+  height: 15px;
+
+  flex-shrink: 0;
+}
+
+/* =========================================================
+   BLOG TITLE
+========================================================= */
+
+.blogTitle {
+  margin: 0;
+
+  color: #171c18;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: clamp(48px, 5vw, 68px);
+
+  font-weight: 500;
+
+  line-height: 1.02;
+
+  letter-spacing: -2.2px;
+}
+
+.blogTitle span {
+  display: block;
+
+  margin-top: 4px;
+
+  color: #2f6b2c;
+
+  font-style: normal;
+}
+
+/* =========================================================
+   BLOG DECORATION
+========================================================= */
+
+.headingDecoration span {
+  height: 1px;
+
+  flex: 1;
+
+  background: #aeb7a7;
+}
+
+.headingDecoration svg {
+  width: 15px;
+  height: 15px;
+
+  color: #39752f;
+}
+
+/* =========================================================
+   BLOG DESCRIPTION
+========================================================= */
+
+.blogDescription {
+  max-width: 540px;
+
+  margin: 20px 0 0;
+
+  color: #424b43;
+
+  font-size: 16px;
+
+  line-height: 1.7;
+}
+
+/* =========================================================
+   BLOG FEATURES
+========================================================= */
+
+.blogFeatures {
+  display: flex;
+
+  align-items: center;
+
+  gap: 28px;
+
+  margin-top: 26px;
+}
+
+.blogFeature {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+}
+
+.blogFeature div:last-child {
+  display: flex;
+
+  flex-direction: column;
+
+  line-height: 1.2;
+}
+
+.blogFeature strong {
+  color: #344033;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+.blogFeature span {
+  margin-top: 3px;
+
+  color: #697269;
+
+  font-size: 11px;
+
+  white-space: nowrap;
+}
+
+/* =========================================================
+   BLOG BUTTON
+========================================================= */
+
+.blogButtons {
+  display: flex;
+
+  align-items: center;
+
+  gap: 13px;
+
+  margin-top: 25px;
+}
+
+.treatmentButton {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  min-height: 45px;
+
+  padding: 0 19px;
+
+  border: 1px solid #aebdab;
+
+  border-radius: 6px;
+
+  background: #ffffff;
+
+  color: #4b7042;
+
+  text-decoration: none;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.treatmentButton:hover {
+  background: #f3f7f0;
+
+  border-color: #88a17e;
+
+  transform: translateY(-2px);
+}
+
+.treatmentButton svg {
+  width: 17px;
+  height: 17px;
+
+  flex-shrink: 0;
+}
+
+/* =========================================================
+   BLOG VISUAL
+========================================================= */
+
+.blogVisual {
+  min-width: 0;
+
+  min-height: 430px;
+
+  position: relative;
+
+  overflow: hidden;
+}
+
+.blogImage {
+  width: 100%;
+  height: 100%;
+
+  position: absolute;
+
+  inset: 0;
+
+  display: block;
+
+  object-fit: cover;
+
+  object-position: center;
+
+  transform: scale(1.02);
+}
+
+.imageFade {
+  position: absolute;
+
+  left: 0;
+
+  top: 0;
+
+  bottom: 0;
+
+  width: 200px;
+
+  z-index: 2;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      to right,
+      #f5f6ed 0%,
+      rgba(245, 246, 237, 0.92) 24%,
+      rgba(245, 246, 237, 0.45) 65%,
+      rgba(245, 246, 237, 0) 100%
+    );
+}
+
+/* =========================================================
+   TABLET 1100
+========================================================= */
+
+@media (max-width: 1100px) {
+  .heroContainer,
+  .treatmentContainer,
+  .whyContainer,
+  .appointmentContainer,
+  .testimonialContainer {
+    width: min(100% - 50px, 1050px);
+  }
+
+  .heroContainer {
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(370px, 0.9fr);
+
+    gap: 30px;
+  }
+
+  .title {
+    font-size: clamp(43px, 5vw, 58px);
+  }
+
+  .features {
+    gap: 10px;
+  }
+
+  .featureText strong {
+    font-size: 11px;
+  }
+
+  .featureText span {
+    font-size: 9px;
+  }
+
+  .cardsGrid {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+  }
+
+  .treatmentCard {
+    min-height: 270px;
+  }
+
+  .whyContainer {
+    gap: 40px;
+  }
+
+  .whyGreenCircle {
+    width: 310px;
+    height: 310px;
+  }
+
+  .naturalBadge {
+    right: 0;
+  }
+
+  .blogContent {
+    padding-left: 45px;
+  }
+
+  .blogTitle {
+    font-size: 52px;
+  }
+
+  .blogDescription {
+    font-size: 15px;
+  }
+}
+
+/* =========================================================
+   TABLET / SMALL LAPTOP 900
+========================================================= */
+
+@media (max-width: 900px) {
+  .hero {
+    padding: 48px 0 52px;
+  }
+
+  .heroContainer {
+    grid-template-columns: 1fr;
+
+    gap: 30px;
+  }
+
+  .left {
+    max-width: 720px;
+
+    margin: 0 auto;
+
+    text-align: center;
+  }
+
+  .badge {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .buttons {
+    justify-content: center;
+  }
+
+  .features {
+    max-width: 590px;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    text-align: left;
+  }
+
+  .right {
+    min-height: 420px;
+  }
+
+  .imageWrapper {
+    width: 420px;
+    height: 420px;
+  }
+
+  .imageWrapper::before {
+    width: 350px;
+    height: 350px;
+
+    right: 35px;
+  }
+
+  .experienceCard {
+    left: calc(50% - 260px);
+
+    bottom: 45px;
+  }
+
+  .whyContainer {
+    grid-template-columns: 1fr;
+
+    gap: 45px;
+  }
+
+  .whyContent {
+    max-width: 700px;
+
+    margin: 0 auto;
+  }
+
+  .whyVisual {
+    min-height: 400px;
+
+    max-width: 650px;
+
+    width: 100%;
+
+    margin: 0 auto;
+  }
+
+  .appointmentContainer {
+    grid-template-columns: auto 1fr;
+  }
+
+  .appointmentButton {
+    grid-column: 2;
+
+    width: fit-content;
+  }
+
+  .blogHeroContainer {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .blogContent {
+    padding:
+      35px
+      25px
+      35px
+      35px;
+  }
+
+  .blogTitle {
+    font-size: 46px;
+  }
+
+  .blogDescription {
+    font-size: 14px;
+  }
+
+  .blogFeatures {
+    gap: 18px;
+  }
+}
+
+/* =========================================================
+   MOBILE 700
+========================================================= */
+
+@media (max-width: 700px) {
+  .heroContainer,
+  .treatmentContainer,
+  .whyContainer,
+  .appointmentContainer,
+  .testimonialContainer {
+    width: calc(100% - 30px);
+  }
+
+  /* HERO */
+
+  .hero {
+    padding: 42px 0 45px;
+  }
+
+  .title {
+    font-size: clamp(38px, 10vw, 48px);
+
+    letter-spacing: -1.4px;
+
+    line-height: 1.06;
+  }
+
+  .description {
+    font-size: 14px;
+
+    line-height: 1.7;
+
+    margin-top: 18px;
+  }
+
+  .buttons {
+    flex-direction: column;
+
+    width: 100%;
+
+    margin-top: 23px;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    width: min(100%, 290px);
+
+    min-height: 46px;
+
+    font-size: 14px;
+  }
+
+  .features {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 15px 11px;
+
+    margin-top: 29px;
+  }
+
+  .featureIcon {
+    width: 34px;
+    height: 34px;
+
+    flex-basis: 34px;
+  }
+
+  .featureIcon svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .featureText strong {
+    font-size: 11px;
+  }
+
+  .featureText span {
+    font-size: 9px;
+  }
+
+  .right {
+    min-height: 370px;
+  }
+
+  .imageWrapper {
+    width: 360px;
+    height: 370px;
+  }
+
+  .imageWrapper::before {
+    width: 300px;
+    height: 300px;
+
+    right: 28px;
+
+    bottom: 15px;
+  }
+
+  .experienceCard {
+    left: 0;
+
+    bottom: 35px;
+
+    min-width: 145px;
+
+    padding: 10px 11px;
+  }
+
+  .experienceCard > svg {
+    width: 25px;
+    height: 25px;
+
+    flex-basis: 25px;
+  }
+
+  .experienceCard strong {
+    font-size: 11px;
+  }
+
+  .experienceCard span {
+    font-size: 9px;
+  }
+
+  /* TREATMENTS */
+
+  .treatmentsSection {
+    padding: 55px 0 58px;
+  }
+
+  .headingArea {
+    margin-bottom: 31px;
+  }
+
+  .smallHeading,
+  .testimonialSmallHeading {
+    font-size: 11px;
+
+    letter-spacing: 2px;
+  }
+
+  .mainHeading,
+  .testimonialMainHeading {
+    font-size: 29px;
+  }
+
+  .cardsGrid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 12px;
+  }
+
+  .treatmentCard {
+    min-height: 275px;
+
+    padding:
+      23px
+      13px
+      18px;
+  }
+
+  .cardIconCircle {
+    width: 64px;
+    height: 64px;
+
+    flex-basis: 64px;
+  }
+
+  .cardIconCircle svg {
+    width: 40px;
+    height: 40px;
+  }
+
+  .cardTitle {
+    min-height: 42px;
+
+    margin-top: 14px;
+
+    font-size: 16px;
+  }
+
+  .cardDescription {
+    font-size: 12px;
+
+    line-height: 1.6;
+  }
+
+  .learnMore {
+    font-size: 11px;
+  }
+
+  /* WHY */
+
+  .whySection {
+    padding: 60px 0;
+  }
+
+  .whyHeading {
+    font-size: 34px;
+  }
+
+  .whyDescription {
+    font-size: 13px;
+  }
+
+  .whyFeaturesGrid {
+    grid-template-columns: 1fr;
+
+    gap: 10px;
+  }
+
+  .whyFeature {
+    min-height: 51px;
+  }
+
+  .whyFeature > span {
+    font-size: 12px;
+  }
+
+  .whyVisual {
+    min-height: 350px;
+  }
+
+  .whyGreenCircle {
+    width: 290px;
+    height: 290px;
+  }
+
+  .naturalBadge {
+    width: 95px;
+    height: 95px;
+
+    bottom: 12px;
+  }
+
+  .naturalBadgeInner strong {
+    font-size: 18px;
+  }
+
+  /* APPOINTMENT */
+
+  .appointmentSection {
+    padding: 32px 0;
+  }
+
+  .appointmentContainer {
+    grid-template-columns: 54px 1fr;
+
+    gap: 14px;
+  }
+
+  .appointmentIcon {
+    width: 54px;
+    height: 54px;
+
+    flex-basis: 54px;
+  }
+
+  .appointmentIcon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .appointmentContent > span {
+    font-size: 10px;
+  }
+
+  .appointmentContent h3 {
+    font-size: 23px;
+  }
+
+  .appointmentContent p {
+    font-size: 11px;
+  }
+
+  .appointmentButton {
+    grid-column: 1 / -1;
+
+    width: 100%;
+
+    min-height: 45px;
+
+    font-size: 13px;
+  }
+
+  /* TESTIMONIAL */
+
+  .testimonialSection {
+    padding: 55px 0 53px;
+  }
+
+  .testimonialCardsGrid {
+    grid-template-columns: 1fr;
+
+    gap: 13px;
+  }
+
+  .patientCard {
+    min-height: 235px;
+
+    padding: 22px 19px 18px;
+  }
+
+  .message {
+    font-size: 12px;
+
+    line-height: 1.7;
+  }
+
+  /* BLOG */
+
+  .blogHero {
+    min-height: auto;
+  }
+
+  .blogHeroContainer {
+    display: flex;
+
+    flex-direction: column;
+
+    min-height: auto;
+  }
+
+  .blogContent {
+    width: 100%;
+
+    padding:
+      40px
+      25px
+      35px;
+
+    align-items: flex-start;
+  }
+
+  .blogTitle {
+    font-size: 45px;
+
+    letter-spacing: -1.5px;
+  }
+
+  .blogDescription {
+    max-width: 600px;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+  }
+
+  .blogFeatures {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+      repeat(2, 1fr);
+
+    gap: 16px;
+  }
+
+  .blogFeature strong {
+    font-size: 12px;
+  }
+
+  .blogFeature span {
+    font-size: 10px;
+  }
+
+  .blogButtons {
+    flex-wrap: wrap;
+
+    gap: 10px;
+  }
+
+  .appointmentButton,
+  .treatmentButton {
+    min-height: 44px;
+
+    font-size: 13px;
+  }
+
+  .blogVisual {
+    width: 100%;
+
+    min-height: 310px;
+
+    height: 310px;
+  }
+
+  .imageFade {
+    width: 100%;
+
+    height: 100%;
+
+    background:
+      linear-gradient(
+        to bottom,
+        #f5f6ed 0%,
+        rgba(245, 246, 237, 0.2) 25%,
+        rgba(245, 246, 237, 0) 55%
+      );
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE 480
+========================================================= */
+
+@media (max-width: 480px) {
+  .heroContainer,
+  .treatmentContainer,
+  .whyContainer,
+  .appointmentContainer,
+  .testimonialContainer {
+    width: calc(100% - 22px);
+  }
+
+  .hero {
+    padding-top: 36px;
+  }
+
+  .badge {
+    font-size: 11px;
+
+    padding:
+      7px
+      11px;
+  }
+
+  .title {
+    font-size: 37px;
+
+    line-height: 1.07;
+  }
+
+  .description {
+    font-size: 13px;
+  }
+
+  .features {
+    gap: 13px 7px;
+  }
+
+  .feature {
+    gap: 6px;
+  }
+
+  .featureIcon {
+    width: 32px;
+    height: 32px;
+
+    flex-basis: 32px;
+  }
+
+  .featureText strong {
+    font-size: 10px;
+  }
+
+  .featureText span {
+    font-size: 8px;
+  }
+
+  .right {
+    min-height: 325px;
+  }
+
+  .imageWrapper {
+    width: 315px;
+    height: 325px;
+  }
+
+  .imageWrapper::before {
+    width: 260px;
+    height: 260px;
+
+    right: 20px;
+  }
+
+  .experienceCard {
+    left: 0;
+
+    bottom: 26px;
+
+    min-width: 132px;
+
+    gap: 7px;
+
+    padding: 9px 10px;
+  }
+
+  .experienceCard > svg {
+    width: 22px;
+    height: 22px;
+
+    flex-basis: 22px;
+  }
+
+  .experienceCard strong {
+    font-size: 10px;
+  }
+
+  .experienceCard span {
+    font-size: 8px;
+  }
+
+  /* TREATMENTS */
+
+  .treatmentsSection {
+    padding: 48px 0 51px;
+  }
+
+  .smallHeading,
+  .testimonialSmallHeading {
+    font-size: 10px;
+
+    letter-spacing: 1.8px;
+  }
+
+  .mainHeading,
+  .testimonialMainHeading {
+    font-size: 26px;
+  }
+
+  .headingDecoration,
+  .testimonialHeadingDecoration {
+    width: 110px;
+  }
+
+  .line,
+  .testimonialLine {
+    width: 34px;
+  }
+
+  .cardsGrid {
+    grid-template-columns: 1fr;
+
+    gap: 12px;
+  }
+
+  .treatmentCard {
+    min-height: 250px;
+  }
+
+  .cardTitle {
+    font-size: 17px;
+  }
+
+  .cardDescription {
+    font-size: 13px;
+  }
+
+  .learnMore {
+    font-size: 12px;
+  }
+
+  /* WHY */
+
+  .whySection {
+    padding: 52px 0;
+  }
+
+  .whyHeading {
+    font-size: 30px;
+  }
+
+  .whyHeading br {
+    display: none;
+  }
+
+  .whyDescription {
+    font-size: 13px;
+
+    line-height: 1.7;
+  }
+
+  .whyVisual {
+    min-height: 300px;
+  }
+
+  .whyGreenCircle {
+    width: 245px;
+    height: 245px;
+  }
+
+  .whyGreenCircle::before {
+    inset: 17px;
+  }
+
+  .naturalBadge {
+    width: 82px;
+    height: 82px;
+
+    right: 0;
+
+    bottom: 5px;
+  }
+
+  .naturalBadgeInner strong {
+    font-size: 16px;
+  }
+
+  .naturalBadgeInner span {
+    font-size: 8px;
+  }
+
+  .naturalBadgeInner small {
+    font-size: 6px;
+  }
+
+  /* APPOINTMENT */
+
+  .appointmentContainer {
+    grid-template-columns: 46px 1fr;
+
+    gap: 11px;
+  }
+
+  .appointmentIcon {
+    width: 46px;
+    height: 46px;
+
+    flex-basis: 46px;
+  }
+
+  .appointmentIcon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .appointmentContent > span {
+    font-size: 8px;
+  }
+
+  .appointmentContent h3 {
+    font-size: 19px;
+  }
+
+  .appointmentContent p {
+    font-size: 9px;
+  }
+
+  .appointmentButton {
+    font-size: 12px;
+  }
+
+  /* TESTIMONIAL */
+
+  .testimonialSection {
+    padding: 49px 0;
+  }
+
+  .patientCard {
+    padding:
+      20px
+      17px;
+  }
+
+  .message {
+    font-size: 12px;
+  }
+
+  /* BLOG */
+
+  .blogContent {
+    padding:
+      32px
+      18px
+      30px;
+  }
+
+  .blogBadge {
+    font-size: 11px;
+
+    padding:
+      6px
+      11px;
+  }
+
+  .blogTitle {
+    font-size: 38px;
+  }
+
+  .blogDescription {
+    font-size: 13px;
+
+    line-height: 1.65;
+  }
+
+  .blogFeatures {
+    gap: 13px;
+  }
+
+  .blogFeature strong {
+    font-size: 11px;
+  }
+
+  .blogFeature span {
+    font-size: 9px;
+  }
+
+  .blogButtons {
+    width: 100%;
+  }
+
+  .appointmentButton,
+  .treatmentButton {
+    flex: 1;
+
+    padding:
+      0
+      10px;
+
+    font-size: 12px;
+  }
+
+  .blogVisual {
+    height: 260px;
+
+    min-height: 260px;
+  }
+}
+
+/* =========================================================
+   VERY SMALL MOBILE 360
+========================================================= */
+
+@media (max-width: 360px) {
+  .title {
+    font-size: 33px;
+  }
+
+  .description {
+    font-size: 12px;
+  }
+
+  .features {
+    grid-template-columns: 1fr;
+  }
+
+  .feature {
+    justify-content: center;
+  }
+
+  .right {
+    min-height: 285px;
+  }
+
+  .imageWrapper {
+    width: 275px;
+    height: 285px;
+  }
+
+  .imageWrapper::before {
+    width: 225px;
+    height: 225px;
+
+    right: 25px;
+  }
+
+  .experienceCard {
+    left: -2px;
+
+    bottom: 18px;
+  }
+
+  .whyHeading {
+    font-size: 28px;
+  }
+
+  .naturalBadge {
+    width: 72px;
+    height: 72px;
+  }
+
+  .naturalBadgeInner strong {
+    font-size: 14px;
+  }
+
+  .blogTitle {
+    font-size: 34px;
+  }
+
+  .blogDescription {
+    font-size: 12px;
+  }
+
+  .blogButtons {
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+  .appointmentButton,
+  .treatmentButton {
+    width: 100%;
+
+    flex: none;
+  }
+}

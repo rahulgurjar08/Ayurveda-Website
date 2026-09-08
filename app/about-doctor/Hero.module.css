@@ -1,0 +1,2346 @@
+/* =========================================================
+   ABOUT DOCTOR PAGE
+========================================================= */
+
+.aboutDoctor {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background: #f8f7f2;
+  color: #20241d;
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+}
+
+.topDecor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 24px;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0.8;
+  z-index: 0;
+}
+
+.topDecor span {
+  position: absolute;
+  top: -14px;
+  display: block;
+  width: 150px;
+  height: 20px;
+  border-radius: 50%;
+  background: #d6c69a;
+}
+
+.topDecor span:nth-child(1) {
+  left: 44%;
+}
+
+.topDecor span:nth-child(2) {
+  left: 58%;
+  width: 100px;
+  background: #8b9a60;
+}
+
+.topDecor span:nth-child(3) {
+  left: 70%;
+  width: 130px;
+  background: #b09b69;
+}
+
+
+/* =========================================================
+   BREADCRUMB
+========================================================= */
+
+.breadcrumb {
+  width: min(1120px, calc(100% - 80px));
+  height: 52px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  position: relative;
+  z-index: 5;
+  color: #73776e;
+  font-size: 13px;
+  line-height: 1;
+}
+
+.breadcrumb .arrow {
+  color: #a4a99f;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.breadcrumb span:last-child {
+  color: #454a41;
+  font-weight: 500;
+}
+
+
+/* =========================================================
+   HERO SECTION
+========================================================= */
+
+.heroSection {
+  width: min(1120px, calc(100% - 80px));
+  min-height: 371px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 46% 54%;
+  align-items: stretch;
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   LEFT CONTENT
+========================================================= */
+
+.content {
+  position: relative;
+  z-index: 5;
+  padding: 42px 15px 25px 0;
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   LABEL
+========================================================= */
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 14px;
+  color: #4c7b3e;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.25px;
+}
+
+.leaf {
+  display: inline-block;
+  color: #6d934f;
+  font-size: 18px;
+  line-height: 1;
+  transform: rotate(-15deg);
+}
+
+
+/* =========================================================
+   HERO HEADING
+========================================================= */
+
+.content h1 {
+  margin: 0;
+  padding: 0;
+  color: #10120f;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(38px, 4vw, 52px);
+  font-weight: 500;
+  line-height: 1.03;
+  letter-spacing: -1.8px;
+}
+
+.content h1 span {
+  color: #3f7137;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.description {
+  width: 390px;
+  max-width: 100%;
+  margin: 19px 0 27px;
+  color: #4b5048;
+  font-size: 13px;
+  line-height: 1.75;
+  font-weight: 400;
+}
+
+
+/* =========================================================
+   SIGNATURE
+========================================================= */
+
+.signature {
+  margin-bottom: 9px;
+  color: #4b7b42;
+  font-family: "Brush Script MT", "Segoe Script", cursive;
+  font-size: 30px;
+  font-style: italic;
+  line-height: 1.1;
+  letter-spacing: 0.3px;
+}
+
+
+/* =========================================================
+   CREDENTIALS
+========================================================= */
+
+.credentials {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: #272b25;
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+.credentials strong {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.credentials span {
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   IMAGE WRAPPER
+========================================================= */
+
+.imageWrapper {
+  width: 100%;
+  height: 371px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   SINGLE DOCTOR IMAGE
+========================================================= */
+
+.doctorImage {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  object-position: center bottom;
+  max-width: 100%;
+}
+
+
+/* =========================================================
+   MAIN CONTAINER
+========================================================= */
+
+.container {
+  width: min(1120px, calc(100% - 80px));
+  margin: 0 auto;
+  padding-bottom: 30px;
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   STATISTICS BOX
+========================================================= */
+
+.statsBox {
+  width: 100%;
+  min-height: 92px;
+  padding: 14px 25px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  background: #f7f7f1;
+  border: 1px solid #ecece3;
+  border-radius: 11px;
+  box-shadow: 0 7px 18px rgba(62, 79, 43, 0.05);
+  position: relative;
+  z-index: 10;
+}
+
+
+/* =========================================================
+   STAT ITEM
+========================================================= */
+
+.statItem {
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  position: relative;
+}
+
+.statItem:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  width: 1px;
+  height: 42px;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #e4e5dc;
+}
+
+
+/* =========================================================
+   STAT ICON
+========================================================= */
+
+.statIcon {
+  width: 43px;
+  height: 43px;
+  flex: 0 0 43px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #eef3e7;
+  color: #477c3c;
+}
+
+.statIcon svg {
+  width: 27px;
+  height: 27px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+
+/* =========================================================
+   STAT TEXT
+========================================================= */
+
+.statText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.statText strong {
+  color: #1c281a;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 21px;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.statText span {
+  color: #5d6259;
+  font-size: 11px;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   INFO SECTION
+========================================================= */
+
+.infoSection {
+  width: 100%;
+  min-height: 260px;
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  gap: 40px;
+  position: relative;
+  border-bottom: 1px solid #e5e7df;
+  box-sizing: border-box;
+}
+
+.infoColumn {
+  position: relative;
+  padding: 8px 0 25px;
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   SECTION HEADING
+========================================================= */
+
+.sectionHeading {
+  margin-bottom: 14px;
+}
+
+.sectionHeading h2 {
+  margin: 0;
+  color: #20251e;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 21px;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.sectionHeading span {
+  display: block;
+  width: 31px;
+  height: 2px;
+  margin-top: 7px;
+  background: #60884b;
+}
+
+
+/* =========================================================
+   INFO INTRO
+========================================================= */
+
+.infoIntro {
+  width: 93%;
+  margin: 0 0 13px;
+  color: #555a52;
+  font-size: 12.5px;
+  line-height: 1.65;
+}
+
+
+/* =========================================================
+   VERTICAL LINE
+========================================================= */
+
+.verticalLine {
+  width: 1px;
+  min-height: 205px;
+  margin-top: 3px;
+  background: #e1e3db;
+}
+
+
+/* =========================================================
+   CHECK LIST
+========================================================= */
+
+.checkList {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.checkList li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #454a41;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.checkIcon {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #5b8b45;
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   QUALIFICATIONS
+========================================================= */
+
+.qualificationList {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.qualificationList li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.greenDot {
+  width: 6px;
+  height: 6px;
+  margin-top: 5px;
+  flex: 0 0 6px;
+  border-radius: 50%;
+  background: #548441;
+}
+
+.qualificationList li div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.qualificationList strong {
+  color: #353a31;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.qualificationList small {
+  color: #666b62;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+
+/* =========================================================
+   DECORATIVE LEAVES
+========================================================= */
+
+.infoLeafDecoration,
+.rightLeafDecoration {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.13;
+  color: #6b914f;
+}
+
+.infoLeafDecoration {
+  right: 5px;
+  bottom: 5px;
+  width: 115px;
+  height: 95px;
+  transform: rotate(-10deg);
+}
+
+.rightLeafDecoration {
+  right: -12px;
+  bottom: 0;
+  width: 135px;
+  height: 145px;
+  transform: rotate(8deg);
+}
+
+.infoLeafDecoration svg,
+.rightLeafDecoration svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 0.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+
+/* =========================================================
+   APPROACH SECTION
+========================================================= */
+
+.approachSection {
+  width: 100%;
+  position: relative;
+  padding-top: 17px;
+}
+
+.approachHeader {
+  text-align: center;
+  margin-bottom: 13px;
+}
+
+.approachHeader > span {
+  display: block;
+  margin-bottom: 2px;
+  color: #5c8b48;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.approachHeader h2 {
+  margin: 0;
+  color: #242820;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 24px;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   HEADING DECORATION
+========================================================= */
+
+.headingLine {
+  width: 50px;
+  height: 8px;
+  margin: 6px auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.headingLine i {
+  width: 4px;
+  height: 4px;
+  display: block;
+  border-radius: 50%;
+  background: #6c934f;
+}
+
+.headingLine i:nth-child(2) {
+  width: 22px;
+  height: 1px;
+  border-radius: 0;
+}
+
+
+/* =========================================================
+   APPROACH GRID
+========================================================= */
+
+.approachGrid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  border-top: 1px solid #eceee7;
+  border-bottom: 1px solid #eceee7;
+}
+
+
+/* =========================================================
+   APPROACH CARD
+========================================================= */
+
+.approachCard {
+  min-height: 157px;
+  padding: 12px 13px 14px;
+  box-sizing: border-box;
+  text-align: center;
+  position: relative;
+}
+
+.approachCard:not(:last-child) {
+  border-right: 1px solid #e5e7df;
+}
+
+
+/* =========================================================
+   APPROACH ICON
+========================================================= */
+
+.approachIcon {
+  width: 46px;
+  height: 46px;
+  margin: 0 auto 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #f0f4e9;
+  color: #5b8645;
+  border: 1px solid #e4eadb;
+}
+
+.approachIcon svg {
+  width: 27px;
+  height: 27px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+
+/* =========================================================
+   APPROACH TITLE
+========================================================= */
+
+.approachCard h3 {
+  margin: 0 0 6px;
+  color: #31372d;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 14px;
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   APPROACH DESCRIPTION
+========================================================= */
+
+.approachCard p {
+  width: 95%;
+  margin: 0 auto;
+  color: #62675e;
+  font-size: 10.5px;
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   APPOINTMENT CTA
+========================================================= */
+
+.appointmentCta {
+  width: 100%;
+  min-height: 69px;
+  margin-top: 17px;
+  padding: 10px 25px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  border-radius: 7px;
+  background: linear-gradient(
+    100deg,
+    #3d712d 0%,
+    #477f31 50%,
+    #3f752e 100%
+  );
+  box-shadow: 0 5px 15px rgba(46, 92, 33, 0.13);
+  position: relative;
+  overflow: hidden;
+}
+
+.appointmentCta::before {
+  content: "";
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  left: -100px;
+  top: -170px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.appointmentCta::after {
+  content: "";
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  right: -90px;
+  bottom: -150px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   CTA ICON
+========================================================= */
+
+.ctaIcon {
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #f6f8ed;
+  color: #4a8137;
+  position: relative;
+  z-index: 2;
+}
+
+.ctaIcon svg {
+  width: 26px;
+  height: 26px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+
+/* =========================================================
+   CTA CONTENT
+========================================================= */
+
+.ctaContent {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  position: relative;
+  z-index: 2;
+}
+
+.ctaContent > span {
+  color: #dce9d5;
+  font-size: 10px;
+  line-height: 1.2;
+}
+
+.ctaContent h2 {
+  margin: 0;
+  color: #ffffff;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 20px;
+  line-height: 1.1;
+  font-weight: 500;
+}
+
+.ctaContent p {
+  margin: 0;
+  color: #d7e6d1;
+  font-size: 10px;
+  line-height: 1.3;
+}
+
+
+/* =========================================================
+   CTA BUTTON
+========================================================= */
+
+.ctaButton {
+  min-width: 155px;
+  height: 36px;
+  padding: 0 13px;
+  border: 0;
+  border-radius: 4px;
+  background: #ffffff;
+  color: #416e35;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1px;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.ctaButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 13px rgba(0, 0, 0, 0.12);
+}
+
+.ctaButton svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+
+/* =========================================================
+   LARGE TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+  .breadcrumb,
+  .heroSection,
+  .container {
+    width: calc(100% - 60px);
+  }
+
+  .heroSection {
+    grid-template-columns: 47% 53%;
+  }
+
+  .content {
+    padding-top: 35px;
+  }
+
+  .content h1 {
+    font-size: 45px;
+  }
+
+  .statsBox {
+    padding: 12px 15px;
+  }
+
+  .statItem {
+    gap: 8px;
+  }
+
+  .statIcon {
+    width: 39px;
+    height: 39px;
+    flex-basis: 39px;
+  }
+
+  .statText strong {
+    font-size: 19px;
+  }
+
+  .statText span {
+    font-size: 10px;
+  }
+
+  .infoSection {
+    gap: 25px;
+  }
+
+  .approachCard {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 800px) {
+  .breadcrumb,
+  .heroSection,
+  .container {
+    width: calc(100% - 36px);
+  }
+
+  .heroSection {
+    grid-template-columns: 47% 53%;
+    min-height: 350px;
+  }
+
+  .imageWrapper {
+    height: 350px;
+  }
+
+  .content {
+    padding-top: 25px;
+  }
+
+  .content h1 {
+    font-size: 39px;
+    letter-spacing: -1.3px;
+  }
+
+  .description {
+    width: 320px;
+    font-size: 12px;
+    margin-top: 15px;
+    margin-bottom: 22px;
+  }
+
+  .signature {
+    font-size: 27px;
+  }
+
+  .credentials {
+    font-size: 11px;
+  }
+
+  .credentials strong {
+    font-size: 12px;
+  }
+
+  .credentials span {
+    font-size: 11px;
+  }
+
+  .statsBox {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    padding: 12px;
+  }
+
+  .statItem {
+    min-height: 55px;
+  }
+
+  .statItem:nth-child(2)::after {
+    display: none;
+  }
+
+  .statItem:nth-child(1),
+  .statItem:nth-child(2) {
+    border-bottom: 1px solid #e5e6df;
+    padding-bottom: 8px;
+  }
+
+  .statItem:nth-child(3),
+  .statItem:nth-child(4) {
+    padding-top: 4px;
+  }
+
+  .infoSection {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding-bottom: 15px;
+  }
+
+  .verticalLine {
+    display: none;
+  }
+
+  .infoColumn {
+    padding: 12px 0 18px;
+  }
+
+  .infoColumn + .infoColumn {
+    border-top: 1px solid #e5e7df;
+  }
+
+  .approachGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .approachCard:nth-child(2) {
+    border-right: 0;
+  }
+
+  .approachCard:nth-child(3) {
+    border-top: 1px solid #e5e7df;
+  }
+
+  .approachCard:nth-child(4) {
+    border-top: 1px solid #e5e7df;
+    border-right: 0;
+  }
+
+  .approachCard:nth-child(5) {
+    grid-column: 1 / -1;
+    border-top: 1px solid #e5e7df;
+    border-right: 0;
+  }
+
+  .appointmentCta {
+    padding-left: 17px;
+    padding-right: 17px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+  .aboutDoctor {
+    min-height: auto;
+  }
+
+  .topDecor {
+    height: 18px;
+  }
+
+  .topDecor span {
+    height: 16px;
+  }
+
+  .breadcrumb {
+    width: calc(100% - 26px);
+    height: 43px;
+    font-size: 11px;
+  }
+
+  .heroSection {
+    width: calc(100% - 26px);
+    display: flex;
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .content {
+    width: 100%;
+    padding: 24px 0 22px;
+    text-align: center;
+  }
+
+  .label {
+    justify-content: center;
+    margin-bottom: 11px;
+    font-size: 11px;
+  }
+
+  .content h1 {
+    font-size: 37px;
+    line-height: 1.05;
+    letter-spacing: -1px;
+  }
+
+  .description {
+    width: 100%;
+    max-width: 390px;
+    margin: 17px auto 23px;
+    font-size: 12px;
+    line-height: 1.7;
+  }
+
+  .signature {
+    font-size: 28px;
+  }
+
+  .credentials {
+    align-items: center;
+    font-size: 11px;
+  }
+
+  .credentials strong {
+    font-size: 12px;
+  }
+
+  .credentials span {
+    font-size: 11px;
+  }
+
+  .imageWrapper {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1020 / 413;
+    overflow: hidden;
+    display: block;
+  }
+
+  .doctorImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center bottom;
+  }
+
+  .container {
+    width: calc(100% - 26px);
+  }
+
+  .statsBox {
+    min-height: auto;
+    border-radius: 9px;
+    padding: 9px 6px;
+  }
+
+  .statItem {
+    gap: 7px;
+  }
+
+  .statIcon {
+    width: 34px;
+    height: 34px;
+    flex-basis: 34px;
+  }
+
+  .statIcon svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .statText strong {
+    font-size: 17px;
+  }
+
+  .statText span {
+    max-width: 78px;
+    white-space: normal;
+    font-size: 9px;
+  }
+
+  .infoSection {
+    margin-top: 12px;
+  }
+
+  .sectionHeading h2 {
+    font-size: 20px;
+  }
+
+  .infoIntro {
+    width: 100%;
+    font-size: 11.5px;
+  }
+
+  .checkList {
+    gap: 8px;
+  }
+
+  .checkList li {
+    font-size: 11px;
+  }
+
+  .qualificationList strong {
+    font-size: 11.5px;
+  }
+
+  .qualificationList small {
+    font-size: 10px;
+  }
+
+  .rightLeafDecoration {
+    opacity: 0.09;
+    width: 100px;
+    height: 110px;
+  }
+
+  .approachSection {
+    padding-top: 14px;
+  }
+
+  .approachHeader h2 {
+    font-size: 22px;
+  }
+
+  .approachGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .approachCard {
+    min-height: auto;
+    padding: 14px 18px 16px;
+    border-right: 0 !important;
+    border-bottom: 1px solid #e5e7df;
+  }
+
+  .approachCard:last-child {
+    border-bottom: 0;
+  }
+
+  .approachCard h3 {
+    font-size: 14px;
+  }
+
+  .approachCard p {
+    max-width: 300px;
+    font-size: 11px;
+  }
+
+  .appointmentCta {
+    min-height: auto;
+    padding: 13px;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .ctaIcon {
+    width: 41px;
+    height: 41px;
+    flex-basis: 41px;
+  }
+
+  .ctaIcon svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .ctaContent {
+    min-width: 0;
+  }
+
+  .ctaContent h2 {
+    font-size: 18px;
+  }
+
+  .ctaContent > span {
+    font-size: 9px;
+  }
+
+  .ctaContent p {
+    font-size: 9px;
+  }
+
+  .ctaButton {
+    width: 100%;
+    height: 37px;
+    margin-top: 4px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 400px) {
+  .breadcrumb,
+  .heroSection,
+  .container {
+    width: calc(100% - 20px);
+  }
+
+  .breadcrumb {
+    height: 40px;
+  }
+
+  .content {
+    padding-top: 20px;
+    padding-bottom: 18px;
+  }
+
+  .label {
+    margin-bottom: 9px;
+    font-size: 10px;
+  }
+
+  .content h1 {
+    font-size: 33px;
+    letter-spacing: -0.8px;
+  }
+
+  .description {
+    margin-top: 14px;
+    margin-bottom: 19px;
+    font-size: 11px;
+    line-height: 1.65;
+  }
+
+  .signature {
+    font-size: 25px;
+  }
+
+  .credentials strong {
+    font-size: 11px;
+  }
+
+  .credentials span {
+    font-size: 10px;
+  }
+
+  .statsBox {
+    padding: 7px 3px;
+  }
+
+  .statItem {
+    gap: 5px;
+  }
+
+  .statIcon {
+    width: 31px;
+    height: 31px;
+    flex-basis: 31px;
+  }
+
+  .statIcon svg {
+    width: 19px;
+    height: 19px;
+  }
+
+  .statText strong {
+    font-size: 15px;
+  }
+
+  .statText span {
+    font-size: 8.5px;
+  }
+
+  .sectionHeading h2 {
+    font-size: 19px;
+  }
+
+  .approachHeader h2 {
+    font-size: 21px;
+  }
+
+  .ctaContent h2 {
+    font-size: 17px;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 360px) {
+  .content h1 {
+    font-size: 31px;
+  }
+
+  .description {
+    font-size: 10.5px;
+  }
+
+  .signature {
+    font-size: 23px;
+  }
+
+  .statText span {
+    font-size: 8px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   SERVICES PAGE
+========================================================= */
+
+.servicesPage {
+  width: 100%;
+  min-height: 10px;
+
+  overflow: hidden;
+
+  background: #f6f8ef;
+  color: #17231c;
+
+  font-family:
+    Inter,
+    Arial,
+    Helvetica,
+    sans-serif;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+  position: relative;
+
+  width: 100%;
+  min-height: 610px;
+
+  display: grid;
+  grid-template-columns: 52% 48%;
+
+  background: #f6f8ef;
+
+  overflow: hidden;
+}
+
+/* =========================================================
+   LEFT CONTENT
+========================================================= */
+
+.heroContent {
+  position: relative;
+  z-index: 5;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding:
+    55px
+    45px
+    50px
+    clamp(35px, 4.3vw, 70px);
+
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   SMALL BADGE / TITLE
+========================================================= */
+
+.smallTitle {
+  width: fit-content;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 7px 14px;
+
+  margin-bottom: 18px;
+
+  border-radius: 30px;
+
+  background: #edf4e8;
+
+  color: #2f712b;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  letter-spacing: 0.6px;
+
+  line-height: 1;
+
+  white-space: nowrap;
+}
+
+.leaf {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #34782e;
+
+  font-size: 12px;
+
+  transform: rotate(45deg);
+}
+
+/* =========================================================
+   MAIN HEADING
+========================================================= */
+
+.heroContent h1 {
+  max-width: 750px;
+
+  margin: 0;
+
+  color: #151d18;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: clamp(50px, 5vw, 72px);
+
+  font-weight: 500;
+
+  line-height: 0.98;
+
+  letter-spacing: -2.8px;
+}
+
+.heroContent h1 span {
+  color: #2f712b;
+}
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.description {
+  max-width: 710px;
+
+  margin:
+    25px
+    0
+    0;
+
+  color: #26332c;
+
+  font-family:
+    Inter,
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 16px;
+
+  font-weight: 400;
+
+  line-height: 1.55;
+}
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.divider {
+  width: 125px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  margin:
+    20px
+    0
+    0;
+}
+
+.divider span {
+  width: 48px;
+
+  height: 1px;
+
+  background: #aab3a6;
+}
+
+.divider i {
+  width: 10px;
+  height: 10px;
+
+  display: block;
+
+  color: #34782e;
+
+  font-size: 9px;
+  font-style: normal;
+
+  transform: rotate(45deg);
+}
+
+/* =========================================================
+   BUTTONS AREA
+========================================================= */
+
+.actions {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  margin-top: 22px;
+}
+
+/* =========================================================
+   PRIMARY BUTTON
+========================================================= */
+
+.primaryButton {
+  min-height: 38px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  padding:
+    0
+    18px;
+
+  border: 1px solid #34782e;
+  border-radius: 4px;
+
+  background: #34782e;
+
+  color: #ffffff;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.primaryButton:hover {
+  background: #286322;
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 7px 18px rgba(47, 113, 43, 0.18);
+}
+
+/* =========================================================
+   SECONDARY BUTTON
+========================================================= */
+
+.secondaryButton {
+  min-height: 38px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  padding:
+    0
+    18px;
+
+  border: 1px solid #9aac94;
+  border-radius: 4px;
+
+  background: transparent;
+
+  color: #26382b;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.secondaryButton:hover {
+  background: #edf4e8;
+
+  border-color: #34782e;
+
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   BUTTON ICON
+========================================================= */
+
+.buttonIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 13px;
+
+  color: inherit;
+}
+
+/* =========================================================
+   FEATURES / BENEFITS
+========================================================= */
+
+.features {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 14px;
+
+  max-width: 620px;
+
+  margin-top: 45px;
+}
+
+/* =========================================================
+   FEATURE ITEM
+========================================================= */
+
+.feature {
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+}
+
+/* =========================================================
+   FEATURE ICON
+========================================================= */
+
+.featureIcon {
+  flex: 0 0 42px;
+
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #eaf2e4;
+
+  color: #34782e;
+
+  font-size: 17px;
+}
+
+/* =========================================================
+   FEATURE TEXT
+========================================================= */
+
+.featureText {
+  display: flex;
+  flex-direction: column;
+
+  gap: 2px;
+}
+
+.featureText strong {
+  color: #17231c;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  line-height: 1.1;
+}
+
+.featureText span {
+  color: #5b675f;
+
+  font-size: 11px;
+
+  line-height: 1.2;
+}
+
+/* =========================================================
+   RIGHT IMAGE
+========================================================= */
+
+.heroImage {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  min-height: 610px;
+
+  overflow: hidden;
+
+  background: #dfe7d9;
+}
+
+/* =========================================================
+   IMAGE
+========================================================= */
+
+.imageShape {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+
+  background: #dfe7d9;
+}
+
+.imageShape img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  object-position: center center;
+}
+
+/* =========================================================
+   IMAGE LEFT FADE
+========================================================= */
+
+.imageOverlay {
+  position: absolute;
+
+  z-index: 3;
+
+  left: 0;
+  top: 0;
+
+  width: 48%;
+
+  height: 100%;
+
+  pointer-events: none;
+
+  background: linear-gradient(
+    90deg,
+    #f6f8ef 0%,
+    rgba(246, 248, 239, 0.98) 12%,
+    rgba(246, 248, 239, 0.86) 28%,
+    rgba(246, 248, 239, 0.48) 50%,
+    rgba(246, 248, 239, 0) 100%
+  );
+}
+
+/* =========================================================
+   IMAGE RIGHT SOFT LIGHT
+========================================================= */
+
+.heroImage::after {
+  content: "";
+
+  position: absolute;
+
+  z-index: 2;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.05),
+    transparent 45%
+  );
+}
+
+/* =========================================================
+   LARGE DESKTOP
+========================================================= */
+
+@media (min-width: 1500px) {
+  .hero {
+    min-height: 650px;
+
+    grid-template-columns: 52% 48%;
+  }
+
+  .heroImage {
+    min-height: 650px;
+  }
+
+  .heroContent {
+    padding-left: 7%;
+  }
+
+  .heroContent h1 {
+    font-size: 76px;
+  }
+
+  .description {
+    font-size: 17px;
+  }
+}
+
+/* =========================================================
+   LAPTOP
+========================================================= */
+
+@media (max-width: 1200px) {
+  .hero {
+    grid-template-columns: 51% 49%;
+
+    min-height: 570px;
+  }
+
+  .heroContent {
+    padding:
+      45px
+      30px
+      40px
+      6%;
+  }
+
+  .heroContent h1 {
+    font-size: clamp(45px, 5vw, 62px);
+
+    letter-spacing: -2px;
+  }
+
+  .description {
+    max-width: 500px;
+
+    font-size: 15px;
+
+    margin-top: 22px;
+  }
+
+  .actions {
+    margin-top: 19px;
+  }
+
+  .features {
+    max-width: 570px;
+
+    margin-top: 35px;
+
+    gap: 9px;
+  }
+
+  .featureIcon {
+    width: 38px;
+    height: 38px;
+
+    flex-basis: 38px;
+
+    font-size: 15px;
+  }
+
+  .featureText strong {
+    font-size: 12px;
+  }
+
+  .featureText span {
+    font-size: 10px;
+  }
+
+  .heroImage {
+    min-height: 570px;
+  }
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 50% 50%;
+
+    min-height: 540px;
+  }
+
+  .heroContent {
+    padding:
+      40px
+      22px
+      40px
+      5%;
+  }
+
+  .smallTitle {
+    font-size: 11px;
+
+    padding: 6px 11px;
+
+    margin-bottom: 15px;
+  }
+
+  .heroContent h1 {
+    font-size: clamp(39px, 5.5vw, 53px);
+
+    letter-spacing: -1.8px;
+  }
+
+  .description {
+    font-size: 14px;
+
+    line-height: 1.5;
+  }
+
+  .actions {
+    gap: 8px;
+
+    margin-top: 17px;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    min-height: 36px;
+
+    padding:
+      0
+      13px;
+
+    font-size: 11px;
+  }
+
+  .features {
+    margin-top: 30px;
+
+    gap: 7px;
+  }
+
+  .feature {
+    gap: 6px;
+  }
+
+  .featureIcon {
+    width: 34px;
+    height: 34px;
+
+    flex-basis: 34px;
+  }
+
+  .featureText strong {
+    font-size: 10px;
+  }
+
+  .featureText span {
+    font-size: 9px;
+  }
+
+  .heroImage {
+    min-height: 540px;
+  }
+
+  .imageOverlay {
+    width: 35%;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+  .hero {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    min-height: auto;
+  }
+
+  /* LEFT */
+  .heroContent {
+    order: 1;
+
+    width: 100%;
+
+    padding:
+      50px
+      22px
+      42px;
+
+    box-sizing: border-box;
+  }
+
+  .smallTitle {
+    margin-bottom: 17px;
+
+    font-size: 12px;
+  }
+
+  .heroContent h1 {
+    max-width: 600px;
+
+    font-size: clamp(42px, 11vw, 58px);
+
+    line-height: 0.99;
+
+    letter-spacing: -2px;
+  }
+
+  .description {
+    max-width: 600px;
+
+    margin-top: 23px;
+
+    font-size: 15px;
+
+    line-height: 1.6;
+  }
+
+  .divider {
+    margin-top: 18px;
+  }
+
+  .actions {
+    flex-wrap: wrap;
+
+    margin-top: 20px;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    min-height: 40px;
+
+    padding:
+      0
+      16px;
+
+    font-size: 12px;
+  }
+
+  /* FEATURES */
+  .features {
+    width: 100%;
+
+    max-width: 600px;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 18px 20px;
+
+    margin-top: 35px;
+  }
+
+  .featureIcon {
+    width: 40px;
+    height: 40px;
+
+    flex-basis: 40px;
+
+    font-size: 16px;
+  }
+
+  .featureText strong {
+    font-size: 12px;
+  }
+
+  .featureText span {
+    font-size: 10px;
+  }
+
+  /* IMAGE */
+  .heroImage {
+    order: 2;
+
+    width: 100%;
+
+    min-height: 430px;
+
+    height: 430px;
+  }
+
+  .imageShape {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+  }
+
+  .imageShape img {
+    object-position: center center;
+  }
+
+  .imageOverlay {
+    display: none;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+  .heroContent {
+    padding:
+      42px
+      18px
+      35px;
+  }
+
+  .smallTitle {
+    font-size: 11px;
+
+    padding:
+      6px
+      10px;
+  }
+
+  .heroContent h1 {
+    font-size: 42px;
+
+    line-height: 1;
+
+    letter-spacing: -1.5px;
+  }
+
+  .description {
+    font-size: 14px;
+
+    line-height: 1.55;
+  }
+
+  .actions {
+    width: 100%;
+
+    gap: 8px;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    min-height: 39px;
+
+    padding:
+      0
+      12px;
+
+    font-size: 11px;
+  }
+
+  .features {
+    grid-template-columns:
+      repeat(2, 1fr);
+
+    gap: 17px 10px;
+
+    margin-top: 30px;
+  }
+
+  .feature {
+    gap: 7px;
+  }
+
+  .featureIcon {
+    width: 36px;
+    height: 36px;
+
+    flex-basis: 36px;
+  }
+
+  .featureText strong {
+    font-size: 11px;
+  }
+
+  .featureText span {
+    font-size: 9px;
+  }
+
+  .heroImage {
+    min-height: 360px;
+
+    height: 360px;
+  }
+}

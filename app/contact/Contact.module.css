@@ -1,0 +1,2109 @@
+/* =========================================================
+   CONTACT PAGE - AYURVEDA
+   CLEAN + PROFESSIONAL + FULL RESPONSIVE
+========================================================= */
+
+.contactPage {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: #f8faf5;
+  color: #20251d;
+  font-family:
+    Inter,
+    Arial,
+    Helvetica,
+    sans-serif;
+  padding-top: 80px;
+}
+
+.contactPage *,
+.contactPage *::before,
+.contactPage *::after {
+  box-sizing: border-box;
+}
+
+.contactPage img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+}
+
+.contactPage button,
+.contactPage input,
+.contactPage textarea,
+.contactPage select {
+  font: inherit;
+}
+
+.contactPage a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.contactPage button {
+  cursor: pointer;
+}
+
+/* =========================================================
+   COMMON CONTAINER
+========================================================= */
+
+.heroContainer,
+.contactContainer,
+.clinicContainer,
+.faqHelpContainer,
+.newsletterContainer {
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+/* =========================================================
+   COMMON EYE BROW
+========================================================= */
+
+.sectionEyebrow {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 14px;
+
+  color: #3f742c;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.sectionEyebrow svg {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.contactHero {
+  width: 100%;
+  min-height: 430px;
+  padding: 55px 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      #f8f8ed 0%,
+      #f5f7e9 43%,
+      rgba(247, 249, 235, 0.72) 70%,
+      rgba(239, 244, 225, 0.35) 100%
+    );
+}
+
+.heroContainer {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  align-items: center;
+  gap: 50px;
+}
+
+/* =========================================================
+   HERO CONTENT
+========================================================= */
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+}
+
+.heroBadge {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 15px;
+
+  color: #3e702b;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.heroBadge svg {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.heroContent h1 {
+  max-width: 600px;
+  margin: 0;
+
+  color: #181b16;
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+  font-size: clamp(44px, 5vw, 64px);
+  font-weight: 500;
+  line-height: 1.06;
+  letter-spacing: -1.8px;
+}
+
+.heroContent h1 span {
+  display: block;
+  color: #3f7629;
+}
+
+.heroDescription {
+  max-width: 540px;
+  margin: 22px 0 25px;
+
+  color: #555d50;
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+/* =========================================================
+   HERO BUTTONS
+========================================================= */
+
+.heroActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.primaryButton,
+.secondaryButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 46px;
+  padding: 0 22px;
+
+  border-radius: 7px;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.primaryButton {
+  gap: 9px;
+  background: #397722;
+  color: #ffffff;
+
+  box-shadow: 0 8px 22px rgba(55, 116, 33, 0.18);
+}
+
+.primaryButton span {
+  font-size: 18px;
+}
+
+.secondaryButton {
+  border: 1px solid #cdd9c5;
+  background: #ffffff;
+  color: #45603b;
+}
+
+.primaryButton:hover,
+.secondaryButton:hover {
+  transform: translateY(-2px);
+}
+
+.primaryButton:hover {
+  background: #2f681b;
+  box-shadow: 0 12px 28px rgba(55, 116, 33, 0.25);
+}
+
+/* =========================================================
+   HERO MINI INFO
+========================================================= */
+
+.heroMiniInfo {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.miniInfoItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.miniIcon {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  place-items: center;
+
+  border: 1px solid #d9e5cd;
+  border-radius: 50%;
+  background: #eef5e5;
+  color: #477f31;
+}
+
+.miniIcon svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.miniInfoItem > div:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.miniInfoItem span {
+  color: #7b8275;
+  font-size: 12px;
+}
+
+.miniInfoItem strong {
+  color: #35402f;
+  font-size: 13px;
+}
+
+/* =========================================================
+   HERO IMAGE
+========================================================= */
+
+.heroImageWrap {
+  position: relative;
+  width: 100%;
+  min-height: 340px;
+}
+
+.heroImageShape {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  width: 100%;
+  height: 340px;
+
+  overflow: hidden;
+
+  border-radius: 70px 0 0 30px;
+
+  box-shadow:
+    0 18px 45px rgba(43, 72, 37, 0.12);
+}
+
+.heroImage {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  transition: transform 0.5s ease;
+}
+
+.heroImageShape:hover .heroImage {
+  transform: scale(1.025);
+}
+
+.heroFloatingCard {
+  position: absolute;
+  right: 22px;
+  bottom: -18px;
+
+  display: flex;
+  align-items: center;
+  gap: 11px;
+
+  width: 245px;
+  padding: 13px;
+
+  border: 1px solid #dfe7d8;
+  border-radius: 10px;
+
+  background: rgba(255, 255, 255, 0.96);
+
+  box-shadow: 0 10px 30px rgba(45, 61, 39, 0.14);
+}
+
+.floatingIcon {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  place-items: center;
+
+  border-radius: 50%;
+  background: #edf4e8;
+  color: #4d8236;
+}
+
+.floatingIcon svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.heroFloatingCard > div:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.heroFloatingCard strong {
+  color: #35402e;
+  font-size: 13px;
+}
+
+.heroFloatingCard span {
+  color: #8a9185;
+  font-size: 11px;
+}
+
+/* =========================================================
+   CONTACT MAIN
+========================================================= */
+
+.contactMain {
+  padding: 35px 0;
+  background: #ffffff;
+}
+
+.contactContainer {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.82fr) minmax(0, 1.18fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+/* =========================================================
+   CONTACT INFO
+========================================================= */
+
+.contactInfo {
+  padding: 30px;
+
+  border: 1px solid #e2e7df;
+  border-radius: 10px;
+  background: #ffffff;
+
+  box-shadow: 0 4px 18px rgba(40, 55, 34, 0.04);
+}
+
+.contactInfo h2 {
+  margin: 0 0 14px;
+
+  color: #242921;
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+  font-size: 34px;
+  font-weight: 500;
+  line-height: 1.12;
+}
+
+.contactInfo h2 span {
+  color: #4b7d35;
+}
+
+.contactIntro {
+  max-width: 470px;
+  margin: 0 0 24px;
+
+  color: #747b70;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* =========================================================
+   INFO CARDS
+========================================================= */
+
+.infoCards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 5px;
+}
+
+.infoCard {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  min-height: 70px;
+  padding: 10px 5px;
+}
+
+.infoCard:not(:last-child)::after {
+  position: absolute;
+  left: 21px;
+  bottom: -2px;
+
+  width: 1px;
+  height: 8px;
+
+  content: "";
+  background: #d4e1cb;
+}
+
+.infoIcon {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  place-items: center;
+
+  border-radius: 50%;
+  background: #eff5e9;
+  color: #467d30;
+}
+
+.infoIcon svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.infoCard > div:last-child {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.infoCard span {
+  color: #22271f;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.infoCard a,
+.infoCard strong {
+  overflow-wrap: anywhere;
+  color: #3c4438;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.infoCard small {
+  color: #747c70;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+/* =========================================================
+   FORM CARD
+========================================================= */
+
+.contactFormCard {
+  padding: 30px;
+
+  border: 1px solid #e2e7df;
+  border-radius: 10px;
+  background: #ffffff;
+
+  box-shadow: 0 4px 18px rgba(40, 55, 34, 0.04);
+}
+
+.formHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  margin-bottom: 22px;
+  padding-bottom: 17px;
+
+  border-bottom: 1px solid #e9ede6;
+}
+
+.formIcon {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  place-items: center;
+
+  border-radius: 50%;
+  background: #edf4e8;
+  color: #4b7e35;
+}
+
+.formIcon svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.formHeader h3 {
+  margin: 0 0 4px;
+
+  color: #22261f;
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.formHeader p {
+  margin: 0;
+  color: #8b9286;
+  font-size: 12px;
+}
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.formGroup label {
+  color: #444b40;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.formGroup input,
+.formGroup select {
+  width: 100%;
+  height: 46px;
+  padding: 0 13px;
+
+  border: 1px solid #dfe5dc;
+  outline: none;
+  border-radius: 6px;
+
+  background: #ffffff;
+  color: #3e463b;
+
+  font-size: 13px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.formGroup textarea {
+  width: 100%;
+  min-height: 115px;
+  padding: 13px;
+
+  border: 1px solid #dfe5dc;
+  outline: none;
+  border-radius: 6px;
+
+  background: #ffffff;
+  color: #3e463b;
+
+  font-size: 13px;
+  line-height: 1.55;
+
+  resize: vertical;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.formGroup input::placeholder,
+.formGroup textarea::placeholder {
+  color: #a7ada3;
+}
+
+.formGroup input:focus,
+.formGroup select:focus,
+.formGroup textarea:focus {
+  border-color: #73a05d;
+
+  box-shadow:
+    0 0 0 3px rgba(92, 139, 68, 0.09);
+
+  background: #fcfefb;
+}
+
+/* =========================================================
+   SUBMIT BUTTON
+========================================================= */
+
+.submitButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  width: 100%;
+  min-height: 47px;
+  margin-top: 2px;
+
+  border: 0;
+  border-radius: 6px;
+
+  background: #397a20;
+  color: #ffffff;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.submitButton svg {
+  width: 17px;
+  height: 17px;
+
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.submitButton:hover {
+  background: #2e651a;
+  transform: translateY(-1px);
+  box-shadow: 0 7px 18px rgba(55, 116, 33, 0.18);
+}
+
+.formPrivacy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  margin-top: 1px;
+
+  color: #81897d;
+  font-size: 11px;
+}
+
+.formPrivacy svg {
+  width: 14px;
+  height: 14px;
+
+  fill: none;
+  stroke: #4d7e39;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* =========================================================
+   CLINIC SECTION
+========================================================= */
+
+.clinicSection {
+  padding: 35px 0;
+  background: #f8faf5;
+}
+
+.clinicContainer {
+  display: grid;
+  grid-template-columns: 0.85fr 0.75fr 1.1fr;
+  gap: 18px;
+  align-items: stretch;
+}
+
+.clinicImageCard {
+  position: relative;
+
+  min-height: 300px;
+  overflow: hidden;
+
+  border-radius: 10px;
+  order: 2;
+}
+
+.clinicImage {
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+
+  object-fit: cover;
+  object-position: center;
+}
+
+.clinicImageOverlay {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  left: 12px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  padding: 13px;
+
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.93);
+
+  box-shadow: 0 5px 20px rgba(38, 53, 33, 0.1);
+}
+
+.clinicImageOverlay span {
+  color: #638454;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.clinicImageOverlay strong {
+  color: #34402f;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* =========================================================
+   CLINIC CONTENT
+========================================================= */
+
+.clinicContent {
+  padding: 28px;
+
+  border: 1px solid #e1e7dc;
+  border-radius: 10px;
+
+  background: #ffffff;
+  order: 1;
+}
+
+.clinicContent h2 {
+  margin: 0;
+
+  color: #252b21;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.clinicContent h2 span {
+  color: #4a7d35;
+}
+
+.clinicContent > p {
+  margin: 15px 0 20px;
+
+  color: #737b6f;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.clinicPoints {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+
+  margin-bottom: 18px;
+}
+
+.clinicPoint {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 8px;
+
+  text-align: center;
+}
+
+.clinicPoint > div {
+  display: grid;
+
+  width: 42px;
+  height: 42px;
+
+  place-items: center;
+
+  border-radius: 50%;
+  background: #edf5e8;
+  color: #4d8237;
+}
+
+.clinicPoint svg {
+  width: 20px;
+  height: 20px;
+
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.clinicPoint span {
+  color: #596152;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.clinicAddress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 11px;
+
+  border-radius: 7px;
+  background: #f4f8f0;
+}
+
+.addressIcon {
+  display: grid;
+
+  width: 35px;
+  height: 35px;
+
+  flex: 0 0 35px;
+  place-items: center;
+
+  border-radius: 50%;
+  background: #e5efde;
+  color: #4c8036;
+}
+
+.addressIcon svg {
+  width: 17px;
+  height: 17px;
+
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.clinicAddress strong {
+  display: block;
+  margin-bottom: 3px;
+
+  color: #35402f;
+  font-size: 12px;
+}
+
+.clinicAddress p {
+  margin: 0;
+
+  color: #7d8578;
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+/* =========================================================
+   MAP
+========================================================= */
+
+.mapCard {
+  position: relative;
+
+  min-height: 300px;
+  overflow: hidden;
+
+  border-radius: 10px;
+  background: #e7ece4;
+
+  order: 3;
+}
+
+.mapCard iframe {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+
+  border: 0;
+
+  filter: saturate(0.75);
+}
+
+.mapOverlay {
+  position: absolute;
+
+  top: 13px;
+  left: 13px;
+
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  padding: 9px 11px;
+
+  border-radius: 7px;
+
+  background: rgba(255, 255, 255, 0.95);
+
+  box-shadow: 0 4px 15px rgba(38, 53, 33, 0.1);
+}
+
+.mapPin {
+  display: grid;
+
+  width: 32px;
+  height: 32px;
+
+  place-items: center;
+
+  border-radius: 50%;
+  background: #edf5e7;
+  color: #4a7d35;
+}
+
+.mapPin svg {
+  width: 17px;
+  height: 17px;
+
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.mapOverlay > div:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.mapOverlay strong {
+  color: #35402f;
+  font-size: 12px;
+}
+
+.mapOverlay span {
+  color: #81897d;
+  font-size: 10px;
+}
+
+/* =========================================================
+   FAQ + HELP
+========================================================= */
+
+.faqHelpSection {
+  padding: 35px 0;
+  background: #ffffff;
+}
+
+.faqHelpContainer {
+  display: grid;
+  grid-template-columns: 1.04fr 0.96fr;
+  gap: 18px;
+  align-items: stretch;
+}
+
+/* =========================================================
+   FAQ
+========================================================= */
+
+.faqSection {
+  position: relative;
+
+  min-height: 360px;
+  padding: 28px;
+
+  border: 1px solid #e2e7df;
+  border-radius: 10px;
+
+  background: #ffffff;
+}
+
+.faqSection h2 {
+  margin: 0;
+
+  color: #252b21;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.faqSection h2 span {
+  color: #4a7d35;
+}
+
+.faqIntro {
+  margin: 12px 0 18px;
+
+  color: #7c8378;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.faqList {
+  display: flex;
+  flex-direction: column;
+
+  border-top: 1px solid #e6ebe3;
+}
+
+.faqList details {
+  border-bottom: 1px solid #e6ebe3;
+}
+
+.faqList summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  min-height: 50px;
+  padding: 0 4px;
+
+  color: #41493c;
+
+  cursor: pointer;
+  list-style: none;
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.faqList summary::-webkit-details-marker {
+  display: none;
+}
+
+.faqList summary svg {
+  width: 17px;
+  height: 17px;
+
+  flex: 0 0 17px;
+
+  fill: none;
+  stroke: #6b815f;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+
+  transition: transform 0.2s ease;
+}
+
+.faqList details[open] summary svg {
+  transform: rotate(180deg);
+}
+
+.faqList details p {
+  max-width: 650px;
+
+  margin: 0;
+  padding: 0 30px 15px 4px;
+
+  color: #7e8679;
+
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+/* =========================================================
+   HELP CARD
+========================================================= */
+
+.helpCard {
+  position: relative;
+
+  min-height: 360px;
+  overflow: hidden;
+
+  border-radius: 10px;
+
+  background: #f1f5eb;
+}
+
+.helpImageWrap {
+  position: absolute;
+
+  top: 0;
+  right: 0;
+  bottom: 0;
+
+  width: 52%;
+}
+
+.helpImageWrap::after {
+  position: absolute;
+  inset: 0;
+
+  content: "";
+
+  background:
+    linear-gradient(
+      90deg,
+      #f1f5eb 0%,
+      rgba(241, 245, 235, 0.6) 25%,
+      rgba(241, 245, 235, 0) 100%
+    );
+}
+
+.helpImage {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+}
+
+.helpContent {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+
+  width: 67%;
+  min-height: 360px;
+
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  padding: 35px;
+}
+
+.helpIcon {
+  display: grid;
+
+  width: 46px;
+  height: 46px;
+
+  margin-bottom: 14px;
+
+  place-items: center;
+
+  border-radius: 50%;
+
+  background: #56823e;
+  color: #ffffff;
+}
+
+.helpIcon svg {
+  width: 21px;
+  height: 21px;
+
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.helpLabel {
+  margin-bottom: 7px;
+
+  color: #648257;
+
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+
+  text-transform: uppercase;
+}
+
+.helpContent h3 {
+  margin: 0;
+
+  color: #2d3829;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.helpContent p {
+  max-width: 280px;
+
+  margin: 12px 0 17px;
+
+  color: #6f786b;
+
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.helpButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  min-height: 40px;
+  padding: 0 17px;
+
+  border-radius: 6px;
+
+  background: #3e7827;
+  color: #ffffff;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.helpButton:hover {
+  background: #32651f;
+  transform: translateY(-1px);
+}
+
+.helpButton svg {
+  width: 16px;
+  height: 16px;
+
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.helpHours {
+  margin-top: 8px;
+
+  color: #899182;
+  font-size: 10px;
+}
+
+/* =========================================================
+   NEWSLETTER
+========================================================= */
+
+.newsletterSection {
+  padding: 25px 0;
+  background: #ffffff;
+}
+
+.newsletterContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 30px;
+
+  min-height: 105px;
+  padding: 20px 35px;
+
+  border-radius: 10px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #34741e 0%,
+      #4e8a31 60%,
+      #397522 100%
+    );
+
+  box-shadow: 0 10px 30px rgba(45, 98, 27, 0.14);
+}
+
+.newsletterText {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.newsletterIcon {
+  display: grid;
+
+  width: 54px;
+  height: 54px;
+
+  flex: 0 0 54px;
+
+  place-items: center;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+  color: #3d7926;
+}
+
+.newsletterIcon svg {
+  width: 25px;
+  height: 25px;
+
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.newsletterText > div:last-child {
+  display: flex;
+  flex-direction: column;
+}
+
+.newsletterText span {
+  margin-bottom: 4px;
+
+  color: rgba(255, 255, 255, 0.82);
+
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.newsletterText h2 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 27px;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.newsletterText h2 strong {
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.newsletterText p {
+  margin: 5px 0 0;
+
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 11px;
+}
+
+/* =========================================================
+   NEWSLETTER FORM
+========================================================= */
+
+.newsletterForm {
+  display: flex;
+
+  width: 370px;
+  min-height: 44px;
+
+  padding: 4px;
+
+  border-radius: 6px;
+  background: #ffffff;
+}
+
+.newsletterForm input {
+  width: 100%;
+  min-width: 0;
+
+  padding: 0 12px;
+
+  border: 0;
+  outline: none;
+
+  background: transparent;
+  color: #3d4439;
+
+  font-size: 12px;
+}
+
+.newsletterForm input::placeholder {
+  color: #9ba199;
+}
+
+.newsletterForm button {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  min-width: 92px;
+
+  border: 0;
+  border-radius: 5px;
+
+  background: #2f671b;
+  color: #ffffff;
+
+  cursor: pointer;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  transition: background 0.2s ease;
+}
+
+.newsletterForm button:hover {
+  background: #245414;
+}
+
+.newsletterForm button span {
+  margin: 0;
+  color: #ffffff;
+  font-size: 16px;
+}
+
+.successMessage {
+  display: flex;
+
+  align-items: center;
+  gap: 8px;
+
+  min-height: 44px;
+  padding: 0 14px;
+
+  border-radius: 6px;
+
+  background: rgba(255, 255, 255, 0.96);
+  color: #397326;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.successMessage svg {
+  width: 17px;
+  height: 17px;
+
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* =========================================================
+   1100px
+========================================================= */
+
+@media (max-width: 1100px) {
+  .heroContainer {
+    gap: 35px;
+  }
+
+  .heroContent h1 {
+    font-size: 52px;
+  }
+
+  .contactContainer {
+    grid-template-columns: 0.9fr 1.1fr;
+  }
+
+  .clinicContainer {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .clinicContent {
+    grid-column: 1;
+  }
+
+  .clinicImageCard {
+    grid-column: 2;
+  }
+
+  .mapCard {
+    grid-column: 1 / -1;
+  }
+}
+
+/* =========================================================
+   900px TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+  .contactPage {
+    padding-top: 70px;
+  }
+
+  .contactHero {
+    min-height: auto;
+    padding: 50px 0 70px;
+  }
+
+  .heroContainer {
+    grid-template-columns: 1fr;
+    gap: 45px;
+  }
+
+  .heroContent {
+    max-width: 700px;
+  }
+
+  .heroContent h1 {
+    max-width: 700px;
+    font-size: clamp(44px, 8vw, 58px);
+  }
+
+  .heroDescription {
+    max-width: 650px;
+  }
+
+  .heroImageWrap {
+    min-height: 390px;
+  }
+
+  .heroImageShape {
+    position: relative;
+    width: 100%;
+    height: 390px;
+    border-radius: 20px;
+  }
+
+  .heroFloatingCard {
+    right: 20px;
+    bottom: -18px;
+  }
+
+  .contactMain {
+    padding: 30px 0;
+  }
+
+  .contactContainer {
+    grid-template-columns: 1fr;
+  }
+
+  .contactInfo,
+  .contactFormCard {
+    padding: 28px;
+  }
+
+  .clinicContainer {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .faqHelpContainer {
+    grid-template-columns: 1fr;
+  }
+
+  .faqSection,
+  .helpCard {
+    min-height: 340px;
+  }
+
+  .helpContent {
+    min-height: 340px;
+  }
+
+  .newsletterContainer {
+    gap: 20px;
+  }
+
+  .newsletterForm {
+    width: 330px;
+  }
+}
+
+/* =========================================================
+   700px
+========================================================= */
+
+@media (max-width: 700px) {
+  .heroContainer,
+  .contactContainer,
+  .clinicContainer,
+  .faqHelpContainer,
+  .newsletterContainer {
+    width: calc(100% - 32px);
+  }
+
+  .contactHero {
+    padding: 42px 0 60px;
+  }
+
+  .heroContent h1 {
+    font-size: 46px;
+    letter-spacing: -1.2px;
+  }
+
+  .heroDescription {
+    font-size: 14px;
+  }
+
+  .heroMiniInfo {
+    flex-wrap: wrap;
+    gap: 16px 24px;
+  }
+
+  .heroImageWrap {
+    min-height: 330px;
+  }
+
+  .heroImageShape {
+    height: 330px;
+  }
+
+  .contactMain,
+  .clinicSection,
+  .faqHelpSection {
+    padding: 25px 0;
+  }
+
+  .clinicContainer {
+    grid-template-columns: 1fr;
+  }
+
+  .clinicContent,
+  .clinicImageCard,
+  .mapCard {
+    grid-column: auto;
+  }
+
+  .clinicImageCard,
+  .mapCard,
+  .mapCard iframe {
+    min-height: 300px;
+  }
+
+  .newsletterContainer {
+    align-items: stretch;
+    flex-direction: column;
+    padding: 25px;
+  }
+
+  .newsletterText {
+    width: 100%;
+  }
+
+  .newsletterForm,
+  .successMessage {
+    width: 100%;
+  }
+}
+
+/* =========================================================
+   600px MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+  .contactPage {
+    padding-top: 60px;
+  }
+
+  .heroContainer,
+  .contactContainer,
+  .clinicContainer,
+  .faqHelpContainer,
+  .newsletterContainer {
+    width: calc(100% - 24px);
+  }
+
+  .contactHero {
+    padding: 38px 0 52px;
+  }
+
+  .heroBadge {
+    font-size: 11px;
+  }
+
+  .heroContent h1 {
+    font-size: 39px;
+    letter-spacing: -0.8px;
+  }
+
+  .heroDescription {
+    margin: 17px 0 21px;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .heroActions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    width: 100%;
+  }
+
+  .heroMiniInfo {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 13px;
+  }
+
+  .heroImageWrap {
+    min-height: 270px;
+  }
+
+  .heroImageShape {
+    height: 270px;
+    border-radius: 16px;
+  }
+
+  .heroFloatingCard {
+    right: 8px;
+    bottom: -15px;
+    width: calc(100% - 16px);
+  }
+
+  .contactInfo,
+  .contactFormCard {
+    padding: 22px;
+  }
+
+  .contactInfo h2 {
+    font-size: 30px;
+  }
+
+  .contactIntro {
+    font-size: 13px;
+  }
+
+  .formHeader h3 {
+    font-size: 22px;
+  }
+
+  .formRow {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .formGroup input,
+  .formGroup select {
+    height: 47px;
+  }
+
+  .clinicContent {
+    padding: 23px;
+  }
+
+  .clinicContent h2 {
+    font-size: 29px;
+  }
+
+  .clinicPoints {
+    gap: 10px;
+  }
+
+  .clinicPoint span {
+    font-size: 11px;
+  }
+
+  .faqSection {
+    min-height: auto;
+    padding: 23px;
+  }
+
+  .faqSection h2 {
+    font-size: 29px;
+  }
+
+  .faqList summary {
+    min-height: 52px;
+    font-size: 12px;
+  }
+
+  .faqList details p {
+    font-size: 11px;
+  }
+
+  .helpCard {
+    min-height: 470px;
+  }
+
+  .helpImageWrap {
+    top: 48%;
+    width: 100%;
+    height: 52%;
+  }
+
+  .helpImageWrap::after {
+    background:
+      linear-gradient(
+        180deg,
+        #f1f5eb 0%,
+        rgba(241, 245, 235, 0.25) 65%,
+        rgba(241, 245, 235, 0) 100%
+      );
+  }
+
+  .helpContent {
+    width: 100%;
+    min-height: 470px;
+    padding: 27px;
+    justify-content: flex-start;
+  }
+
+  .helpContent h3 {
+    font-size: 30px;
+  }
+
+  .helpContent p {
+    font-size: 12px;
+  }
+
+  .newsletterText {
+    align-items: flex-start;
+  }
+
+  .newsletterText h2 {
+    font-size: 23px;
+  }
+
+  .newsletterText p {
+    font-size: 10px;
+  }
+
+  .newsletterForm {
+    flex-direction: column;
+    gap: 5px;
+    padding: 5px;
+  }
+
+  .newsletterForm input {
+    height: 42px;
+  }
+
+  .newsletterForm button {
+    min-height: 42px;
+  }
+}
+
+/* =========================================================
+   420px
+========================================================= */
+
+@media (max-width: 420px) {
+  .heroContent h1 {
+    font-size: 35px;
+  }
+
+  .heroDescription {
+    font-size: 13px;
+  }
+
+  .heroImageWrap {
+    min-height: 225px;
+  }
+
+  .heroImageShape {
+    height: 225px;
+  }
+
+  .heroFloatingCard {
+    padding: 10px;
+  }
+
+  .floatingIcon {
+    width: 34px;
+    height: 34px;
+    flex-basis: 34px;
+  }
+
+  .floatingIcon svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .heroFloatingCard strong {
+    font-size: 11px;
+  }
+
+  .heroFloatingCard span {
+    font-size: 9px;
+  }
+
+  .contactInfo h2,
+  .faqSection h2,
+  .clinicContent h2 {
+    font-size: 26px;
+  }
+
+  .contactInfo,
+  .contactFormCard,
+  .clinicContent {
+    padding: 19px;
+  }
+
+  .formHeader h3 {
+    font-size: 20px;
+  }
+
+  .formGroup label {
+    font-size: 12px;
+  }
+
+  .formGroup input,
+  .formGroup select,
+  .formGroup textarea {
+    font-size: 12px;
+  }
+
+  .clinicPoints {
+    grid-template-columns: 1fr;
+  }
+
+  .clinicPoint {
+    flex-direction: row;
+    text-align: left;
+  }
+
+  .clinicImageCard,
+  .mapCard,
+  .mapCard iframe {
+    min-height: 235px;
+  }
+
+  .mapOverlay {
+    top: 9px;
+    left: 9px;
+  }
+
+  .helpContent {
+    padding: 21px;
+  }
+
+  .helpContent h3 {
+    font-size: 27px;
+  }
+
+  .newsletterContainer {
+    padding: 20px;
+  }
+
+  .newsletterText h2 {
+    font-size: 21px;
+  }
+
+  .newsletterIcon {
+    width: 45px;
+    height: 45px;
+    flex-basis: 45px;
+  }
+
+  .newsletterIcon svg {
+    width: 21px;
+    height: 21px;
+  }
+}
+
+/* =========================================================
+   350px
+========================================================= */
+
+@media (max-width: 350px) {
+  .heroContent h1 {
+    font-size: 31px;
+  }
+
+  .heroDescription {
+    font-size: 12px;
+  }
+
+  .contactInfo h2,
+  .faqSection h2,
+  .clinicContent h2 {
+    font-size: 23px;
+  }
+
+  .contactInfo,
+  .contactFormCard,
+  .clinicContent,
+  .faqSection {
+    padding: 16px;
+  }
+
+  .heroImageWrap {
+    min-height: 200px;
+  }
+
+  .heroImageShape {
+    height: 200px;
+  }
+
+  .newsletterContainer {
+    padding: 17px;
+  }
+
+  .newsletterText {
+    gap: 9px;
+  }
+
+  .newsletterText h2 {
+    font-size: 19px;
+  }
+
+  .newsletterIcon {
+    width: 40px;
+    height: 40px;
+    flex-basis: 40px;
+  }
+
+  .newsletterIcon svg {
+    width: 18px;
+    height: 18px;
+  }
+}
