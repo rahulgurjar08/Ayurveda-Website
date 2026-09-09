@@ -2,6 +2,7 @@
 
 import { FormEvent, useMemo, useState } from "react";
 import styles from "./BookAppointment.module.css";
+import { useApp } from "@/context/AppContext";
 
 type IconName =
   | "calendar_month"
@@ -265,6 +266,7 @@ const calendarDays = [
 ];
 
 export default function BookAppointmentPage() {
+  const { addEnquiry } = useApp();
   const [selectedDate, setSelectedDate] = useState(15);
   const [selectedTime, setSelectedTime] = useState("09:00 AM");
   const [loading, setLoading] = useState(false);
@@ -290,39 +292,36 @@ export default function BookAppointmentPage() {
       email: String(form.get("email") || ""),
       gender: String(form.get("gender") || ""),
       address: String(form.get("address") || ""),
-      consultationType: String(form.get("consultationType") || ""),
-      purpose: String(form.get("purpose") || ""),
+      consultationType: String(form.get("consultationType") || "In-Clinic Consultation"),
+      purpose: String(form.get("purpose") || "General Consultation"),
       concern: String(form.get("concern") || ""),
       date: selectedDateLabel,
       time: selectedTime,
     };
 
     try {
-      const response = await fetch("/api/send-appointment", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
+      addEnquiry({
+        name: payload.name,
+        age: payload.age,
+        phone: payload.phone,
+        email: payload.email,
+        gender: payload.gender,
+        address: payload.address,
+        consultationType: payload.consultationType,
+        purpose: payload.purpose,
+        concern: payload.concern,
+        date: payload.date,
+        time: payload.time,
+        source: "appointment",
       });
 
-      const result = await response.json();
-
-      if (!response.ok) {
-        throw new Error(result?.message || "Something went wrong.");
-      }
-
-      setMessage("Appointment request sent successfully!");
+      setMessage("Appointment request sent successfully! Our care team will contact you shortly.");
 
       e.currentTarget.reset();
       setSelectedDate(15);
       setSelectedTime("09:00 AM");
-    } catch (error) {
-      setMessage(
-        error instanceof Error
-          ? error.message
-          : "Unable to send appointment."
-      );
+    } catch {
+      setMessage("Unable to submit appointment. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -330,35 +329,6 @@ export default function BookAppointmentPage() {
 
   return (
     <main className={styles.page}>
-      {/* HEADER */}
-      <header className={styles.header}>
-        <a href="/" className={styles.logo}>
-          <span className={styles.logoIcon}>
-            <Icon name="eco" size={43} strokeWidth={1.5} />
-          </span>
-
-          <span>
-            <strong>Ayurveda</strong>
-            <small>Healing Naturally</small>
-          </span>
-        </a>
-
-        <nav className={styles.nav}>
-          <a href="/">Home</a>
-          <a href="/about-doctor">About Doctor</a>
-          <a href="/treatments">Treatments</a>
-          <a href="/services">Services</a>
-          <a href="/blog">Blog</a>
-          <a href="/testimonials">Testimonials</a>
-          <a href="/contact">Contact</a>
-        </nav>
-
-        <a href="#appointment" className={styles.headerButton}>
-          <Icon name="calendar_month" size={17} />
-          Book Appointment
-        </a>
-      </header>
-
       {/* HERO */}
       <section className={styles.hero}>
         <div className={styles.heroInner}>

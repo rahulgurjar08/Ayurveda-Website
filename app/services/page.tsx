@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
 import styles from "./page.module.css";
 
 /* =========================================================
@@ -13,9 +12,6 @@ const HERO_IMAGE =
 
 const SERVICES_IMAGE =
   "https://aaftonline-website-new-green.s3.ap-south-1.amazonaws.com/production/images/courses/ayurvedic-wellness/cms-uploads/1777699344776-17d073e9eb27e05f.png";
-
-const PANCHAKARMA_IMAGE =
-  "https://puthumanaayurveda.com/wp-content/uploads/2024/01/panchakarma.jpg";
 
 /* =========================================================
    ICONS
@@ -470,92 +466,8 @@ const benefits = [
 ========================================================= */
 
 export default function ServicesPage() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
   return (
     <main className={styles.page}>
-      {/* =====================================================
-          HEADER
-      ===================================================== */}
-
-      <header className={styles.header}>
-        <div className={styles.headerInner}>
-          <Link href="/" className={styles.logo}>
-            <span className={styles.logoIcon}>
-              <LeafIcon size={43} />
-            </span>
-
-            <span className={styles.logoText}>
-              <strong>Ayurveda</strong>
-              <small>Healing Naturally</small>
-            </span>
-          </Link>
-
-          <nav
-            className={`${styles.nav} ${
-              menuOpen ? styles.navOpen : ""
-            }`}
-          >
-            <Link href="/">Home</Link>
-
-            <Link href="/about-doctor">
-              About Doctor
-            </Link>
-
-            <Link href="/treatments">
-              Treatments
-            </Link>
-
-            <Link
-              href="/services"
-              className={styles.active}
-            >
-              Services
-            </Link>
-
-            <Link href="/blog">
-              Blog
-            </Link>
-
-            <Link href="/testimonials">
-              Testimonials
-            </Link>
-
-            <Link href="/contact">
-              Contact
-            </Link>
-
-            <Link
-              href="/book-appointment"
-              className={`${styles.appointmentButton} ${styles.mobileAppointment}`}
-            >
-              <CalendarIcon size={16} />
-              Book Appointment
-            </Link>
-          </nav>
-
-          <Link
-            href="/book-appointment"
-            className={styles.appointmentButton}
-          >
-            <CalendarIcon size={16} />
-            Book Appointment
-          </Link>
-
-          <button
-            type="button"
-            className={styles.menuButton}
-            onClick={() => setMenuOpen((v) => !v)}
-            aria-label="Toggle navigation"
-            aria-expanded={menuOpen}
-          >
-            <span />
-            <span />
-            <span />
-          </button>
-        </div>
-      </header>
-
       {/* =====================================================
           HERO
       ===================================================== */}

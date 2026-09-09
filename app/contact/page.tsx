@@ -2,6 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import styles from "./Contact.module.css";
+import { useApp } from "@/context/AppContext";
 
 /* =========================================================
    IMAGES
@@ -143,8 +144,10 @@ function NewsletterIcon() {
 ========================================================= */
 
 export default function ContactPage() {
+  const { addEnquiry } = useApp();
   const [subscribed, setSubscribed] = useState(false);
   const [email, setEmail] = useState("");
+  const [contactSubmitted, setContactSubmitted] = useState(false);
 
   function handleNewsletter(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -168,22 +171,27 @@ export default function ContactPage() {
     const treatment = formData.get("treatment")?.toString().trim() || "";
     const message = formData.get("message")?.toString().trim() || "";
 
-    // ==========================================
-    // APNA WHATSAPP NUMBER YAHAN DAALO
-    // Country code ke saath, + nahi lagana
-    // Example: 919876543210
-    // ==========================================
-    const whatsappNumber = "91 82392 39249";
+    if (name && phone) {
+      addEnquiry({
+        name,
+        phone,
+        email,
+        treatment: treatment || "General Enquiry",
+        concern: message,
+        source: "contact",
+      });
+    }
+
+    setContactSubmitted(true);
+
+    const whatsappNumber = "918239239249";
 
     const whatsappMessage = `
 New Contact Form Enquiry 🌿
 
 Name: ${name}
-
 Phone: ${phone}
-
 Email: ${email}
-
 Interested Treatment: ${treatment}
 
 Message:
@@ -197,7 +205,7 @@ Sent from Ayurveda Website
       whatsappMessage
     )}`;
 
-    // WhatsApp open karo
+    // Open WhatsApp
     window.open(whatsappURL, "_blank");
 
     // Form reset
@@ -391,6 +399,23 @@ Sent from Ayurveda Website
     className={styles.contactForm}
     onSubmit={handleContact}
   >
+    {contactSubmitted && (
+      <div
+        style={{
+          backgroundColor: "#eaf5e6",
+          color: "#225819",
+          padding: "12px 16px",
+          borderRadius: "8px",
+          marginBottom: "16px",
+          fontWeight: 600,
+          fontSize: "14px",
+          border: "1px solid #bce3b2",
+        }}
+      >
+        ✓ Your inquiry has been submitted and recorded! Our team will get back to you shortly.
+      </div>
+    )}
+
     <div className={styles.formRow}>
       <div className={styles.formGroup}>
         <label htmlFor="name">Full Name</label>

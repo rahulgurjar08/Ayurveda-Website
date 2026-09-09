@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
 import styles from "./testimonials.module.css";
 
 const testimonials = [
@@ -172,23 +171,6 @@ function QuoteIcon({ size = 28 }: { size?: number }) {
   );
 }
 
-function ArrowIcon() {
-  return (
-    <svg
-      width="15"
-      height="15"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M5 12h14" />
-      <path d="m13 6 6 6-6 6" />
-    </svg>
-  );
-}
 
 function PlayIcon() {
   return (
@@ -205,73 +187,8 @@ function PlayIcon() {
 }
 
 export default function TestimonialsPage() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
   return (
     <main className={styles.page}>
-      {/* =====================================================
-          HEADER
-      ===================================================== */}
-
-      <header className={styles.header}>
-        <div className={styles.headerInner}>
-          <Link href="/" className={styles.logo}>
-            <span className={styles.logoLeaf}>
-              <LeafIcon size={42} />
-            </span>
-
-            <span className={styles.logoText}>
-              <strong>Ayurveda</strong>
-              <small>Healing Naturally</small>
-            </span>
-          </Link>
-
-          <nav
-            className={`${styles.nav} ${
-              menuOpen ? styles.navOpen : ""
-            }`}
-          >
-            <Link href="/">Home</Link>
-            <Link href="/about-doctor">About Doctor</Link>
-            <Link href="/treatments">Treatments</Link>
-            <Link href="/services">Services</Link>
-            <Link href="/blog">Blog</Link>
-
-            <Link href="/testimonials" className={styles.active}>
-              Testimonials
-            </Link>
-
-            <Link href="/contact">Contact</Link>
-
-            <Link
-              href="/book-appointment"
-              className={`${styles.appointmentButton} ${styles.mobileAppointment}`}
-            >
-              <CalendarIcon size={16} />
-              Book Appointment
-            </Link>
-          </nav>
-
-          <Link
-            href="/book-appointment"
-            className={styles.appointmentButton}
-          >
-            <CalendarIcon size={15} />
-            Book Appointment
-          </Link>
-
-          <button
-            className={styles.menuButton}
-            onClick={() => setMenuOpen((value) => !value)}
-            aria-label="Toggle navigation"
-          >
-            <span />
-            <span />
-            <span />
-          </button>
-        </div>
-      </header>
-
       {/* =====================================================
           HERO
       ===================================================== */}

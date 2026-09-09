@@ -1,7 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
-import styles from "./Hero.module.css";
+import styles from "./about-doctor.module.css";
 
 /* =========================================================
    ICONS

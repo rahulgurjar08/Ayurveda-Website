@@ -9,6 +9,7 @@
   --muted: #656a62;
 
   min-height: 100vh;
+  padding-top: 72px;
   background: #fff;
   color: var(--text);
   font-family:

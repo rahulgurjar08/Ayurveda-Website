@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "./Navbar/Navbar";
-import Footer from "./Footer/page";
+import Navbar from "@/components/Navbar/Navbar";
+import Footer from "@/components/Footer/Footer";
+import { AppProvider } from "@/context/AppContext";
 
 export const metadata: Metadata = {
-  title: "Ayurveda Website",
-  description: "Ayurveda healthcare and wellness website",
+  title: "Ayurveda - Natural Healing & Wellness",
+  description: "Authentic Ayurvedic healthcare, consultations, therapies and wellness wisdom.",
 };
 
 export default function RootLayout({
@@ -16,10 +17,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Navbar />
-        {children}
-        <Footer />
-        </body>
+        <AppProvider>
+          <Navbar />
+          {children}
+          <Footer />
+        </AppProvider>
+      </body>
     </html>
   );
 }

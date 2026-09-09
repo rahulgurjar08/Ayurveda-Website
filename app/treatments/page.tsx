@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import Link from "next/link";
 import styles from "./treatments.module.css";
 
 type IconName =
@@ -288,65 +288,12 @@ const benefits = [
 ];
 
 export default function TreatmentsPage() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
   return (
     <main className={styles.page}>
-      {/* ================= HEADER ================= */}
-      <header className={styles.header}>
-        <div className={styles.headerInner}>
-          <a href="/" className={styles.logo}>
-            <span className={styles.logoLeaf}>♣</span>
-
-            <span className={styles.logoText}>
-              <strong>Ayurveda</strong>
-              <small>Healing Naturally</small>
-            </span>
-          </a>
-
-          <nav
-            className={`${styles.nav} ${
-              menuOpen ? styles.navOpen : ""
-            }`}
-          >
-            <a href="/">Home</a>
-            <a href="/about-doctor">About Doctor</a>
-            <a href="/treatments" className={styles.active}>
-              Treatments
-            </a>
-            <a href="/services">Services</a>
-            <a href="/blog">Blog</a>
-            <a href="/testimonials">Testimonials</a>
-            <a href="/contact">Contact</a>
-
-            <a href="/book-appointment" className={styles.mobileAppointment}>
-              <Icon name="calendar" size={17} />
-              Book Appointment
-            </a>
-          </nav>
-
-          <a
-            href="/book-appointment"
-            className={styles.appointmentButton}
-          >
-            <Icon name="calendar" size={16} />
-            Book Appointment
-          </a>
-
-          <button
-            className={styles.menuButton}
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Toggle menu"
-          >
-            <Icon name={menuOpen ? "close" : "menu"} size={25} />
-          </button>
-        </div>
-      </header>
-
       {/* ================= BREADCRUMB ================= */}
       <div className={styles.breadcrumb}>
         <div className={styles.container}>
-          <a href="/">Home</a>
+          <Link href="/">Home</Link>
           <span>›</span>
           <span>Treatments</span>
         </div>
@@ -534,13 +481,13 @@ export default function TreatmentsPage() {
               </p>
             </div>
 
-            <a
+            <Link
               href="/book-appointment"
               className={styles.ctaButton}
             >
               <Icon name="calendar" size={17} />
               Book Appointment
-            </a>
+            </Link>
           </div>
         </div>
       </section>

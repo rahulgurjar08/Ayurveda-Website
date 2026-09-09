@@ -323,7 +323,7 @@ export default function Navbar() {
 ================================================= */}
 
 <Link
-  href="/admin/login"
+  href="/admin"
   className={styles.adminButton}
   onClick={closeMenu}
 >
