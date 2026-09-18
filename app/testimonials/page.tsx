@@ -103,7 +103,7 @@ export default function TestimonialsPage() {
       <section className="relative overflow-hidden bg-gradient-to-b from-[#F3EEE3] to-[#FAF7F2] min-h-[360px] sm:min-h-[400px] lg:min-h-[430px]">
         <div className="absolute inset-y-0 right-0 w-full lg:w-[50%]">
           <img
-            src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=1000&auto=format&fit=crop&q=90"
+            src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=90&w=1000&auto=format&fit=crop&utm_source=chatgpt.com"
             alt="Ayurvedic Treatment Herbs & Mortar"
             className="w-full h-full object-cover object-center"
           />

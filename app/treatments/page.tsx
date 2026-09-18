@@ -122,13 +122,7 @@ export default function TreatmentsSectionOnly() {
     <main className="min-h-screen flex flex-col bg-[#FAF9F5] text-[#2C3E35] font-sans antialiased overflow-x-hidden relative">
       
       {/* 1. BREADCRUMB & HERO BANNER */}
-      <div className="bg-[#F3F5F0] py-3 px-4 sm:px-6 md:px-12 border-b border-[#E2E6DF]">
-        <div className="max-w-7xl mx-auto text-xs sm:text-sm text-[#5C6F63]">
-          <Link href="/" className="hover:text-[#365337] transition-colors">Home</Link>
-          <span className="mx-2">&gt;</span>
-          <span className="text-[#365337] font-medium">Treatments</span>
-        </div>
-      </div>
+    
 
       <section className="relative overflow-hidden bg-[#F6F8F1] min-h-[460px] sm:min-h-[500px] lg:min-h-[540px]">
         {/* Right Side Image */}

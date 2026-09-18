@@ -127,25 +127,7 @@ export default function ServicesPage() {
     <main className="min-h-screen bg-[#FAF9F5] text-[#2C3E35] font-sans antialiased overflow-x-hidden">
 
       {/* 1. BREADCRUMB */}
-      <div className="bg-[#FAF9F5] py-3 px-4 sm:px-6 md:px-12 border-b border-[#E2E6DF]">
-        <div className="max-w-7xl mx-auto flex items-center text-xs sm:text-sm text-[#5C6F63]">
-          <Link
-            href="/"
-            className="flex items-center gap-1.5 hover:text-[#365337] transition-colors"
-          >
-            <FaHome size={14} />
-            Home
-          </Link>
-
-          <span className="mx-2">
-            <FaChevronRight size={10} />
-          </span>
-
-          <span className="text-[#365337] font-medium">
-            Services
-          </span>
-        </div>
-      </div>
+      
 
       {/* 2. HERO SECTION */}
       <section className="relative overflow-hidden bg-[#FAF9F5] min-h-[460px] sm:min-h-[500px] lg:min-h-[540px]">

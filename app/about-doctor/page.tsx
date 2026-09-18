@@ -19,13 +19,7 @@ export default function AboutDoctorPage() {
     <main className="min-h-screen flex flex-col bg-[#FAF9F5] text-[#2C3E35] font-sans antialiased overflow-x-hidden">
       
       {/* 1. BREADCRUMB SECTION */}
-      <div className="bg-[#F3F5F0] py-2.5 px-4 sm:px-6 md:px-12 border-b border-[#E2E6DF]">
-        <div className="max-w-7xl mx-auto text-xs sm:text-sm text-[#5C6F63]">
-          <Link href="/" className="hover:text-[#365337] active:text-[#365337] transition-colors">Home</Link>
-          <span className="mx-2">&gt;</span>
-          <span className="text-[#365337] font-medium">About Doctor</span>
-        </div>
-      </div>
+     
 
       {/* 2. HERO / DOCTOR PROFILE SECTION */}
       <section className="relative overflow-hidden bg-[#F8F9F3] min-h-[420px] sm:min-h-[480px] lg:min-h-[540px]">
