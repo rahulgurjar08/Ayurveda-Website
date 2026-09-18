@@ -1,1367 +1,476 @@
-"use client";
-
-import { useEffect, useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import styles from "./Hero.module.css";
-
-/* =========================================================
-   LEAF ICON
-========================================================= */
-
-function LeafIcon() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
-      <path
-        d="M20.5 3.5C12.2 3.7 6.2 5.7 3.7 10.3C1.7 14 3.4 18.5 7.1 19.7C11.1 21 15.5 18.4 17.8 14.7C20.1 11.1 20.7 6.8 20.5 3.5Z"
-        fill="currentColor"
-      />
-      <path
-        d="M4.8 18.8C8.5 13.7 12.4 10.4 17.8 7.1"
-        stroke="white"
-        strokeWidth="1.3"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
-/* =========================================================
-   CALENDAR ICON
-========================================================= */
-
-function CalendarIcon() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
-      <rect
-        x="4"
-        y="5"
-        width="16"
-        height="15"
-        rx="2"
-        stroke="currentColor"
-        strokeWidth="1.7"
-      />
-
-      <path
-        d="M8 3V7"
-        stroke="currentColor"
-        strokeWidth="1.7"
-        strokeLinecap="round"
-      />
-
-      <path
-        d="M16 3V7"
-        stroke="currentColor"
-        strokeWidth="1.7"
-        strokeLinecap="round"
-      />
-
-      <path
-        d="M4 9H20"
-        stroke="currentColor"
-        strokeWidth="1.7"
-      />
-
-      <path
-        d="M8 13H8.01"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-
-      <path
-        d="M12 13H12.01"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-
-      <path
-        d="M16 13H16.01"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
-/* =========================================================
-   NATURAL ICON
-========================================================= */
-
-function NaturalIcon() {
-  return (
-    <div className={styles.featureIcon}>
-      <LeafIcon />
-    </div>
-  );
-}
-
-/* =========================================================
-   PERSON ICON
-========================================================= */
-
-function PersonIcon() {
-  return (
-    <div className={styles.featureIcon}>
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        aria-hidden="true"
-      >
-        <circle
-          cx="12"
-          cy="8"
-          r="3"
-          stroke="currentColor"
-          strokeWidth="1.5"
-        />
-
-        <path
-          d="M6.5 20C7.2 15.8 9 14 12 14C15 14 16.8 15.8 17.5 20"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-        />
-      </svg>
-    </div>
-  );
-}
-
-/* =========================================================
-   DOCTOR ICON
-========================================================= */
-
-function DoctorIcon() {
-  return (
-    <div className={styles.featureIcon}>
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        aria-hidden="true"
-      >
-        <circle
-          cx="12"
-          cy="7"
-          r="3"
-          stroke="currentColor"
-          strokeWidth="1.5"
-        />
-
-        <path
-          d="M6 20C6.7 15.8 8.6 14 12 14C15.4 14 17.3 15.8 18 20"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-        />
-
-        <path
-          d="M18 8L20 10"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-        />
-      </svg>
-    </div>
-  );
-}
-
-/* =========================================================
-   HOLISTIC ICON
-========================================================= */
-
-function HolisticIcon() {
-  return (
-    <div className={styles.featureIcon}>
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        aria-hidden="true"
-      >
-        <path
-          d="M12 20C7.5 17.5 5 14.5 5 11.5C5 9.5 6.5 8 8.5 8C10 8 11.2 8.8 12 10C12.8 8.8 14 8 15.5 8C17.5 8 19 9.5 19 11.5C19 14.5 16.5 17.5 12 20Z"
-          stroke="currentColor"
-          strokeWidth="1.4"
-        />
-      </svg>
-    </div>
-  );
-}
-
-/* =========================================================
-   EXPERIENCE ICON
-========================================================= */
-
-function ExperienceIcon() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
-      <path
-        d="M12 3L13.8 8.2L19 10L13.8 11.8L12 17L10.2 11.8L5 10L10.2 8.2L12 3Z"
-        fill="currentColor"
-      />
-    </svg>
-  );
-}
-
-/* =========================================================
-   ARROW ICON
-========================================================= */
-
-function ArrowIcon() {
-  return (
-    <svg
-      className={styles.arrowIcon}
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
-      <path
-        d="M5 12H18"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-      />
-
-      <path
-        d="M13 7L18 12L13 17"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-/* =========================================================
-   DIGESTIVE ICON
-========================================================= */
-
-function DigestiveIcon() {
-  return (
-    <svg
-      viewBox="0 0 64 64"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
-      <path
-        d="M20 17C16 20 15 26 18 31C21 36 27 37 31 34C35 31 35 25 32 21C29 17 24 15 20 17Z"
-        fill="#F2D77B"
-        stroke="#315C29"
-        strokeWidth="2.6"
-      />
-
-      <path
-        d="M31 34C33 39 37 43 42 43C47 43 51 39 50 35C49 31 45 29 41 30"
-        stroke="#315C29"
-        strokeWidth="2.6"
-        strokeLinecap="round"
-      />
-
-      <path
-        d="M22 24C25 22 28 23 29 26"
-        stroke="#8B742C"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-
-      <path
-        d="M18 18C16 20 15 23 15.5 25"
-        stroke="#5C8238"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
-/* =========================================================
-   JOINT ICON
-========================================================= */
-
-function JointIcon() {
-  return (
-    <svg
-      viewBox="0 0 64 64"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
-      <path
-        d="M25 12V24C25 28 28 31 32 31C36 31 39 28 39 24V12"
-        stroke="#315C29"
-        strokeWidth="2.8"
-        strokeLinecap="round"
-      />
-
-      <path
-        d="M25 52V40C25 36 28 33 32 33C36 33 39 36 39 40V52"
-        stroke="#315C29"
-        strokeWidth="2.8"
-        strokeLinecap="round"
-      />
-
-      <path
-        d="M22 12H42"
-        stroke="#A9954A"
-        strokeWidth="2.8"
-        strokeLinecap="round"
-      />
-
-      <path
-        d="M22 52H42"
-        stroke="#A9954A"
-        strokeWidth="2.8"
-        strokeLinecap="round"
-      />
-
-      <circle
-        cx="32"
-        cy="32"
-        r="4"
-        fill="#D9B84B"
-        stroke="#315C29"
-        strokeWidth="2"
-      />
-    </svg>
-  );
-}
-
-/* =========================================================
-   SKIN ICON
-========================================================= */
-
-function SkinIcon() {
-  return (
-    <svg
-      viewBox="0 0 64 64"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
-      <path
-        d="M37 13C32 15 28 19 27 24C26 28 28 31 31 33C34 35 38 35 41 33C45 30 48 25 47 20C46 16 42 13 37 13Z"
-        fill="#E8D57E"
-        stroke="#315C29"
-        strokeWidth="2.5"
-      />
-
-      <path
-        d="M31 33C27 34 23 37 21 42C19 46 20 50 24 52C28 54 34 52 37 49C40 46 41 41 39 37"
-        stroke="#315C29"
-        strokeWidth="2.5"
-        strokeLinecap="round"
-      />
-
-      <path
-        d="M35 18C39 20 40 23 39 27"
-        stroke="#A58A35"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-
-      <circle
-        cx="41"
-        cy="19"
-        r="1.5"
-        fill="#5C8238"
-      />
-    </svg>
-  );
-}
-
-/* =========================================================
-   STRESS ICON
-========================================================= */
-
-function StressIcon() {
-  return (
-    <svg
-      viewBox="0 0 64 64"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
-      <path
-        d="M32 49C32 49 15 39 15 26C15 20 19 17 24 17C28 17 31 20 32 24C33 20 36 17 40 17C45 17 49 20 49 26C49 39 32 49 32 49Z"
-        fill="#648B3B"
-        stroke="#315C29"
-        strokeWidth="2.4"
-      />
-
-      <path
-        d="M32 12V7"
-        stroke="#A9954A"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-
-      <path
-        d="M22 14L19 10"
-        stroke="#A9954A"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-
-      <path
-        d="M42 14L45 10"
-        stroke="#A9954A"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-
-      <circle
-        cx="32"
-        cy="25"
-        r="2"
-        fill="#D5B84B"
-      />
-    </svg>
-  );
-}
-
-/* =========================================================
-   PANCHAKARMA ICON
-========================================================= */
-
-function PanchakarmaIcon() {
-  return (
-    <svg
-      viewBox="0 0 64 64"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
-      <path
-        d="M32 21C32 15 36 11 42 10C42 16 39 21 32 24"
-        fill="#E7D47D"
-        stroke="#315C29"
-        strokeWidth="2.3"
-        strokeLinecap="round"
-      />
-
-      <path
-        d="M31 24C28 17 23 14 18 15C19 21 24 25 31 27"
-        fill="#E7D47D"
-        stroke="#315C29"
-        strokeWidth="2.3"
-        strokeLinecap="round"
-      />
-
-      <path
-        d="M32 23C34 17 37 15 41 14"
-        stroke="#315C29"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-
-      <path
-        d="M17 32C20 28 26 27 32 29C38 27 44 28 47 32"
-        fill="#648B3B"
-        stroke="#315C29"
-        strokeWidth="2.3"
-      />
-
-      <path
-        d="M18 32V44C18 48 22 51 32 51C42 51 46 48 46 44V32"
-        fill="#668A35"
-        stroke="#315C29"
-        strokeWidth="2.3"
-      />
-
-      <path
-        d="M17 35H47"
-        stroke="#C0A345"
-        strokeWidth="2.3"
-      />
-
-      <circle
-        cx="32"
-        cy="17"
-        r="2"
-        fill="#C6A840"
-      />
-    </svg>
-  );
-}
-
-/* =========================================================
-   WHY CHOOSE US ICONS
-========================================================= */
-
-function WhyDoctorIcon() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
-      <circle
-        cx="12"
-        cy="7"
-        r="3"
-        stroke="currentColor"
-        strokeWidth="1.6"
-      />
-
-      <path
-        d="M6 20C6.7 15.8 8.6 14 12 14C15.4 14 17.3 15.8 18 20"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinecap="round"
-      />
-
-      <path
-        d="M17.5 8.5L19.5 10.5"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
-function TreatmentPlanIcon() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
-      <rect
-        x="5"
-        y="4"
-        width="14"
-        height="16"
-        rx="2"
-        stroke="currentColor"
-        strokeWidth="1.6"
-      />
-
-      <path
-        d="M9 8H15"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinecap="round"
-      />
-
-      <path
-        d="M9 12H15"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinecap="round"
-      />
-
-      <path
-        d="M9 16H13"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
-function SafeTreatmentIcon() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
-      <path
-        d="M19 5C13.5 5.2 8.5 7.4 7 12.2C6 15.6 8.2 18.5 11.5 18.3C16.5 17.9 18.8 11.9 19 5Z"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinejoin="round"
-      />
-
-      <path
-        d="M5 20C8 16 11 13 16 10"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
-function WellnessWhyIcon() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
-      <path
-        d="M12 20C7.5 17.5 5 14.5 5 11.5C5 9.5 6.5 8 8.5 8C10 8 11.2 8.8 12 10C12.8 8.8 14 8 15.5 8C17.5 8 19 9.5 19 11.5C19 14.5 16.5 17.5 12 20Z"
-        stroke="currentColor"
-        strokeWidth="1.6"
-      />
-
-      <path
-        d="M12 10V14"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
-
-function AboutLeafIcon() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
-      <path
-        d="M20.5 3.5C12.2 3.7 6.2 5.7 3.7 10.3C1.7 14 3.4 18.5 7.1 19.7C11.1 21 15.5 18.4 17.8 14.7C20.1 11.1 20.7 6.8 20.5 3.5Z"
-        fill="currentColor"
-      />
-
-      <path
-        d="M4.8 18.8C8.5 13.7 12.4 10.4 17.8 7.1"
-        stroke="white"
-        strokeWidth="1.3"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-/* =========================================================
-   QUOTE ICON
-========================================================= */
-
-function QuoteIcon() {
-  return (
-    <svg
-      className={styles.quoteIcon}
-      viewBox="0 0 32 32"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
-      <path
-        d="M7 8C4.24 8 2 10.24 2 13V17C2 19.76 4.24 22 7 22H11V16H7V14C7 13.45 7.45 13 8 13H11V8H7Z"
-        fill="currentColor"
-      />
-
-      <path
-        d="M21 8C18.24 8 16 10.24 16 13V17C16 19.76 18.24 22 21 22H25V16H21V14C21 13.45 21.45 13 22 13H25V8H21Z"
-        fill="currentColor"
-      />
-    </svg>
-  );
-}
-
-/* =========================================================
-   TREATMENT DATA
-========================================================= */
-
-const treatments = [
-  {
-    icon: DigestiveIcon,
-    title: "Digestive Care",
-    description:
-      "Natural remedies for acidity, constipation, IBS and other digestive issues.",
+'use client';
+
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { 
+  Leaf, 
+  Calendar, 
+  CheckCircle2, 
+  ArrowRight, 
+  Award, 
+  Activity, 
+  Bone, 
+  Smile, 
+  HeartPulse, 
+  Sparkles, 
+  ShieldCheck, 
+  HeartHandshake, 
+  Clock, 
+  Quote,
+  X
+} from 'lucide-react';
+
+// Treatments Full Data with Modal Content
+const treatmentsData = [
+  { 
+    id: 'digestive-care',
+    title: 'Digestive Care', 
+    desc: 'Natural remedies for acidity, constipation, IBS and other digestive issues.', 
+    icon: Activity,
+    fullDetail: 'Ayurveda considers digestion (Agni) as the root of overall health. Our Digestive Care program focuses on rebalancing your internal digestive fire, eliminating toxins (Ama), and restoring optimal gut microbiota using pure herbal formulations and dietary guidelines.',
+    benefits: [
+      'Relief from chronic acidity & bloating',
+      'Effective IBS & constipation management',
+      'Improved nutrient absorption & metabolism',
+      'Customized Ayurvedic diet plan'
+    ],
+    duration: '2 - 4 Weeks Program',
+    suitableFor: 'People suffering from Acid Reflux, Bloating, Constipation, IBS',
+    image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=1000'
   },
-  {
-    icon: JointIcon,
-    title: "Joint & Pain Management",
-    description:
-      "Ayurvedic treatment for arthritis, back pain, neck pain and joint stiffness.",
+  { 
+    id: 'joint-pain-management',
+    title: 'Joint & Pain Management', 
+    desc: 'Ayurvedic treatment for arthritis, back pain, neck pain and joint stiffness.', 
+    icon: Bone,
+    fullDetail: 'Joint and muscular pains are usually caused by an imbalance in Vata dosha. Our pain management treatments combine herbal oils (Thailam), therapeutic massage (Abhyanga), and specialized localized therapies like Janu Basti and Kati Basti to reduce inflammation and restore mobility.',
+    benefits: [
+      'Reduces joint inflammation & stiffness',
+      'Long-term relief from chronic back & neck pain',
+      'Restores cartilage & improves flexibility',
+      '100% natural without painful side effects'
+    ],
+    duration: '3 - 6 Weeks Program',
+    suitableFor: 'Arthritis, Sciatica, Spondylitis, Chronic Back Pain',
+    image: 'https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&q=80&w=1000'
   },
-  {
-    icon: SkinIcon,
-    title: "Skin Care",
-    description:
-      "Natural solutions for acne, eczema, pigmentation and glowing skin.",
+  { 
+    id: 'skin-care',
+    title: 'Skin Care', 
+    desc: 'Natural solutions for acne, eczema, pigmentation and glowing skin.', 
+    icon: Smile,
+    fullDetail: 'Healthy skin is a reflection of internal blood purity and balanced Pitta dosha. We provide herbal blood purifiers, soothing external Lepas (pastes), and detox routines to treat skin disorders from their root cause.',
+    benefits: [
+      'Clears stubborn acne & dark spots',
+      'Soothes psoriasis, eczema & rashes',
+      'Enhances natural skin glow & texture',
+      'Detoxifies blood safely'
+    ],
+    duration: '4 - 8 Weeks Program',
+    suitableFor: 'Acne, Psoriasis, Eczema, Hyperpigmentation, Dry Skin',
+    image: 'https://plus.unsplash.com/premium_photo-1682097802069-404b1f37ec49?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   },
-  {
-    icon: StressIcon,
-    title: "Stress Management",
-    description:
-      "Manage stress, anxiety, insomnia and improve mental well-being.",
+  { 
+    id: 'stress-management',
+    title: 'Stress Management', 
+    desc: 'Manage stress, anxiety, and improve mental well-being.', 
+    icon: HeartPulse,
+    fullDetail: 'High stress levels disrupt the central nervous system. Through authentic therapies like Shirodhara, Medhya Rasayanas (brain tonics), and guided lifestyle adjustments, we help calm the mind and restore deep mental clarity.',
+    benefits: [
+      'Deep relief from anxiety & chronic stress',
+      'Improves sleep quality & fixes insomnia',
+      'Boosts focus, memory & mental clarity',
+      'Balances nervous system naturally'
+    ],
+    duration: '2 - 3 Weeks Program',
+    suitableFor: 'Insomnia, Anxiety, Work Stress, Burnout, Mood Swings',
+    image: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=1000'
   },
-  {
-    icon: PanchakarmaIcon,
-    title: "Panchakarma Therapy",
-    description:
-      "Detoxify your body and rejuvenate with authentic Panchakarma treatments.",
+  { 
+    id: 'panchakarma-therapy',
+    title: 'Panchakarma Therapy', 
+    desc: 'Detoxify your body and rejuvenate with authentic Panchakarma treatments.', 
+    icon: Sparkles,
+    fullDetail: 'Panchakarma is the ultimate Ayurvedic detoxification procedure designed to eliminate deep-seated metabolic toxins. This 5-step purificatory therapy revives every tissue layer, revitalizing your immune system.',
+    benefits: [
+      'Complete physical & mental detox',
+      'Boosts immunity & metabolism',
+      'Slows aging & rejuvenates tissue cells',
+      'Restores natural energy balance'
+    ],
+    duration: '7 - 21 Days Intensive Program',
+    suitableFor: 'Overall Body Detox, Chronic Diseases, Metabolic Disorders',
+    image: 'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&q=80&w=1000'
   },
 ];
 
-/* =========================================================
-   WHY CHOOSE DATA
-========================================================= */
+export default function Home() {
+  // Modal State Management
+  const [selectedTreatment, setSelectedTreatment] = useState<typeof treatmentsData[0] | null>(null);
 
-const whyFeatures = [
-  {
-    icon: WhyDoctorIcon,
-    title: "Experienced Ayurvedic Doctor",
-  },
-  {
-    icon: TreatmentPlanIcon,
-    title: "Personalized Treatment Plans",
-  },
-  {
-    icon: SafeTreatmentIcon,
-    title: "Natural & Safe Treatments",
-  },
-  {
-    icon: WellnessWhyIcon,
-    title: "Holistic Approach to Wellness",
-  },
-];
+  // Testimonials auto-slide state
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-/* =========================================================
-   PATIENT DATA
-========================================================= */
-
-const patients = [
-  {
-    name: "Priya Sharma",
-    role: "Patient",
-    initials: "PS",
-    message:
-      "The treatment was very effective. I feel more energetic and my digestion has improved a lot. Highly recommend!",
-  },
-  {
-    name: "Rahul Verma",
-    role: "Patient",
-    initials: "RV",
-    message:
-      "After struggling with chronic back pain for years, Ayurvedic treatment gave me real and lasting relief.",
-  },
-  {
-    name: "Anjali Mehta",
-    role: "Patient",
-    initials: "AM",
-    message:
-      "A wonderful experience! The doctor is very knowledgeable and caring. I feel completely transformed.",
-  },
-  {
-    name: "Neha Gupta",
-    role: "Patient",
-    initials: "NG",
-    message:
-      "The Ayurvedic treatment helped me feel healthier, calmer and more energetic. I am very happy with the results.",
-  },
-  {
-    name: "Amit Singh",
-    role: "Patient",
-    initials: "AS",
-    message:
-      "Excellent treatment and very caring guidance. My overall health and daily energy have improved significantly.",
-  },
-  {
-    name: "Kavita Joshi",
-    role: "Patient",
-    initials: "KJ",
-    message:
-      "I had a wonderful experience with the treatment. Everything was explained clearly and the results were excellent.",
-  },
-];
-
-/* =========================================================
-   HERO COMPONENT
-========================================================= */
-
-export default function Hero() {
-  const [activeSlide, setActiveSlide] = useState(0);
-
-  /* =======================================================
-     TOTAL SLIDES
-     6 patients / 3 cards = 2 slides
-  ======================================================= */
-
-  const totalSlides = Math.ceil(patients.length / 3);
-
-  /* =======================================================
-     AUTOMATIC SLIDER
-     EVERY 1 SECOND
-  ======================================================= */
+  const testimonials = [
+    { quote: 'The treatment was very effective. I feel more energetic and my digestion has improved a lot. Highly recommend!', name: 'Priya Sharma', role: 'Patient', image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200' },
+    { quote: 'After struggling with chronic back pain for years, Ayurvedic treatment gave me real and lasting relief.', name: 'Rahul Verma', role: 'Patient', image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200' },
+    { quote: 'A wonderful experience! The doctor is very knowledgeable and the care is completely transformed.', name: 'Anjali Mehta', role: 'Patient', image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200' },
+  ];
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setActiveSlide((current) => {
-        return (current + 1) % totalSlides;
-      });
-    }, 1000);
-
-    return () => {
-      clearInterval(timer);
-    };
-  }, [totalSlides]);
-
-  /* =======================================================
-     SHOW 3 PATIENTS
-  ======================================================= */
-
-  const startIndex = activeSlide * 3;
-
-  const visiblePatients = [
-    patients[startIndex],
-    patients[startIndex + 1],
-    patients[startIndex + 2],
-  ].filter(Boolean);
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
+    }, 2000);
+    return () => clearInterval(timer);
+  }, [testimonials.length]);
 
   return (
-    <>
-      {/* =====================================================
-          HERO SECTION
-      ===================================================== */}
-
-<section className={styles.blogHero}>
-      <div className={styles.blogHeroContainer}>
-
-        {/* LEFT CONTENT */}
-        <div className={styles.blogContent}>
-
-        <div className={styles.blogBadge}>
-        <LeafIcon />
-        <span>Natural Healing. Holistic Living.</span>
-      </div>
-
-      <h1 className={styles.blogTitle}>
-        Ayurvedic Care For
-        <span>A Better Life</span>
-      </h1>
-
-          <div className={styles.headingDecoration}>
-            <span></span>
-
-            <LeafIcon />
-
-            <span></span>
-          </div>
-
-          <p className={styles.blogDescription}>
-        Experience the power of Ayurveda with personalized
-        treatments that heal the root cause and bring balance
-        to your body, mind &amp; soul.
-      </p>
-
-
-      <div className={styles.blogButtons}>
-
-<a
-  href="/book-appointment"
-  className={styles.appointmentButton}
->
-  <span>Book Appointment</span>
-
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    aria-hidden="true"
-  >
-    <rect
-      x="4"
-      y="5"
-      width="16"
-      height="15"
-      rx="2"
-      stroke="currentColor"
-      strokeWidth="1.5"
-    />
-
-    <path
-      d="M8 3V7M16 3V7M4 10H20"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-    />
-  </svg>
-</a>
-
-<a
-  href="/services"
-  className={styles.treatmentButton}
->
-  <span>Explore Treatments</span>
-
-  <LeafIcon />
-</a>
-
-</div>
-
-          {/* FEATURES */}
-          <div className={styles.blogFeatures}>
-
-            <div className={styles.blogFeature}>
-              <div className={styles.featureIcon}>
-                <LeafIcon />
-              </div>
-
-              <div>
-                <strong>Natural</strong>
-                <span>Living</span>
-              </div>
-            </div>
-
-            <div className={styles.blogFeature}>
-              <div className={styles.featureIcon}>
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  aria-hidden="true"
-                >
-                  <circle
-                    cx="12"
-                    cy="8"
-                    r="3"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                  />
-
-                  <path
-                    d="M6.5 20C7.2 15.8 9 14 12 14C15 14 16.8 15.8 17.5 20"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                  />
-                </svg>
-              </div>
-
-              <div>
-                <strong>Expert</strong>
-                <span>Advice</span>
-              </div>
-            </div>
-
-            <div className={styles.blogFeature}>
-              <div className={styles.featureIcon}>
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M12 20C7.5 17.5 5 14.5 5 11.5C5 9.5 6.5 8 8.5 8C10 8 11.2 8.8 12 10C12.8 8.8 14 8 15.5 8C17.5 8 19 9.5 19 11.5C19 14.5 16.5 17.5 12 20Z"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                  />
-                </svg>
-              </div>
-
-              <div>
-                <strong>Better</strong>
-                <span>Health</span>
-              </div>
-            </div>
-
-            <div className={styles.blogFeature}>
-              <div className={styles.featureIcon}>
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M12 20C7.5 17.5 5 14.5 5 11.5C5 9.5 6.5 8 8.5 8C10 8 11.2 8.8 12 10C12.8 8.8 14 8 15.5 8C17.5 8 19 9.5 19 11.5C19 14.5 16.5 17.5 12 20Z"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                  />
-
-                  <path
-                    d="M12 10V15"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                  />
-                </svg>
-              </div>
-
-              <div>
-                <strong>Holistic</strong>
-                <span>Wellness</span>
-              </div>
-            </div>
-
-          </div>
-
-          {/* BUTTON */}
+    <main className="min-h-screen flex flex-col bg-[#FAF9F5] text-[#2C3E35] font-sans antialiased overflow-x-hidden relative">
       
-
-        </div>
-
-
-        {/* RIGHT IMAGE */}
-        <div className={styles.blogVisual}>
-
-          <div className={styles.imageFade}></div>
-
-          <img
-  src="https://cdn.prod.website-files.com/657780e2a4f01a0d919410a1/693186887ec5243ab1f33e3c_1.jpg"
-  alt="Ayurvedic doctor with herbal medicines"
-  className={styles.blogImage}
-/>
-
-        </div>
-
-      </div>
-    </section>
-
-      {/* =====================================================
-          TREATMENTS SECTION
-      ===================================================== */}
-
-      <section className={styles.treatmentsSection}>
-        <div className={styles.treatmentContainer}>
-
-          <div className={styles.headingArea}>
-
-            <span className={styles.smallHeading}>
-              OUR TREATMENTS
-            </span>
-
-            <h2 className={styles.mainHeading}>
-              Natural Solutions For Your Health
-            </h2>
-
-            <div className={styles.headingDecoration}>
-              <span className={styles.line}></span>
-
-              <span className={styles.decorationLeaf}>
-                <LeafIcon />
-              </span>
-
-              <span className={styles.line}></span>
+      {/* 2. HERO */}
+      <section className="relative overflow-hidden bg-[#F5F7EE]">
+        <div className="relative mx-auto flex min-h-[350px] max-w-7xl items-center px-5 sm:min-h-[400px] sm:px-8 lg:min-h-[460px] lg:px-10">
+          <div className="relative z-20 w-full lg:w-[53%]">
+            <div className="mb-2 flex items-center gap-1.5 text-[9px] font-semibold uppercase tracking-[1.5px] text-[#55723D] sm:text-[10px]">
+              <span className="text-[30px]">🌿</span>
+              <span>Natural Healing, Holistic Living.</span>
             </div>
-
+            <h1 className="font-serif text-[28px] font-bold leading-[1.05] text-[#24351F] sm:text-[36px] lg:text-[62px]">
+              Ayurvedic Care For
+              <br />
+              <span className="font-normal text-[#557C3B]">
+                A Better Life
+              </span>
+            </h1>
+            <p className="mt-3 max-w-[390px] text-[9px] leading-[1.55] text-[#5D685D] sm:text-[13px]">
+              Experience the power of Ayurveda with personalized
+              treatments that heal the root cause and bring balance
+              to your body, mind & soul.
+            </p>
+            <div className="mt-4 flex items-center gap-2.5">
+              <Link
+                href="/book-appointment"
+                className="rounded-md bg-[#35652F] px-4 py-2 text-[9px] font-semibold text-white transition hover:bg-[#294F25] sm:px-5 sm:py-2.5 sm:text-[14px]"
+              >
+                Book Appointment
+              </Link>
+              <a
+                href="#treatments"
+                className="flex items-center gap-1.5 rounded-md border border-[#6C8365] bg-white/40 px-4 py-2 text-[9px] font-semibold text-[#45613D] transition hover:bg-white sm:px-5 sm:py-2.5 sm:text-[14px]"
+              >
+                Explore Treatments
+                <ArrowRight className="h-3 w-3" />
+              </a>
+            </div>
+            <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-[#DCE2D5] pt-3">
+              <div className="flex items-center gap-1.5">
+                <CheckCircle2 className="h-3.5 w-3.5 text-[#557C3B]" />
+                <span className="text-[11px] font-medium text-[#465345] sm:text-[12px]">100% Natural</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <CheckCircle2 className="h-3.5 w-3.5 text-[#557C3B]" />
+                <span className="text-[8px] font-medium text-[#465345] sm:text-[12px]">Personalized Care</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <CheckCircle2 className="h-3.5 w-3.5 text-[#557C3B]" />
+                <span className="text-[8px] font-medium text-[#465345] sm:text-[12px]">Expert Doctor</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <CheckCircle2 className="h-3.5 w-3.5 text-[#557C3B]" />
+                <span className="text-[8px] font-medium text-[#465345] sm:text-[12px]">Holistic Healing</span>
+              </div>
+            </div>
           </div>
 
-          <div className={styles.cardsGrid}>
-
-            {treatments.map((item) => {
-              const Icon = item.icon;
-
-              const slug = item.title
-                .toLowerCase()
-                .replace(/[^a-z0-9]+/g, "-")
-                .replace(/(^-|-$)/g, "");
-
-              return (
-                <article
-                  className={styles.treatmentCard}
-                  key={item.title}
-                >
-
-                  <div className={styles.cardIconCircle}>
-                    <Icon />
-                  </div>
-
-                  <h3 className={styles.cardTitle}>
-                    {item.title}
-                  </h3>
-
-                  <p className={styles.cardDescription}>
-                    {item.description}
-                  </p>
-
-                  <Link
-                    href={`/treatments#${slug}`}
-                    className={styles.learnMore}
-                  >
-                    <span>Learn More</span>
-                    <ArrowIcon />
-                  </Link>
-
-                </article>
-              );
-            })}
-
+          <div className="absolute right-0 top-0 h-full w-[50%]">
+            <img
+              src="https://images.unsplash.com/photo-1716816211590-c15a328a5ff0?q=80&w=823&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="Ayurvedic Doctor"
+              className="h-full w-full object-cover object-center"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#F5F7EE] via-[#F5F7EE]/25 to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#F5F7EE]/30 to-transparent" />
           </div>
         </div>
       </section>
 
-      {/* =====================================================
-          WHY CHOOSE US
-      ===================================================== */}
+      {/* 3. TREATMENTS SECTION */}
+      <section id="treatments" className="py-12 sm:py-16 px-4 sm:px-6 md:px-12 bg-white">
+        <div className="max-w-7xl mx-auto text-center space-y-2 mb-10 sm:mb-12">
+          <p className="text-xs font-semibold uppercase tracking-widest text-[#365337]">Our Treatments</p>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-[#2C3E35]">Natural Solutions For Your Health</h2>
+        </div>
 
-      <section className={styles.whySection}>
-        <div className={styles.whyContainer}>
+        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6">
+          {treatmentsData.map((item, index) => {
+            const IconComponent = item.icon;
+            return (
+              <div key={index} className="bg-[#FAF9F5] border border-[#EBEFE8] p-5 sm:p-6 rounded-2xl flex flex-col justify-between hover:shadow-lg transition group">
+                <div className="space-y-3 sm:space-y-4">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 mx-auto rounded-full bg-[#E5EFE6] flex items-center justify-center text-[#365337] group-hover:bg-[#365337] group-hover:text-white transition">
+                    <IconComponent className="w-5 h-5 sm:w-6 sm:h-6" />
+                  </div>
+                  <h3 className="font-serif font-bold text-[#2C3E35] text-base sm:text-lg text-center">{item.title}</h3>
+                  <p className="text-xs text-[#5C6F63] text-center leading-relaxed">{item.desc}</p>
+                </div>
+                <div className="pt-4 sm:pt-6 text-center">
+                  {/* BUTTON OPENS POPUP */}
+                  <button 
+                    onClick={() => setSelectedTreatment(item)}
+                    className="inline-flex items-center gap-1 text-xs font-semibold text-[#365337] hover:underline cursor-pointer"
+                  >
+                    Learn More <ArrowRight className="w-3 h-3" />
+                  </button>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
 
-          <div className={styles.whyContent}>
-
-            <span className={styles.whySmallTitle}>
-              WHY CHOOSE US
-            </span>
-
-            <h2 className={styles.whyHeading}>
-              Healing With Tradition
-              <br />
-              Caring With Compassion
+      {/* 4. WHY CHOOSE US */}
+      <section className="py-12 sm:py-16 px-4 sm:px-6 md:px-12 bg-[#F3F5F0]">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <div className="lg:col-span-6 space-y-4 sm:space-y-6 text-center lg:text-left">
+            <p className="text-xs font-semibold uppercase tracking-widest text-[#365337]">Why Choose Us</p>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-[#2C3E35] leading-tight">
+              Healing With Tradition <br className="hidden sm:inline" /> Caring With Compassion
             </h2>
-
-            <p className={styles.whyDescription}>
-              Our approach combines ancient Ayurvedic wisdom with
-              modern understanding to provide safe, effective and
-              long-lasting results.
+            <p className="text-[#5C6F63] text-sm sm:text-base leading-relaxed">
+              Our approach combines ancient Ayurvedic wisdom with modern understanding to provide safe, effective and long-lasting results.
             </p>
 
-            <div className={styles.whyFeaturesGrid}>
-
-              {whyFeatures.map((item) => {
-                const Icon = item.icon;
-
-                return (
-                  <div
-                    className={styles.whyFeature}
-                    key={item.title}
-                  >
-
-                    <div className={styles.whyFeatureIcon}>
-                      <Icon />
-                    </div>
-
-                    <span>
-                      {item.title}
-                    </span>
-
-                  </div>
-                );
-              })}
-
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 pt-2">
+              <div className="flex items-start gap-3 bg-white p-3.5 sm:p-4 rounded-xl shadow-xs text-left">
+                <ShieldCheck className="w-5 h-5 sm:w-6 sm:h-6 text-[#365337] flex-shrink-0 mt-0.5" />
+                <div>
+                  <h4 className="font-bold text-xs sm:text-sm text-[#2C3E35]">Experienced Doctor</h4>
+                  <p className="text-[11px] sm:text-xs text-[#5C6F63]">Expert practitioners dedicated to care.</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3 bg-white p-3.5 sm:p-4 rounded-xl shadow-xs text-left">
+                <HeartHandshake className="w-5 h-5 sm:w-6 sm:h-6 text-[#365337] flex-shrink-0 mt-0.5" />
+                <div>
+                  <h4 className="font-bold text-xs sm:text-sm text-[#2C3E35]">Personalized Plans</h4>
+                  <p className="text-[11px] sm:text-xs text-[#5C6F63]">Tailored specifically for your body.</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3 bg-white p-3.5 sm:p-4 rounded-xl shadow-xs text-left">
+                <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-[#365337] flex-shrink-0 mt-0.5" />
+                <div>
+                  <h4 className="font-bold text-xs sm:text-sm text-[#2C3E35]">Natural & Safe</h4>
+                  <p className="text-[11px] sm:text-xs text-[#5C6F63]">Zero side effects using pure herbs.</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3 bg-white p-3.5 sm:p-4 rounded-xl shadow-xs text-left">
+                <Smile className="w-5 h-5 sm:w-6 sm:h-6 text-[#365337] flex-shrink-0 mt-0.5" />
+                <div>
+                  <h4 className="font-bold text-xs sm:text-sm text-[#2C3E35]">Holistic Wellness</h4>
+                  <p className="text-[11px] sm:text-xs text-[#5C6F63]">Balancing mind, body, and soul.</p>
+                </div>
+              </div>
             </div>
 
-            <Link
-              href="/about"
-              className={styles.readMoreButton}
-            >
-              <span>
-                Read More About Us
-              </span>
-
-              <ArrowIcon />
-            </Link>
-
+            <div className="pt-2">
+              <Link 
+                href="/book-appointment" 
+                className="bg-[#365337] hover:bg-[#2C422D] text-white px-6 py-3 rounded-full text-xs sm:text-sm font-medium transition shadow-sm inline-block"
+              >
+                Know More About Us
+              </Link>
+            </div>
           </div>
 
-          {/* RIGHT VISUAL */}
-
-          <div className={styles.whyVisual}>
-
-            <div className={styles.whyGreenCircle}></div>
-
-            <div className={styles.whyImageWrapper}>
-              <Image
-                src="/ayurvedic-products.png"
-                alt="Ayurvedic Natural Products"
-                width={550}
-                height={420}
-                className={styles.ayurvedicImage}
-              />
+          <div className="lg:col-span-6 flex justify-center">
+            <div className="relative w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 bg-[#E5EFE6] rounded-full p-6 sm:p-8 flex items-center justify-center shadow-inner">
+              <div className="w-full h-full rounded-full bg-cover bg-center border-4 sm:border-8 border-white shadow-md overflow-hidden relative">
+                <img 
+                  src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&q=80&w=800" 
+                  alt="Ayurveda Ingredients" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 bg-white px-3.5 py-2 sm:px-4 sm:py-3 rounded-2xl shadow-lg flex items-center gap-2">
+                <span className="text-base sm:text-lg">🌿</span>
+                <div className="text-[11px] sm:text-xs">
+                  <span className="font-bold block text-[#2C3E35]">100%</span>
+                  <span className="text-[#5C6F63]">Natural</span>
+                </div>
+              </div>
             </div>
+          </div>
+        </div>
+      </section>
 
-            <div className={styles.naturalBadge}>
+      {/* 5. APPOINTMENT BANNER */}
+      <section className="py-6 sm:py-8 px-4 sm:px-6 md:px-12 bg-white">
+        <div className="max-w-7xl mx-auto bg-[#365337] text-white rounded-2xl p-6 sm:p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl text-center md:text-left">
+          <div className="flex flex-col md:flex-row items-center gap-4">
+            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#2C422D] flex items-center justify-center text-white flex-shrink-0">
+              <Calendar className="w-6 h-6 sm:w-7 sm:h-7" />
+            </div>
+            <div>
+              <p className="text-[11px] sm:text-xs uppercase tracking-widest text-[#A2B8A5] font-semibold">Your Health Is Our Priority</p>
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-serif font-bold">Book Your Appointment Today!</h3>
+            </div>
+          </div>
 
-              <div className={styles.naturalBadgeInner}>
-                <strong>100%</strong>
+          <Link 
+            href="/book-appointment" 
+            className="bg-white text-[#365337] hover:bg-[#FAF9F5] px-6 sm:px-8 py-3 rounded-full text-xs sm:text-sm font-semibold transition shadow-md flex items-center gap-2 flex-shrink-0"
+          >
+            <Clock className="w-4 h-4" /> Book Appointment
+          </Link>
+        </div>
+      </section>
 
-                <span>
-                  Natural
-                </span>
+      {/* 6. TESTIMONIALS SLIDER */}
+      <section className="py-12 sm:py-16 px-4 sm:px-6 md:px-12 bg-white">
+        <div className="max-w-7xl mx-auto text-center space-y-2 mb-10 sm:mb-12">
+          <p className="text-xs font-semibold uppercase tracking-widest text-[#365337]">Patient Stories</p>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-[#2C3E35]">What Our Patients Say</h2>
+        </div>
 
-                <small>
-                  Ayurveda
-                </small>
+        <div className="max-w-xl md:max-w-7xl mx-auto">
+          <div className="block md:hidden">
+            <div className="bg-[#FAF9F5] border border-[#EBEFE8] p-6 sm:p-8 rounded-2xl flex flex-col justify-between shadow-xs relative transition-all duration-500">
+              <div className="space-y-3">
+                <Quote className="w-7 h-7 sm:w-8 sm:h-8 text-[#365337]/30" />
+                <p className="text-xs sm:text-sm text-[#4A5D52] italic leading-relaxed">
+                  "{testimonials[currentIndex].quote}"
+                </p>
               </div>
 
+              <div className="flex items-center gap-3 pt-4 sm:pt-6 mt-6 border-t border-[#EBEFE8]">
+                <img src={testimonials[currentIndex].image} alt={testimonials[currentIndex].name} className="w-9 h-9 sm:w-10 sm:h-10 rounded-full object-cover" />
+                <div>
+                  <h4 className="font-bold text-xs sm:text-sm text-[#2C3E35]">{testimonials[currentIndex].name}</h4>
+                  <p className="text-[11px] sm:text-xs text-[#5C6F63]">{testimonials[currentIndex].role}</p>
+                </div>
+              </div>
             </div>
 
+            <div className="flex justify-center items-center gap-2 mt-4">
+              {testimonials.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentIndex(idx)}
+                  className={`h-2 rounded-full transition-all ${currentIndex === idx ? 'w-6 bg-[#365337]' : 'w-2 bg-[#D1DCD3]'}`}
+                  aria-label={`Go to slide ${idx + 1}`}
+                />
+              ))}
+            </div>
           </div>
 
+          <div className="hidden md:grid grid-cols-3 gap-6">
+            {testimonials.map((item, index) => (
+              <div key={index} className="bg-[#FAF9F5] border border-[#EBEFE8] p-6 sm:p-8 rounded-2xl flex flex-col justify-between shadow-xs relative">
+                <div className="space-y-3">
+                  <Quote className="w-7 h-7 sm:w-8 sm:h-8 text-[#365337]/30" />
+                  <p className="text-xs sm:text-sm text-[#4A5D52] italic leading-relaxed">"{item.quote}"</p>
+                </div>
+
+                <div className="flex items-center gap-3 pt-4 sm:pt-6 mt-6 border-t border-[#EBEFE8]">
+                  <img src={item.image} alt={item.name} className="w-9 h-9 sm:w-10 sm:h-10 rounded-full object-cover" />
+                  <div>
+                    <h4 className="font-bold text-xs sm:text-sm text-[#2C3E35]">{item.name}</h4>
+                    <p className="text-[11px] sm:text-xs text-[#5C6F63]">{item.role}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* =====================================================
-          APPOINTMENT CTA
-      ===================================================== */}
+      {/* 7. TREATMENT DETAIL POPUP (MODAL) */}
+      {selectedTreatment && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs transition-opacity duration-300">
+          <div className="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 border border-[#EBEFE8] shadow-2xl relative space-y-6">
+            {/* Close Button */}
+            <button
+              onClick={() => setSelectedTreatment(null)}
+              className="absolute top-4 right-4 w-9 h-9 rounded-full bg-[#F5F7EE] hover:bg-[#E5EFE6] text-[#2C3E35] flex items-center justify-center transition cursor-pointer"
+            >
+              <X className="w-5 h-5" />
+            </button>
 
-      <section className={styles.appointmentSection}>
-        <div className={styles.appointmentContainer}>
+            {/* Modal Header */}
+            <div className="flex items-center gap-4 pr-8">
+              <div className="w-12 h-12 rounded-2xl bg-[#E5EFE6] flex items-center justify-center text-[#365337] shrink-0">
+                <selectedTreatment.icon className="w-6 h-6" />
+              </div>
+              <div>
+                <span className="text-[10px] font-semibold uppercase tracking-widest text-[#557C3B]">
+                  Ayurvedic Treatment Details
+                </span>
+                <h2 className="text-xl sm:text-2xl font-serif font-bold text-[#2C3E35]">
+                  {selectedTreatment.title}
+                </h2>
+              </div>
+            </div>
 
-          <div className={styles.appointmentIcon}>
-            <CalendarIcon />
-          </div>
+            {/* Treatment Image */}
+            <div className="h-44 sm:h-52 w-full rounded-2xl overflow-hidden relative">
+              <img
+                src={selectedTreatment.image}
+                alt={selectedTreatment.title}
+                className="w-full h-full object-cover"
+              />
+            </div>
 
-          <div className={styles.appointmentContent}>
-
-            <span>
-              Your Health is Our Priority
-            </span>
-
-            <h3>
-              Book Your Appointment Today!
-            </h3>
-
-            <p>
-              Take the first step towards a healthier and happier you.
+            {/* Full Detail */}
+            <p className="text-xs sm:text-sm text-[#5C6F63] leading-relaxed">
+              {selectedTreatment.fullDetail}
             </p>
 
-          </div>
-
-          <Link
-            href="/book-appointment"
-            className={styles.appointmentButton}
-          >
-            <CalendarIcon />
-
-            <span>
-              Book Appointment
-            </span>
-          </Link>
-
-        </div>
-      </section>
-
-      {/* =====================================================
-          TESTIMONIAL SECTION
-      ===================================================== */}
-
-      <section className={styles.testimonialSection}>
-
-        <div className={styles.testimonialContainer}>
-
-          {/* HEADING */}
-
-          <div className={styles.testimonialHeadingArea}>
-
-            <span className={styles.testimonialSmallHeading}>
-              PATIENT STORIES
-            </span>
-
-            <h2 className={styles.testimonialMainHeading}>
-              What Our Patients Say
-            </h2>
-
-            <div className={styles.testimonialHeadingDecoration}>
-
-              <span className={styles.testimonialLine}></span>
-
-              <span className={styles.testimonialLeaf}>
-                <LeafIcon />
-              </span>
-
-              <span className={styles.testimonialLine}></span>
-
+            {/* Key Benefits */}
+            <div className="space-y-2">
+              <h4 className="text-sm font-serif font-bold text-[#2C3E35]">
+                Key Benefits:
+              </h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                {selectedTreatment.benefits.map((benefit, idx) => (
+                  <div key={idx} className="flex items-start gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-[#557C3B] shrink-0 mt-0.5" />
+                    <span className="text-xs text-[#4A5D52] font-medium">{benefit}</span>
+                  </div>
+                ))}
+              </div>
             </div>
 
-          </div>
-
-          {/* SLIDER */}
-
-          <div className={styles.sliderWrapper}>
-
-            <div className={styles.testimonialCardsGrid}>
-
-              {visiblePatients.map((patient) => (
-
-                <article
-                  className={styles.patientCard}
-                  key={patient.name}
-                >
-
-                  {/* QUOTE */}
-
-                  <div className={styles.quoteBox}>
-                    <QuoteIcon />
-                  </div>
-
-                  {/* MESSAGE */}
-
-                  <p className={styles.message}>
-                    {patient.message}
-                  </p>
-
-                  {/* PATIENT INFO */}
-
-                  <div className={styles.patientInfo}>
-
-                    <div className={styles.avatar}>
-                      {patient.initials}
-                    </div>
-
-                    <div className={styles.patientDetails}>
-
-                      <strong>
-                        {patient.name}
-                      </strong>
-
-                      <span>
-                        {patient.role}
-                      </span>
-
-                    </div>
-
-                  </div>
-
-                </article>
-
-              ))}
-
+            {/* Metadata (Duration & Suitability) */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+              <div className="bg-[#FAF9F5] p-3 rounded-xl border border-[#EBEFE8]">
+                <strong className="block text-[11px] font-bold text-[#2C3E35]">Duration</strong>
+                <span className="text-xs text-[#5C6F63]">{selectedTreatment.duration}</span>
+              </div>
+              <div className="bg-[#FAF9F5] p-3 rounded-xl border border-[#EBEFE8]">
+                <strong className="block text-[11px] font-bold text-[#2C3E35]">Suitable For</strong>
+                <span className="text-xs text-[#5C6F63]">{selectedTreatment.suitableFor}</span>
+              </div>
             </div>
 
-          </div>
-
-          {/* DOTS */}
-
-          <div className={styles.dots}>
-
-            {Array.from({
-              length: totalSlides,
-            }).map((_, index) => (
-
+            {/* Modal Actions */}
+            <div className="pt-4 border-t border-[#EBEFE8] flex flex-col sm:flex-row items-center justify-between gap-3">
               <button
-                key={index}
-                type="button"
-                aria-label={`Testimonial slide ${index + 1}`}
-                className={`${styles.dot} ${
-                  activeSlide === index
-                    ? styles.activeDot
-                    : ""
-                }`}
-                onClick={() => {
-                  setActiveSlide(index);
-                }}
-              />
+                onClick={() => setSelectedTreatment(null)}
+                className="w-full sm:w-auto text-xs font-semibold text-[#5C6F63] hover:text-[#2C3E35] px-4 py-2"
+              >
+                Close Window
+              </button>
 
-            ))}
-
+              <Link
+                href="/book-appointment"
+                className="w-full sm:w-auto bg-[#365337] hover:bg-[#2C422D] text-white px-6 py-2.5 rounded-full text-xs font-semibold transition text-center shadow-sm flex items-center justify-center gap-2"
+              >
+                <Calendar className="w-4 h-4" /> Book Consultation
+              </Link>
+            </div>
           </div>
-
         </div>
+      )}
 
-      </section>
-    </>
+    </main>
   );
 }

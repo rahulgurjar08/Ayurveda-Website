@@ -1,709 +1,321 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import styles from "./page.module.css";
-
-/* =========================================================
-   IMAGE URLS
-========================================================= */
-
-const HERO_IMAGE =
-  "https://krishiayurvedayoga.com.au/images/treatment-hero.png";
-
-const SERVICES_IMAGE =
-  "https://aaftonline-website-new-green.s3.ap-south-1.amazonaws.com/production/images/courses/ayurvedic-wellness/cms-uploads/1777699344776-17d073e9eb27e05f.png";
-
-/* =========================================================
-   ICONS
-========================================================= */
-
-function LeafIcon({ size = 18 }: { size?: number }) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.7"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <path d="M20 4C11 4 5 8 5 15c0 3 2 5 5 5 7 0 10-7 10-16Z" />
-      <path d="M4 20c4-6 8-9 14-12" />
-    </svg>
-  );
-}
-
-function CalendarIcon({ size = 18 }: { size?: number }) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.7"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <rect x="3" y="5" width="18" height="16" rx="2" />
-      <path d="M7 3v4M17 3v4M3 9h18" />
-      <path d="M8 13h2M14 13h2M8 17h2" />
-    </svg>
-  );
-}
-
-function ArrowIcon() {
-  return (
-    <svg
-      width="17"
-      height="17"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M5 12h14" />
-      <path d="m13 6 6 6-6 6" />
-    </svg>
-  );
-}
-
-function PlayIcon() {
-  return (
-    <svg
-      width="20"
-      height="20"
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      aria-hidden="true"
-    >
-      <path d="M8 5v14l11-7L8 5Z" />
-    </svg>
-  );
-}
-
-function StethoscopeIcon() {
-  return (
-    <svg
-      viewBox="0 0 48 48"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M12 7v10c0 6 4 10 10 10s10-4 10-10V7" />
-      <path d="M8 7h8M28 7h8" />
-      <path d="M12 7c0 3 2 5 5 5" />
-      <circle cx="34" cy="31" r="5" />
-      <path d="M34 26v-5" />
-    </svg>
-  );
-}
-
-function BowlIcon() {
-  return (
-    <svg
-      viewBox="0 0 48 48"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M7 17h34" />
-      <path d="M10 17c1 11 6 18 14 18s13-7 14-18" />
-      <path d="M16 13c2-4 5-6 8-6s6 2 8 6" />
-      <path d="M19 30h10" />
-      <path d="M14 39h20" />
-    </svg>
-  );
-}
-
-function LotusIcon() {
-  return (
-    <svg
-      viewBox="0 0 48 48"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M24 37c-9 0-15-5-15-12 6 0 11 2 15 8 4-6 9-8 15-8 0 7-6 12-15 12Z" />
-      <path d="M24 33c-5-7-5-15 0-21 5 6 5 14 0 21Z" />
-      <path d="M24 33c-9-4-11-10-9-16 6 1 10 7 9 16Z" />
-      <path d="M24 33c9-4 11-10 9-16-6 1-10 7-9 16Z" />
-      <path d="M11 40h26" />
-    </svg>
-  );
-}
-
-function YogaIcon() {
-  return (
-    <svg
-      viewBox="0 0 48 48"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <circle cx="24" cy="10" r="4" />
-      <path d="M24 14v12" />
-      <path d="M24 19 14 24" />
-      <path d="M24 19l10 5" />
-      <path d="M24 26l-9 9" />
-      <path d="M24 26l9 9" />
-      <path d="M10 39c4-4 9-5 14-5s10 1 14 5" />
-    </svg>
-  );
-}
-
-function NutritionIcon() {
-  return (
-    <svg
-      viewBox="0 0 48 48"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M9 22h30" />
-      <path d="M12 22c1 10 6 15 12 15s11-5 12-15" />
-      <path d="M24 37v5" />
-      <path d="M17 42h14" />
-      <path d="M24 18c0-7 5-10 11-10-1 6-5 10-11 10Z" />
-      <path d="M24 18c0-5-3-8-8-9 0 5 3 8 8 9Z" />
-    </svg>
-  );
-}
-
-function StressIcon() {
-  return (
-    <svg
-      viewBox="0 0 48 48"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <circle cx="24" cy="17" r="8" />
-      <path d="M12 40c1-9 6-14 12-14s11 5 12 14" />
-      <path d="M20 17h.1M28 17h.1" />
-      <path d="M21 21c2 2 4 2 6 0" />
-    </svg>
-  );
-}
-
-function MassageIcon() {
-  return (
-    <svg
-      viewBox="0 0 48 48"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.7"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M8 34c7-8 12-9 18-9 5 0 9 2 14 7" />
-      <path d="M13 32c3 4 9 6 15 6 5 0 9-1 12-4" />
-      <path d="M17 20c3-4 8-5 12-2 2 2 2 5 0 7" />
-      <circle cx="27" cy="14" r="4" />
-      <path d="M11 38h27" />
-    </svg>
-  );
-}
-
-function ShirodharaIcon() {
-  return (
-    <svg
-      viewBox="0 0 48 48"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.7"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M17 8h14l-2 7H19l-2-7Z" />
-      <path d="M24 15v9" />
-      <path d="M24 24c0 4-3 6-3 9" />
-      <path d="M14 35c2-3 6-5 10-5s8 2 10 5" />
-      <path d="M11 39h26" />
-    </svg>
-  );
-}
-
-function BastiIcon() {
-  return (
-    <svg
-      viewBox="0 0 48 48"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.7"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M15 9h18" />
-      <path d="M17 9v8c0 5 3 8 7 8s7-3 7-8V9" />
-      <path d="M24 25v12" />
-      <path d="M18 40h12" />
-      <path d="M19 15h10" />
-    </svg>
-  );
-}
-
-function NasyaIcon() {
-  return (
-    <svg
-      viewBox="0 0 48 48"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.7"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M10 18c6-7 22-7 28 0" />
-      <path d="M14 18v6c0 7 4 12 10 12s10-5 10-12v-6" />
-      <path d="M24 36v5" />
-      <path d="M19 41h10" />
-      <path d="M24 18v9" />
-    </svg>
-  );
-}
-
-function BloodIcon() {
-  return (
-    <svg
-      viewBox="0 0 48 48"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.7"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M24 7c-5 8-10 13-10 20a10 10 0 0 0 20 0c0-7-5-12-10-20Z" />
-      <path d="M20 28c0 3 2 5 5 5" />
-    </svg>
-  );
-}
-
-function DoctorIcon() {
-  return (
-    <svg
-      viewBox="0 0 48 48"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.7"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <circle cx="24" cy="14" r="6" />
-      <path d="M12 40c1-9 5-14 12-14s11 5 12 14" />
-      <path d="M31 10h6" />
-      <path d="M34 7v6" />
-    </svg>
-  );
-}
-
-function SafeIcon() {
-  return (
-    <svg
-      viewBox="0 0 48 48"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.7"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M24 6l14 5v9c0 10-6 17-14 22C16 37 10 30 10 20v-9l14-5Z" />
-      <path d="m17 24 5 5 10-11" />
-    </svg>
-  );
-}
-
-function ResultIcon() {
-  return (
-    <svg
-      viewBox="0 0 48 48"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.7"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <circle cx="24" cy="24" r="14" />
-      <path d="M24 16v9l6 4" />
-      <path d="M16 7l-4 4M32 7l4 4" />
-    </svg>
-  );
-}
-
-function ComfortIcon() {
-  return (
-    <svg
-      viewBox="0 0 48 48"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.7"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <rect x="8" y="11" width="32" height="26" rx="4" />
-      <path d="M14 18h20M14 25h20M14 32h11" />
-      <path d="M34 30h.1" />
-    </svg>
-  );
-}
-
-/* =========================================================
-   DATA
-========================================================= */
-
-const services = [
-  {
-    title: "Ayurvedic Consultation",
-    text: "One-on-one consultation to understand your health concerns and create a personalized treatment plan.",
-    icon: <StethoscopeIcon />,
-  },
-  {
-    title: "Panchakarma Therapy",
-    text: "Detoxify and rejuvenate your body with authentic Panchakarma treatments for long lasting results.",
-    icon: <BowlIcon />,
-  },
-  {
-    title: "Herbal Treatments",
-    text: "Natural herbal medicines to treat various acute and chronic health conditions effectively.",
-    icon: <LotusIcon />,
-  },
-  {
-    title: "Yoga & Lifestyle Guidance",
-    text: "Personalized yoga, diet and lifestyle recommendations to bring balance to body, mind and soul.",
-    icon: <YogaIcon />,
-  },
-  {
-    title: "Diet & Nutrition",
-    text: "Customized Ayurvedic diet plans to improve digestion, immunity and overall well-being.",
-    icon: <NutritionIcon />,
-  },
-  {
-    title: "Stress Management",
-    text: "Ayurvedic therapies and techniques to reduce stress, anxiety and improve mental wellness.",
-    icon: <StressIcon />,
-  },
-];
-
-const specialized = [
-  {
-    title: "Abhyanga Massage",
-    text: "Herbal oil massage to improve circulation, relax muscles and nourish the body.",
-    icon: <MassageIcon />,
-  },
-  {
-    title: "Shirodhara Therapy",
-    text: "Therapeutic oil treatment for the forehead to calm the mind and improve sleep quality.",
-    icon: <ShirodharaIcon />,
-  },
-  {
-    title: "Basti Therapy",
-    text: "Ayurvedic medicated enema therapy to detoxify and balance the body.",
-    icon: <BastiIcon />,
-  },
-  {
-    title: "Nasya Therapy",
-    text: "Herbal nasal therapy to clear sinuses, improve respiration and boost head health.",
-    icon: <NasyaIcon />,
-  },
-  {
-    title: "Raktamokshana",
-    text: "Purification therapy to support blood and treat skin disorders and chronic conditions.",
-    icon: <BloodIcon />,
-  },
-];
-
-const benefits = [
-  {
-    title: "Experienced Ayurvedic Doctor",
-    text: "Expert guidance with years of experience in Ayurvedic medicine.",
-    icon: <DoctorIcon />,
-  },
-  {
-    title: "Holistic Healing Approach",
-    text: "Treating the root cause and promoting overall wellness.",
-    icon: <BowlIcon />,
-  },
-  {
-    title: "Personalized Care",
-    text: "Treatment plans tailored specifically to your body type and health needs.",
-    icon: <LeafIcon size={38} />,
-  },
-  {
-    title: "Long Lasting Results",
-    text: "Our therapies focus on long term relief and disease prevention.",
-    icon: <ResultIcon />,
-  },
-  {
-    title: "Natural & Safe Therapies",
-    text: "We use natural herbs and authentic Ayurvedic methods for healing.",
-    icon: <SafeIcon />,
-  },
-  {
-    title: "Comfortable Environment",
-    text: "Peaceful and hygienic space for your healing journey.",
-    icon: <ComfortIcon />,
-  },
-];
-
-/* =========================================================
-   PAGE
-========================================================= */
+import { useState } from 'react';
+import Link from 'next/link';
+import { 
+  FaHome, FaChevronRight, FaLeaf, FaCalendarAlt, FaPlay, FaArrowRight, FaStethoscope, 
+  FaSpa, FaSeedling, FaUserMd, FaUtensils, FaBrain, FaWater, FaWind, 
+  FaHeartbeat, FaShieldAlt, FaSmile, FaCheckCircle, FaTimes 
+} from 'react-icons/fa';
 
 export default function ServicesPage() {
-  return (
-    <main className={styles.page}>
-      {/* =====================================================
-          HERO
-      ===================================================== */}
+  const [selectedService, setSelectedService] = useState(null);
 
-      <section className={styles.hero}>
-        <div className={styles.breadcrumb}>
-          <div className={styles.container}>
-            <span>⌂</span>
-            <Link href="/">Home</Link>
-            <b>›</b>
-            <span>Services</span>
-          </div>
+  // FIX 1: Component reference pass karein (JSX tags <...> ke bina)
+  const services = [
+    { id: 1, icon: FaStethoscope, title: "Ayurvedic Consultation", desc: "One-on-one consultation to understand your health concerns and create a personalized treatment plan.", fullDetails: "Our comprehensive consultation includes Prakriti (body constitution) analysis, pulse diagnosis (Nadi Pariksha), and detailed lifestyle evaluation to target the root cause of health issues." },
+    { id: 2, icon: FaSpa, title: "Panchakarma Therapy", desc: "Detoxify and rejuvenate your body with authentic Panchakarma treatments for long lasting results.", fullDetails: "Panchakarma involves five traditional purification procedures customized to eliminate deep-rooted toxins, restore dosha balance, and reset your metabolism." },
+    { id: 3, icon: FaSeedling, title: "Herbal Treatments", desc: "Natural herbal medicines to treat various acute and chronic health conditions effectively.", fullDetails: "We prescribe 100% natural, classic Ayurvedic herbal formulations customized specifically to your body's constitutional requirements without synthetic additives." },
+    { id: 4, icon: FaUserMd, title: "Yoga & Lifestyle Guidance", desc: "Personalized yoga, diet and lifestyle recommendations to bring balance to body, mind and soul.", fullDetails: "Receive customized daily routines (Dinacharya) and specialized yoga postures tailored to strengthen your physical and mental balance." },
+    { id: 5, icon: FaUtensils, title: "Diet & Nutrition", desc: "Customized Ayurvedic diet plans to improve digestion, immunity and overall well-being.", fullDetails: "Learn how to eat according to your unique dosha profile with seasonal eating recommendations that naturally optimize digestive fire (Agni)." },
+    { id: 6, icon: FaBrain, title: "Stress Management", desc: "Ayurvedic therapies and techniques to reduce stress, anxiety and improve mental wellness.", fullDetails: "Integrating targeted herbal remedies, meditation routines, and soothing therapies designed to calm the central nervous system and restore mental focus." },
+  ];
+
+  return (
+    <main className="min-h-screen bg-[#FAF9F5] text-[#2C3E35] font-sans antialiased overflow-x-hidden">
+      
+      {/* 1. BREADCRUMB */}
+      <div className="bg-[#FAF9F5] py-3 px-4 sm:px-6 md:px-12 border-b border-[#E2E6DF]">
+        <div className="max-w-7xl mx-auto flex items-center text-xs sm:text-sm text-[#5C6F63]">
+          <Link href="/" className="flex items-center gap-1.5 hover:text-[#365337] transition-colors">
+            <FaHome size={14} /> Home
+          </Link>
+          <span className="mx-2"><FaChevronRight size={10} /></span>
+          <span className="text-[#365337] font-medium">Services</span>
+        </div>
+      </div>
+
+      {/* 2. HERO SECTION */}
+      <section className="relative overflow-hidden bg-[#FAF9F5] min-h-[460px] sm:min-h-[500px] lg:min-h-[540px]">
+        <div className="absolute inset-y-0 right-0 w-full lg:w-[50%]">
+          <img
+            src="/img4.jpeg"
+            alt="Ayurvedic doctor providing natural healthcare"
+            className="w-full h-full object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#FAF9F5] via-[#FAF9F5]/75 to-transparent lg:from-[#FAF9F5] lg:via-[#FAF9F5]/65 lg:to-transparent" />
         </div>
 
-        <div className={styles.heroGrid}>
-          <div className={styles.heroContent}>
-            <div className={styles.eyebrow}>
+        <div className="relative z-10 max-w-7xl mx-auto min-h-[460px] sm:min-h-[500px] lg:min-h-[540px] px-6 sm:px-8 md:px-10 lg:px-12 flex items-center">
+          <div className="w-full lg:w-[60%] py-10 lg:py-0">
+            <div className="inline-flex items-center gap-2 text-[#365337] text-[11px] sm:text-xs font-bold uppercase tracking-widest mb-5">
               <span>OUR SERVICES</span>
-              <LeafIcon size={14} />
+              <FaLeaf size={12} />
             </div>
 
-            <h1>
-              Comprehensive Ayurvedic
-              <br />
-              <em>Care For Your Well-Being</em>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[50px] xl:text-[54px] font-serif font-bold text-[#2C3E35] leading-[1.1]">
+              Comprehensive Ayurvedic <br />
+              <span className="italic font-normal text-[#365337]">Care For Your Well-Being</span>
             </h1>
 
-            <div className={styles.heroDecoration}>
-              <span />
-              <LeafIcon size={14} />
-              <span />
+            <div className="flex items-center gap-3 text-[#365337] mt-5">
+              <span className="w-8 h-[1px] bg-[#365337]"></span>
+              <FaLeaf size={12} />
+              <span className="w-8 h-[1px] bg-[#365337]"></span>
             </div>
 
-            <p>
-              We offer a range of authentic Ayurvedic services and
-              therapies to help you achieve optimal health,
-              naturally and holistically.
+            <p className="mt-5 text-[#5C6F63] text-sm sm:text-base leading-relaxed max-w-xl">
+              We offer a range of authentic Ayurvedic services and therapies to help you achieve optimal health, naturally and holistically.
             </p>
 
-            <div className={styles.heroActions}>
-              <Link
-                href="/book-appointment"
-                className={styles.primaryButton}
-              >
-                Book an Appointment
-                <CalendarIcon size={16} />
+            <div className="flex flex-wrap items-center gap-4 pt-5">
+              <Link href="/book-appointment" className="bg-[#365337] text-white hover:bg-[#2C422D] px-6 py-3.5 rounded-full text-xs sm:text-sm font-semibold transition-all shadow-md flex items-center gap-2">
+                <span>Book an Appointment</span>
+                <FaCalendarAlt size={13} />
               </Link>
-
-              <button className={styles.videoButton}>
-                <span className={styles.playCircle}>
-                  <PlayIcon />
-                </span>
-
-                <span>
-                  <strong>How It Works</strong>
-                  <small>Watch Video</small>
-                </span>
-              </button>
-            </div>
-          </div>
-
-          <div className={styles.heroImage}>
-            <img
-              src={HERO_IMAGE}
-              alt="Ayurvedic herbs and traditional treatment"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* =====================================================
-          MAIN SERVICES
-      ===================================================== */}
-
-      <section className={styles.servicesSection}>
-        <div className={styles.container}>
-          <div className={styles.sectionHeading}>
-            <h2>Our Ayurvedic Services</h2>
-
-            <p>
-              Personalized care and natural therapies for a
-              healthier you
-            </p>
-          </div>
-
-          <div className={styles.serviceGrid}>
-            {services.map((service) => (
-              <article
-                className={styles.serviceCard}
-                key={service.title}
-              >
-                <div className={styles.serviceIcon}>
-                  {service.icon}
+              <a href="#how-it-works" className="flex items-center gap-3 text-xs sm:text-sm font-semibold text-[#2C3E35] hover:text-[#365337] transition-colors">
+                <div className="w-10 h-10 rounded-full bg-white border border-[#DCE5D9] flex items-center justify-center text-[#365337] shadow-sm">
+                  <FaPlay size={10} className="ml-0.5" />
                 </div>
-
-                <div className={styles.serviceContent}>
-                  <h3>{service.title}</h3>
-
-                  <p>{service.text}</p>
-
-                  <Link href="/contact">
-                    Learn More
-                    <ArrowIcon />
-                  </Link>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* =====================================================
-          SPECIALIZED THERAPIES
-      ===================================================== */}
-
-      <section className={styles.specializedSection}>
-        <div className={styles.container}>
-          <div className={styles.specializedBox}>
-            <div className={styles.specializedTitle}>
-              <LeafIcon size={18} />
-              <h2>Specialized Therapies</h2>
-            </div>
-
-            <div className={styles.specializedGrid}>
-              {specialized.map((item) => (
-                <article
-                  className={styles.specializedItem}
-                  key={item.title}
-                >
-                  <div className={styles.specializedIcon}>
-                    {item.icon}
-                  </div>
-
-                  <div>
-                    <h3>{item.title}</h3>
-                    <p>{item.text}</p>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* =====================================================
-          WHY CHOOSE
-      ===================================================== */}
-
-      <section className={styles.whySection}>
-        <div className={styles.container}>
-          <div className={styles.whyGrid}>
-            <div className={styles.whyImageWrap}>
-              <img
-                src={SERVICES_IMAGE}
-                alt="Ayurvedic herbal preparation"
-              />
-
-              <div className={styles.naturalBadge}>
-                <LeafIcon size={25} />
-
                 <div>
-                  <strong>100% Natural</strong>
-                  <span>Safe • Effective • Authentic</span>
+                  <strong className="block text-sm font-bold">How It Works</strong>
+                  <small className="text-[11px] text-[#5C6F63] font-normal">Watch Video</small>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. OUR AYURVEDIC SERVICES CARDS */}
+      <section className="py-12 sm:py-16 px-4 sm:px-6 md:px-12 bg-white border-t border-[#E2E6DF]">
+        <div className="max-w-7xl mx-auto text-center space-y-2 mb-12">
+          <div className="inline-block text-[#365337] mb-1"><FaLeaf size={14} /></div>
+          <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#2C3E35]">Our Ayurvedic Services</h2>
+          <p className="text-xs sm:text-sm text-[#5C6F63]">Personalized care and natural therapies for a healthier you</p>
+        </div>
+
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {services.map((item) => {
+            // FIX 2: Icon component ko Variable me store karke render karna
+            const IconComponent = item.icon;
+            return (
+              <div key={item.id} className="group bg-[#FAF9F5] border border-[#EBEFE8] p-6 rounded-2xl flex flex-col justify-between gap-6 hover:shadow-xl hover:border-[#365337]/40 hover:-translate-y-1 transition-all duration-300">
+                <div className="space-y-4">
+                  <div className="w-12 h-12 rounded-full bg-[#E5EFE6] flex items-center justify-center text-[#365337] text-lg group-hover:bg-[#365337] group-hover:text-white transition-colors duration-300 shadow-sm">
+                    <IconComponent />
+                  </div>
+                  <div className="space-y-1.5">
+                    <h3 className="font-serif font-bold text-lg text-[#2C3E35] group-hover:text-[#365337] transition-colors">{item.title}</h3>
+                    <p className="text-xs text-[#5C6F63] leading-relaxed">{item.desc}</p>
+                  </div>
+                </div>
+                <button 
+                  type="button"
+                  onClick={() => setSelectedService(item)}
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#365337] hover:underline cursor-pointer w-fit"
+                >
+                  Learn More <FaArrowRight size={10} />
+                </button>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* 4. SPECIALIZED THERAPIES */}
+      <section className="py-12 sm:py-16 px-4 sm:px-6 md:px-12 bg-[#FAF9F5] border-t border-[#E2E6DF]">
+        <div className="max-w-7xl mx-auto space-y-8">
+          <div className="text-center sm:text-left space-y-1">
+            <div className="inline-block text-[#365337]"><FaLeaf size={14} /></div>
+            <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#2C3E35]">Specialized Therapies</h2>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            {[
+              { icon: FaSpa, title: "Abhyanga Massage", desc: "Herbal oil massage to improve circulation, relax muscles and nourish the body." },
+              { icon: FaUserMd, title: "Shirodhara Therapy", desc: "Therapeutic oil treatment for the head to calm the mind and improve sleep quality." },
+              { icon: FaWater, title: "Basti Therapy", desc: "Ayurvedic medicated enema therapy to detoxify and balance the body." },
+              { icon: FaWind, title: "Nasya Therapy", desc: "Herbal nasal therapy to clear sinuses, improve respiration and boost head health." },
+              { icon: FaHeartbeat, title: "Raktamokshana", desc: "Purification therapy to detoxify blood and treat skin disorders and chronic conditions." },
+            ].map((item, idx) => {
+              const TherapyIcon = item.icon;
+              return (
+                <Link href="/book-appointment" key={idx} className="group bg-white border border-[#E2E6DF] p-5 rounded-2xl space-y-3 hover:shadow-lg hover:border-[#365337]/40 hover:-translate-y-1 transition-all duration-300">
+                  <div className="w-10 h-10 rounded-full bg-[#E5EFE6] flex items-center justify-center text-[#365337] text-base group-hover:bg-[#365337] group-hover:text-white transition-colors duration-300">
+                    <TherapyIcon />
+                  </div>
+                  <div className="space-y-1">
+                    <h4 className="font-serif font-bold text-sm text-[#2C3E35] group-hover:text-[#365337] transition-colors">{item.title}</h4>
+                    <p className="text-[11px] text-[#5C6F63] leading-relaxed">{item.desc}</p>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* 5. WHY CHOOSE OUR SERVICES */}
+      <section className="py-12 sm:py-16 px-4 sm:px-6 md:px-12 bg-white border-t border-[#E2E6DF]">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <div className="lg:col-span-5">
+            <div className="relative rounded-3xl overflow-hidden shadow-xl h-[320px] sm:h-[380px] border border-[#E2E6DF]">
+              <img src="/img3.jpeg" alt="Ayurvedic treatments natural setup" className="w-full h-full object-cover" />
+              <div className="absolute bottom-4 left-4 bg-[#365337] text-white px-5 py-3.5 rounded-2xl shadow-lg flex items-center gap-3">
+                <span className="text-xl"><FaLeaf /></span>
+                <div>
+                  <h4 className="font-serif font-bold text-base leading-tight">100% Natural</h4>
+                  <p className="text-[10px] text-[#A2B8A5]">Safe • Effective • Authentic</p>
                 </div>
               </div>
             </div>
+          </div>
 
-            <div className={styles.whyContent}>
-              <div className={styles.smallHeading}>
-                <span />
-                <LeafIcon size={15} />
-                <span />
+          <div className="lg:col-span-7 space-y-5">
+            <div className="space-y-1">
+              <div className="inline-block text-[#365337]"><FaLeaf size={14} /></div>
+              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#2C3E35]">Why Choose Our Services?</h2>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-5 pt-1">
+              <div className="group flex gap-3.5 items-start">
+                <div className="w-10 h-10 rounded-full bg-[#E5EFE6] flex items-center justify-center text-[#365337] flex-shrink-0 group-hover:bg-[#365337] group-hover:text-white transition-colors duration-300">
+                  <FaUserMd />
+                </div>
+                <div>
+                  <h4 className="font-serif font-bold text-sm text-[#2C3E35] group-hover:text-[#365337] transition-colors">Experienced Ayurvedic Doctor</h4>
+                  <p className="text-xs text-[#5C6F63] mt-0.5">Expert guidance with years of experience in Ayurvedic medicine.</p>
+                </div>
               </div>
 
-              <h2>Why Choose Our Services?</h2>
+              <div className="group flex gap-3.5 items-start">
+                <div className="w-10 h-10 rounded-full bg-[#E5EFE6] flex items-center justify-center text-[#365337] flex-shrink-0 group-hover:bg-[#365337] group-hover:text-white transition-colors duration-300">
+                  <FaCheckCircle />
+                </div>
+                <div>
+                  <h4 className="font-serif font-bold text-sm text-[#2C3E35] group-hover:text-[#365337] transition-colors">Holistic Healing Approach</h4>
+                  <p className="text-xs text-[#5C6F63] mt-0.5">Treating the root cause and promoting overall wellness.</p>
+                </div>
+              </div>
 
-              <div className={styles.benefitGrid}>
-                {benefits.map((benefit) => (
-                  <div
-                    className={styles.benefit}
-                    key={benefit.title}
-                  >
-                    <div className={styles.benefitIcon}>
-                      {benefit.icon}
-                    </div>
+              <div className="group flex gap-3.5 items-start">
+                <div className="w-10 h-10 rounded-full bg-[#E5EFE6] flex items-center justify-center text-[#365337] flex-shrink-0 group-hover:bg-[#365337] group-hover:text-white transition-colors duration-300">
+                  <FaShieldAlt />
+                </div>
+                <div>
+                  <h4 className="font-serif font-bold text-sm text-[#2C3E35] group-hover:text-[#365337] transition-colors">Personalized Care</h4>
+                  <p className="text-xs text-[#5C6F63] mt-0.5">Treatment plans tailored specifically to your body type and health needs.</p>
+                </div>
+              </div>
 
-                    <div>
-                      <h3>{benefit.title}</h3>
-                      <p>{benefit.text}</p>
-                    </div>
-                  </div>
-                ))}
+              <div className="group flex gap-3.5 items-start">
+                <div className="w-10 h-10 rounded-full bg-[#E5EFE6] flex items-center justify-center text-[#365337] flex-shrink-0 group-hover:bg-[#365337] group-hover:text-white transition-colors duration-300">
+                  <FaSmile />
+                </div>
+                <div>
+                  <h4 className="font-serif font-bold text-sm text-[#2C3E35] group-hover:text-[#365337] transition-colors">Long Lasting Results</h4>
+                  <p className="text-xs text-[#5C6F63] mt-0.5">Our therapies focus on long term relief and disease prevention.</p>
+                </div>
+              </div>
+
+              <div className="group flex gap-3.5 items-start sm:col-span-2">
+                <div className="w-10 h-10 rounded-full bg-[#E5EFE6] flex items-center justify-center text-[#365337] flex-shrink-0 group-hover:bg-[#365337] group-hover:text-white transition-colors duration-300">
+                  <FaLeaf />
+                </div>
+                <div>
+                  <h4 className="font-serif font-bold text-sm text-[#2C3E35] group-hover:text-[#365337] transition-colors">Natural &amp; Safe Therapies</h4>
+                  <p className="text-xs text-[#5C6F63] mt-0.5">We use natural herbs and authentic Ayurvedic methods for healing.</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* =====================================================
-          CTA
-      ===================================================== */}
+      {/* 6. APPOINTMENT BANNER */}
+      <section className="py-8 px-4 sm:px-6 md:px-12 bg-white">
+        <div className="max-w-7xl mx-auto bg-[#365337] text-white rounded-3xl p-6 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl text-center md:text-left">
+          <div className="flex flex-col md:flex-row items-center gap-5">
+            <div className="w-14 h-14 rounded-full bg-[#2C422D] flex items-center justify-center text-white text-2xl flex-shrink-0 shadow-inner">
+              <FaCalendarAlt />
+            </div>
+            <div className="space-y-1">
+              <p className="text-[11px] uppercase tracking-widest text-[#A2B8A5] font-semibold">Take the first step towards a healthier you!</p>
+              <h3 className="text-2xl sm:text-3xl font-serif font-bold">Book Your Appointment Today</h3>
+              <p className="text-xs text-[#A2B8A5]">Let us help you live a healthy, balanced and happy life.</p>
+            </div>
+          </div>
 
-      <section className={styles.ctaSection}>
-        <div className={styles.container}>
-          <div className={styles.ctaBox}>
-            <div className={styles.ctaIcon}>
-              <CalendarIcon size={38} />
+          <Link href="/book-appointment" className="bg-white text-[#365337] hover:bg-[#FAF9F5] hover:scale-105 px-8 py-4 rounded-full text-xs sm:text-sm font-bold transition-all shadow-md flex items-center gap-2 flex-shrink-0">
+            <FaCalendarAlt size={13} /> Book Appointment
+          </Link>
+        </div>
+      </section>
+
+      {/* POPUP MODAL */}
+      {selectedService && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
+          onClick={() => setSelectedService(null)}
+        >
+          <div 
+            className="bg-[#FAF9F5] border border-[#E2E6DF] rounded-3xl p-6 sm:p-8 max-w-lg w-full relative shadow-2xl space-y-5"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button 
+              type="button"
+              onClick={() => setSelectedService(null)}
+              className="absolute top-5 right-5 text-[#5C6F63] hover:text-[#2C3E35] p-2 rounded-full hover:bg-black/5 transition-colors"
+              aria-label="Close Modal"
+            >
+              <FaTimes size={18} />
+            </button>
+
+            {/* Modal Content */}
+            <div className="flex items-center gap-4 border-b border-[#E2E6DF] pb-4">
+              <div className="w-12 h-12 rounded-full bg-[#365337] text-white flex items-center justify-center text-xl shadow-md">
+                {/* FIX 3: Safe dynamic rendering for Modal Icon */}
+                {(() => {
+                  const ModalIcon = selectedService.icon;
+                  return <ModalIcon />;
+                })()}
+              </div>
+              <h3 className="font-serif font-bold text-xl sm:text-2xl text-[#2C3E35]">
+                {selectedService.title}
+              </h3>
             </div>
 
-            <div className={styles.ctaText}>
-              <span>
-                Take the first step towards a healthier you!
-              </span>
-
-              <h2>Book Your Appointment Today</h2>
-
-              <p>
-                Let us help you live a healthy, balanced and
-                happy life.
+            <div className="space-y-3">
+              <p className="text-xs sm:text-sm text-[#5C6F63] leading-relaxed">
+                {selectedService.desc}
+              </p>
+              <p className="text-xs sm:text-sm text-[#2C3E35] font-medium leading-relaxed bg-white p-4 rounded-xl border border-[#E2E6DF]">
+                {selectedService.fullDetails}
               </p>
             </div>
 
-            <Link
-              href="/book-appointment"
-              className={styles.ctaButton}
-            >
-              <CalendarIcon size={16} />
-              Book Appointment
-            </Link>
+            {/* Modal Actions */}
+            <div className="flex flex-col sm:flex-row gap-3 pt-2">
+              <Link 
+                href="/book-appointment"
+                className="w-full bg-[#365337] text-white hover:bg-[#2C422D] py-3 rounded-full text-xs sm:text-sm font-semibold text-center transition-all shadow-md flex items-center justify-center gap-2"
+              >
+                <span>Book This Service</span>
+                <FaCalendarAlt size={12} />
+              </Link>
+              <button
+                type="button"
+                onClick={() => setSelectedService(null)}
+                className="w-full bg-transparent border border-[#E2E6DF] text-[#5C6F63] hover:bg-[#E2E6DF]/30 py-3 rounded-full text-xs sm:text-sm font-semibold text-center transition-all"
+              >
+                Close
+              </button>
+            </div>
           </div>
         </div>
-      </section>
-
-      {/* =====================================================
-          FOOTER
-      ===================================================== */}
+      )}
 
     </main>
   );

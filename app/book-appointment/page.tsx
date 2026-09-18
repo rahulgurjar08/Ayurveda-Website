@@ -1,7 +1,6 @@
 "use client";
 
 import { FormEvent, useMemo, useState } from "react";
-import styles from "./BookAppointment.module.css";
 import { useApp } from "@/context/AppContext";
 
 type IconName =
@@ -44,7 +43,7 @@ function Icon({
     strokeWidth,
     strokeLinecap: "round" as const,
     strokeLinejoin: "round" as const,
-    className: styles.icon,
+    className: "inline-block shrink-0 transition-colors",
   };
 
   switch (name) {
@@ -328,77 +327,77 @@ export default function BookAppointmentPage() {
   }
 
   return (
-    <main className={styles.page}>
+    <main className="min-h-screen bg-[#FAF8F5] py-10 px-4 sm:px-6 lg:px-8 text-gray-800">
       {/* HERO */}
-      <section className={styles.hero}>
-        <div className={styles.heroInner}>
-          <div className={styles.heroContent}>
-            <div className={styles.eyebrow}>
+      <section className="max-w-6xl mx-auto bg-[#F3F6F1] rounded-3xl p-6 sm:p-10 border border-[#E2E8DD] shadow-sm mb-12">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="flex-1 space-y-4">
+            <div className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-[#1e4d2b] bg-[#e3eed7] px-3.5 py-1.5 rounded-full">
               BOOK APPOINTMENT
               <Icon name="eco" size={15} />
             </div>
 
-            <h1>
-              Your Health,
-              <span>Our Priority</span>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#1b3b22] leading-tight">
+              Your Health, <br />
+              <span className="text-[#2b6137]">Our Priority</span>
             </h1>
 
-            <p>
+            <p className="text-gray-600 text-sm sm:text-base max-w-lg leading-relaxed">
               Schedule your consultation with our expert Ayurvedic doctor
               and take the first step towards a healthier you.
             </p>
 
-            <div className={styles.heroFeatures}>
-              <div className={styles.heroFeature}>
-                <div className={styles.roundIcon}>
-                  <Icon name="calendar_month" size={22} />
+            <div className="pt-2 grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div className="flex items-center gap-3 bg-white/80 backdrop-blur p-3 rounded-xl border border-gray-100 shadow-xs">
+                <div className="w-10 h-10 rounded-full bg-[#EAF2E6] flex items-center justify-center text-[#1b3b22]">
+                  <Icon name="calendar_month" size={20} />
                 </div>
-                <div>
-                  <strong>Easy</strong>
-                  <span>Booking</span>
-                </div>
-              </div>
-
-              <div className={styles.heroFeature}>
-                <div className={styles.roundIcon}>
-                  <Icon name="spa" size={22} />
-                </div>
-                <div>
-                  <strong>Expert</strong>
-                  <span>Ayurvedic Care</span>
+                <div className="text-xs">
+                  <strong className="block text-gray-900 font-semibold">Easy</strong>
+                  <span className="text-gray-500">Booking</span>
                 </div>
               </div>
 
-              <div className={styles.heroFeature}>
-                <div className={styles.roundIcon}>
-                  <Icon name="lock" size={22} />
+              <div className="flex items-center gap-3 bg-white/80 backdrop-blur p-3 rounded-xl border border-gray-100 shadow-xs">
+                <div className="w-10 h-10 rounded-full bg-[#EAF2E6] flex items-center justify-center text-[#1b3b22]">
+                  <Icon name="spa" size={20} />
                 </div>
-                <div>
-                  <strong>100% Safe &</strong>
-                  <span>Secure</span>
+                <div className="text-xs">
+                  <strong className="block text-gray-900 font-semibold">Expert</strong>
+                  <span className="text-gray-500">Ayurvedic Care</span>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-3 bg-white/80 backdrop-blur p-3 rounded-xl border border-gray-100 shadow-xs">
+                <div className="w-10 h-10 rounded-full bg-[#EAF2E6] flex items-center justify-center text-[#1b3b22]">
+                  <Icon name="lock" size={20} />
+                </div>
+                <div className="text-xs">
+                  <strong className="block text-gray-900 font-semibold">100% Safe &</strong>
+                  <span className="text-gray-500">Secure</span>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className={styles.heroImageWrap}>
+          <div className="w-full md:w-80 h-56 md:h-72 relative rounded-2xl overflow-hidden shadow-md shrink-0">
             <img
               src="https://ponsanthanbotanicals.com/assets/images/hero/herbals.png"
               alt="Ayurvedic herbs and traditional healing"
-              className={styles.heroImage}
+              className="w-full h-full object-cover"
             />
           </div>
         </div>
       </section>
 
       {/* APPOINTMENT */}
-      <section className={styles.appointmentSection} id="appointment">
-        <form className={styles.bookingCard} onSubmit={handleSubmit}>
+      <section className="max-w-6xl mx-auto mb-16" id="appointment">
+        <form className="bg-white rounded-3xl p-6 sm:p-8 lg:p-10 border border-gray-100 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12" onSubmit={handleSubmit}>
           {/* LEFT */}
-          <div className={styles.leftColumn}>
+          <div className="lg:col-span-7 space-y-6">
             <SectionTitle number="1." title="Patient Details" />
 
-            <div className={styles.inputGrid}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <Input
                 icon="person"
                 name="name"
@@ -450,7 +449,7 @@ export default function BookAppointmentPage() {
               />
             </div>
 
-            <div className={styles.formSection}>
+            <div className="space-y-3 pt-2">
               <SectionTitle number="2." title="Select Consultation Type" />
 
               <SelectInput
@@ -466,7 +465,7 @@ export default function BookAppointmentPage() {
               />
             </div>
 
-            <div className={styles.formSection}>
+            <div className="space-y-3 pt-2">
               <SectionTitle number="3." title="Select Purpose of Visit" />
 
               <SelectInput
@@ -485,12 +484,12 @@ export default function BookAppointmentPage() {
               />
             </div>
 
-            <div className={styles.formSection}>
+            <div className="space-y-3 pt-2">
               <SectionTitle number="4." title="Any Specific Concern" />
 
               <textarea
                 name="concern"
-                className={styles.textarea}
+                className="w-full p-3.5 text-sm bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#1b3b22] focus:border-transparent outline-none transition-all resize-y min-h-[100px]"
                 placeholder="Please describe your symptoms or health concern"
                 rows={4}
               />
@@ -498,41 +497,41 @@ export default function BookAppointmentPage() {
           </div>
 
           {/* RIGHT */}
-          <div className={styles.rightColumn}>
+          <div className="lg:col-span-5 space-y-6">
             <SectionTitle number="5." title="Choose Date" />
 
-            <div className={styles.calendarBox}>
-              <div className={styles.calendarHeader}>
-                <button type="button" aria-label="Previous month">
+            <div className="border border-gray-200 rounded-2xl p-4 sm:p-5 bg-white space-y-4">
+              <div className="flex items-center justify-between pb-2 border-b border-gray-100">
+                <button type="button" aria-label="Previous month" className="p-1 hover:bg-gray-100 rounded-lg text-gray-600 transition-colors">
                   <Icon name="chevron_left" size={20} />
                 </button>
 
-                <strong>May 2024</strong>
+                <strong className="text-sm font-semibold text-gray-800">May 2024</strong>
 
-                <button type="button" aria-label="Next month">
+                <button type="button" aria-label="Next month" className="p-1 hover:bg-gray-100 rounded-lg text-gray-600 transition-colors">
                   <Icon name="chevron_right" size={20} />
                 </button>
               </div>
 
-              <div className={styles.weekdays}>
+              <div className="grid grid-cols-7 gap-1 text-center text-xs font-semibold text-gray-400">
                 {["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"].map(
                   (day) => (
-                    <span key={day}>{day}</span>
+                    <span key={day} className="py-1">{day}</span>
                   )
                 )}
               </div>
 
-              <div className={styles.daysGrid}>
+              <div className="grid grid-cols-7 gap-1 text-center text-xs">
                 {calendarDays.map((item, index) => (
                   <button
                     type="button"
                     key={`${item.day}-${index}`}
-                    className={`${styles.dayButton} ${
-                      item.muted ? styles.mutedDay : ""
-                    } ${
-                      item.day === selectedDate && !item.muted
-                        ? styles.selectedDay
-                        : ""
+                    className={`h-9 w-9 mx-auto flex items-center justify-center rounded-full font-medium transition-all ${
+                      item.muted
+                        ? "text-gray-300 cursor-not-allowed"
+                        : item.day === selectedDate
+                        ? "bg-[#1b3b22] text-white font-bold shadow-xs"
+                        : "text-gray-700 hover:bg-gray-100"
                     }`}
                     disabled={item.muted}
                     onClick={() => {
@@ -547,16 +546,18 @@ export default function BookAppointmentPage() {
               </div>
             </div>
 
-            <div className={styles.timeSection}>
+            <div className="space-y-3">
               <SectionTitle number="6." title="Choose Time Slot" />
 
-              <div className={styles.timeGrid}>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                 {timeSlots.map((time) => (
                   <button
                     type="button"
                     key={time}
-                    className={`${styles.timeButton} ${
-                      selectedTime === time ? styles.activeTime : ""
+                    className={`py-2 px-1 text-xs font-medium rounded-xl border text-center transition-all ${
+                      selectedTime === time
+                        ? "bg-[#1b3b22] text-white border-[#1b3b22] shadow-xs"
+                        : "border-gray-200 text-gray-700 bg-gray-50 hover:bg-gray-100"
                     }`}
                     onClick={() => setSelectedTime(time)}
                   >
@@ -566,14 +567,14 @@ export default function BookAppointmentPage() {
               </div>
             </div>
 
-            <div className={styles.safeBox}>
-              <div className={styles.safeIcon}>
-                <Icon name="lock" size={28} />
+            <div className="flex items-center gap-3 bg-[#F4F7F0] p-4 rounded-2xl border border-[#E2EBD8]">
+              <div className="p-2.5 bg-[#E3EED7] text-[#1b3b22] rounded-xl shrink-0">
+                <Icon name="lock" size={24} />
               </div>
 
-              <div>
-                <strong>Your Information is Safe with Us</strong>
-                <p>
+              <div className="text-xs space-y-0.5">
+                <strong className="block text-[#1b3b22] font-semibold">Your Information is Safe with Us</strong>
+                <p className="text-gray-500 leading-normal">
                   We respect your privacy and your details will never be
                   shared.
                 </p>
@@ -582,7 +583,7 @@ export default function BookAppointmentPage() {
 
             <button
               type="submit"
-              className={styles.submitButton}
+              className="w-full py-3.5 px-6 bg-[#1b3b22] hover:bg-[#2b6137] text-white font-medium text-sm rounded-xl flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all cursor-pointer disabled:opacity-50"
               disabled={loading}
             >
               <Icon name="send" size={18} />
@@ -594,10 +595,10 @@ export default function BookAppointmentPage() {
 
             {message && (
               <div
-                className={`${styles.formMessage} ${
+                className={`p-3.5 rounded-xl text-xs font-medium text-center border ${
                   message.includes("successfully")
-                    ? styles.successMessage
-                    : styles.errorMessage
+                    ? "bg-green-50 text-green-800 border-green-200"
+                    : "bg-red-50 text-red-800 border-red-200"
                 }`}
               >
                 {message}
@@ -608,17 +609,17 @@ export default function BookAppointmentPage() {
       </section>
 
       {/* WHY BOOK */}
-      <section className={styles.whySection}>
-        <div className={styles.whyTitle}>
-          <h2>Why Book An Appointment With Us?</h2>
-          <div className={styles.titleLeaves}>
-            <span />
+      <section className="max-w-6xl mx-auto mb-16 space-y-8">
+        <div className="text-center space-y-2">
+          <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#1b3b22]">Why Book An Appointment With Us?</h2>
+          <div className="flex items-center justify-center gap-2 text-[#2b6137]">
+            <span className="w-8 h-[1px] bg-[#2b6137]/30" />
             <Icon name="eco" size={17} />
-            <span />
+            <span className="w-8 h-[1px] bg-[#2b6137]/30" />
           </div>
         </div>
 
-        <div className={styles.whyGrid}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <WhyCard
             icon="self_improvement"
             title="Expert Doctors"
@@ -646,21 +647,21 @@ export default function BookAppointmentPage() {
       </section>
 
       {/* CTA */}
-      <section className={styles.cta}>
-        <div className={styles.ctaIllustration}>
-          <Icon name="calendar_month" size={62} strokeWidth={1.2} />
-          <Icon name="spa" size={38} strokeWidth={1.4} />
+      <section className="max-w-6xl mx-auto bg-[#F4F7F0] border border-[#E2EBD8] rounded-3xl p-6 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="hidden sm:flex items-center gap-3 text-[#1b3b22]/30 shrink-0">
+          <Icon name="calendar_month" size={56} strokeWidth={1.2} />
+          <Icon name="spa" size={36} strokeWidth={1.4} />
         </div>
 
-        <div className={styles.ctaText}>
-          <h2>Take the first step towards a healthier life!</h2>
-          <p>
+        <div className="text-center md:text-left space-y-1 flex-1">
+          <h2 className="text-lg sm:text-xl font-bold text-[#1b3b22]">Take the first step towards a healthier life!</h2>
+          <p className="text-xs sm:text-sm text-gray-600">
             Book your appointment today and let Ayurveda bring balance to
             your life.
           </p>
         </div>
 
-        <a href="#appointment" className={styles.ctaButton}>
+        <a href="#appointment" className="inline-flex items-center gap-2 px-6 py-3 bg-[#1b3b22] hover:bg-[#2b6137] text-white text-xs sm:text-sm font-medium rounded-xl shadow-sm transition-all shrink-0">
           Confirm Appointment
           <Icon name="arrow_forward" size={17} />
         </a>
@@ -682,13 +683,13 @@ function SectionTitle({
   title: string;
 }) {
   return (
-    <div className={styles.sectionTitle}>
-      <h3>
+    <div className="flex items-center justify-between border-b border-gray-100 pb-2">
+      <h3 className="text-sm sm:text-base font-semibold text-[#1b3b22]">
         {number} {title}
       </h3>
 
-      <div>
-        <span />
+      <div className="flex items-center gap-1 text-[#2b6137]">
+        <span className="w-4 h-[1px] bg-[#2b6137]/30" />
         <Icon name="eco" size={14} />
       </div>
     </div>
@@ -711,18 +712,19 @@ function Input({
   required?: boolean;
 }) {
   return (
-    <label className={styles.field}>
-      <span className={styles.fieldLabel}>
-        <Icon name={icon} size={17} />
+    <label className="block space-y-1.5">
+      <span className="flex items-center gap-1.5 text-xs font-medium text-gray-600">
+        <Icon name={icon} size={15} />
         {label}
       </span>
 
-      <div className={styles.inputWrap}>
+      <div className="relative">
         <input
           name={name}
           type={type}
           placeholder={placeholder}
           required={required}
+          className="w-full px-3.5 py-2.5 text-sm bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#1b3b22] focus:border-transparent outline-none transition-all placeholder:text-gray-400"
         />
       </div>
     </label>
@@ -741,16 +743,21 @@ function SelectInput({
   options: string[];
 }) {
   return (
-    <label className={styles.field}>
+    <label className="block space-y-1.5">
       {label && (
-        <span className={styles.fieldLabel}>
-          {icon && <Icon name={icon} size={17} />}
+        <span className="flex items-center gap-1.5 text-xs font-medium text-gray-600">
+          {icon && <Icon name={icon} size={15} />}
           {label}
         </span>
       )}
 
-      <div className={styles.selectWrap}>
-        <select name={name} defaultValue={options[0]} required>
+      <div className="relative flex items-center">
+        <select 
+          name={name} 
+          defaultValue={options[0]} 
+          required 
+          className="w-full px-3.5 py-2.5 text-sm bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#1b3b22] focus:border-transparent outline-none transition-all appearance-none text-gray-700 pr-10"
+        >
           {options.map((option) => (
             <option
               key={option}
@@ -761,7 +768,9 @@ function SelectInput({
           ))}
         </select>
 
-        <Icon name="expand_more" size={19} />
+        <div className="absolute right-3 pointer-events-none text-gray-400">
+          <Icon name="expand_more" size={19} />
+        </div>
       </div>
     </label>
   );
@@ -777,14 +786,14 @@ function WhyCard({
   text: string;
 }) {
   return (
-    <div className={styles.whyCard}>
-      <div className={styles.whyIcon}>
-        <Icon name={icon} size={29} />
+    <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-xs text-center space-y-3">
+      <div className="w-12 h-12 bg-[#F4F7F0] text-[#1b3b22] rounded-full flex items-center justify-center mx-auto">
+        <Icon name={icon} size={26} />
       </div>
 
-      <div>
-        <h3>{title}</h3>
-        <p>{text}</p>
+      <div className="space-y-1">
+        <h3 className="font-semibold text-gray-800 text-sm">{title}</h3>
+        <p className="text-xs text-gray-500 leading-relaxed">{text}</p>
       </div>
     </div>
   );

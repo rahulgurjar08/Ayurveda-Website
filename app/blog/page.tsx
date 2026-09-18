@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useMemo } from "react";
-import styles from "./blog.module.css";
+import React, { useState, useMemo } from "react";
+import { Search, Clock, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { useApp } from "@/context/AppContext";
 import type { BlogItem } from "@/types";
 
@@ -25,59 +25,6 @@ function LeafIcon({ size = 18 }: { size?: number }) {
   );
 }
 
-function SearchIcon() {
-  return (
-    <svg
-      width="18"
-      height="18"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <circle cx="11" cy="11" r="7" />
-      <path d="m20 20-4-4" />
-    </svg>
-  );
-}
-
-function ArrowIcon() {
-  return (
-    <svg
-      width="15"
-      height="15"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M5 12h14" />
-      <path d="m13 6 6 6-6 6" />
-    </svg>
-  );
-}
-
-function ClockIcon() {
-  return (
-    <svg
-      width="14"
-      height="14"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinecap="round"
-    >
-      <circle cx="12" cy="12" r="9" />
-      <path d="M12 7v5l3 2" />
-    </svg>
-  );
-}
-
 const CATEGORY_LIST = [
   { name: "All Categories", icon: "🍃" },
   { name: "AYURVEDA BASICS", icon: "🌿" },
@@ -86,6 +33,7 @@ const CATEGORY_LIST = [
   { name: "YOGA & WELLNESS", icon: "🧘" },
   { name: "PANCHAKARMA", icon: "🌿" },
   { name: "MENTAL HEALTH", icon: "☘" },
+  { name: "SEASONAL CARE", icon: "☀️" },
 ];
 
 export default function BlogPage() {
@@ -95,12 +43,16 @@ export default function BlogPage() {
   const [selectedCategory, setSelectedCategory] = useState("All Categories");
   const [selectedArticle, setSelectedArticle] = useState<BlogItem | null>(null);
 
-  // Filter only published blogs for the public view
+  // Pagination State
+  const [currentPage, setCurrentPage] = useState(1);
+  const cardsPerPage = 6; // Shows 2 rows of 3 cards each (total 6 cards)
+
+  // Filter only published blogs for public view (Managed by Admin)
   const publishedBlogs = useMemo(() => {
-    return blogs.filter((b) => b.published);
+    return (blogs || []).filter((b) => b.published !== false);
   }, [blogs]);
 
-  // Filtered by search and category
+  // Filtered Articles by Search and Category
   const filteredArticles = useMemo(() => {
     return publishedBlogs.filter((article) => {
       const q = searchQuery.toLowerCase().trim();
@@ -118,7 +70,7 @@ export default function BlogPage() {
     });
   }, [publishedBlogs, searchQuery, selectedCategory]);
 
-  // Dynamic category counts
+  // Calculate dynamic category counts
   const categoryCounts = useMemo(() => {
     const counts: Record<string, number> = {};
     for (const cat of CATEGORY_LIST) {
@@ -133,6 +85,22 @@ export default function BlogPage() {
     return counts;
   }, [publishedBlogs]);
 
+  // Pagination Logic
+  const totalPages = Math.ceil(filteredArticles.length / cardsPerPage);
+  const indexOfLastBlog = currentPage * cardsPerPage;
+  const indexOfFirstBlog = indexOfLastBlog - cardsPerPage;
+  const currentBlogs = filteredArticles.slice(indexOfFirstBlog, indexOfLastBlog);
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value);
+    setCurrentPage(1);
+  };
+
+  const handleCategorySelect = (categoryName: string) => {
+    setSelectedCategory(categoryName);
+    setCurrentPage(1);
+  };
+
   function handleSubscribe(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!email.trim()) return;
@@ -141,374 +109,368 @@ export default function BlogPage() {
   }
 
   return (
-    <main className={styles.page}>
-      {/* HERO */}
-      <section className={styles.hero}>
-        <div className={styles.heroContainer}>
-          <div className={styles.heroContent}>
-            <div className={styles.eyebrow}>
-              <span>BLOG &amp; HEALTH TIPS</span>
-              <LeafIcon size={14} />
-            </div>
+    <main className="min-h-screen bg-[#FAF8F5] text-gray-800">
+      {/* HERO SECTION */}
+      <section className="relative overflow-hidden bg-[#FAF8F5] min-h-[320px] sm:min-h-[360px] lg:min-h-[400px] border-b border-gray-200/60">
 
-            <h1>
-              Ayurvedic Wisdom
-              <br />
-              <em>For A Better Life</em>
-            </h1>
+{/* Right Side Image */}
+<div className="absolute inset-y-0 right-0 w-full lg:w-[52%]">
+  <img
+    src="https://shatavariayurveda.com/_ipx/f_webp/images/blog/ayurvedic-consultation-europe.png"
+    alt="Ayurvedic consultation and natural wellness"
+    className="w-full h-full object-cover object-center"
+  />
 
-            <p>
-              Discover natural ways to improve your health and well-being with
-              Ayurveda. Tips, insights and expert advice for a balanced life.
-            </p>
-          </div>
+  {/* Same Home Page Fade */}
+  <div className="absolute inset-0 bg-gradient-to-r from-[#FAF8F5] via-[#FAF8F5]/80 to-transparent lg:from-[#FAF8F5] lg:via-[#FAF8F5]/65 lg:to-transparent" />
+</div>
 
-          <div className={styles.heroImage}>
-            <img
-              src="https://shatavariayurveda.com/_ipx/f_webp/images/blog/ayurvedic-consultation-europe.png"
-              alt="Ayurvedic herbs and natural wellness"
-            />
-          </div>
-        </div>
-      </section>
+{/* Main Content */}
+<div className="relative z-10 max-w-7xl mx-auto min-h-[320px] sm:min-h-[360px] lg:min-h-[400px] px-6 sm:px-8 md:px-10 lg:px-12 flex items-center">
 
-      {/* BLOG AREA */}
-      <section className={styles.blogSection}>
-        <div className={styles.container}>
-          <div className={styles.blogLayout}>
-            {/* LEFT */}
-            <div className={styles.blogMain}>
-              <div className={styles.articleHeader}>
-                <div>
-                  <div className={styles.sectionTitle}>
-                    <h2>
-                      {selectedCategory === "All Categories"
-                        ? "Latest Articles"
-                        : selectedCategory}
-                      {" "}({filteredArticles.length})
-                    </h2>
-                    <span>
-                      <LeafIcon size={13} />
-                    </span>
-                  </div>
-                </div>
+  <div className="w-full lg:w-[58%] py-8 lg:py-0">
 
+    {/* Label */}
+    <div className="inline-flex items-center gap-2 text-[11px] sm:text-xs font-semibold tracking-widest text-[#2D5A27] uppercase mb-4">
+      <span>BLOG &amp; HEALTH TIPS</span>
+      <LeafIcon size={14} />
+    </div>
+
+    {/* Heading */}
+    <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-[52px] font-serif font-bold text-[#1E2D18] leading-[1.08]">
+      Ayurvedic Wisdom
+      <br />
+      <span className="italic font-normal text-[#2D5A27]">
+        For A Better Life
+      </span>
+    </h1>
+
+    {/* Description */}
+    <p className="mt-5 text-[#5C6F63] text-sm sm:text-base leading-relaxed max-w-lg">
+      Discover natural ways to improve your health and well-being with
+      Ayurveda. Tips, insights and expert advice for a balanced life.
+    </p>
+
+  </div>
+
+</div>
+</section>
+      {/* MAIN CONTENT AREA */}
+      <section className="py-10 px-4 md:px-12">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-8">
+          
+          {/* LEFT 3-COLUMNS ARTICLE GRID (75% Width on Desktop) */}
+          <div className="lg:col-span-3">
+            {/* Header & Sort Control */}
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6">
+              <div className="flex items-center gap-2">
+                <h2 className="text-xl font-bold text-[#1E2D18]">
+                  {selectedCategory === "All Categories" ? "Latest Articles" : selectedCategory}
+                </h2>
+                <span className="text-xs text-gray-500 font-medium">
+                  ({filteredArticles.length})
+                </span>
+              </div>
+
+              <div className="mt-2 sm:mt-0 flex items-center gap-3">
                 {selectedCategory !== "All Categories" && (
                   <button
-                    onClick={() => setSelectedCategory("All Categories")}
-                    style={{
-                      border: "none",
-                      background: "none",
-                      color: "#2f6b20",
-                      cursor: "pointer",
-                      fontSize: "13px",
-                      fontWeight: 600,
-                    }}
+                    onClick={() => handleCategorySelect("All Categories")}
+                    className="text-xs font-semibold text-[#2D5A27] hover:underline"
                   >
                     Clear Filter ✕
                   </button>
                 )}
-              </div>
-
-              <div className={styles.articleGrid}>
-                {filteredArticles.map((article) => (
-                  <article
-                    className={styles.articleCard}
-                    key={article.id}
-                    onClick={() => setSelectedArticle(article)}
-                    style={{ cursor: "pointer" }}
-                  >
-                    <div className={styles.articleImage}>
-                      <img
-                        src={article.image}
-                        alt={article.title}
-                        onError={(e) => {
-                          (e.target as HTMLImageElement).src =
-                            "https://shatavariayurveda.com/_ipx/f_webp/images/blog/ayurvedic-consultation-europe.png";
-                        }}
-                      />
-
-                      <div className={styles.dateBadge}>
-                        <strong>{article.date}</strong>
-                        <span>{article.month}</span>
-                      </div>
-                    </div>
-
-                    <div className={styles.articleBody}>
-                      <span className={styles.category}>{article.category}</span>
-
-                      <h3>{article.title}</h3>
-
-                      <p>{article.excerpt}</p>
-
-                      <div className={styles.articleBottom}>
-                        <span className={styles.readTime}>
-                          <ClockIcon />
-                          {article.time}
-                        </span>
-
-                        <span
-                          className={styles.readMore}
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setSelectedArticle(article);
-                          }}
-                        >
-                          Read More
-                          <ArrowIcon />
-                        </span>
-                      </div>
-                    </div>
-                  </article>
-                ))}
-              </div>
-
-              {filteredArticles.length === 0 && (
-                <div style={{ textAlign: "center", padding: "60px 20px" }}>
-                  <p style={{ fontSize: "16px", color: "#646961", marginBottom: "16px" }}>
-                    No articles found matching &quot;{searchQuery}&quot;.
-                  </p>
-                  <button
-                    onClick={() => {
-                      setSearchQuery("");
-                      setSelectedCategory("All Categories");
-                    }}
-                    style={{
-                      padding: "8px 18px",
-                      backgroundColor: "#2f6b20",
-                      color: "#fff",
-                      border: "none",
-                      borderRadius: "6px",
-                      cursor: "pointer",
-                      fontWeight: 600,
-                    }}
-                  >
-                    Reset Search
-                  </button>
+                <div className="text-xs text-gray-500 flex items-center gap-1.5">
+                  <span>Sort by:</span>
+                  <select className="bg-white border border-gray-200 rounded px-2 py-1 text-gray-700 outline-none text-xs">
+                    <option>Latest</option>
+                    <option>Oldest</option>
+                  </select>
                 </div>
-              )}
+              </div>
             </div>
 
-            {/* SIDEBAR */}
-            <aside className={styles.sidebar}>
-              {/* SEARCH */}
-              <div className={styles.sideBox}>
-                <div className={styles.sideTitle}>
-                  <h3>Search Blog</h3>
-                </div>
-
-                <div className={styles.searchBox}>
-                  <input
-                    type="text"
-                    placeholder="Search articles..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                  />
-
-                  <button aria-label="Search" type="button">
-                    <SearchIcon />
-                  </button>
-                </div>
-              </div>
-
-              {/* CATEGORIES */}
-              <div className={styles.sideBox}>
-                <div className={styles.sideTitle}>
-                  <h3>Categories</h3>
-                  <LeafIcon size={14} />
-                </div>
-
-                <div className={styles.categories}>
-                  {CATEGORY_LIST.map((cat) => (
-                    <div
-                      key={cat.name}
-                      onClick={() => setSelectedCategory(cat.name)}
-                      style={{
-                        cursor: "pointer",
-                        backgroundColor:
-                          selectedCategory === cat.name ? "#eef4e7" : "transparent",
-                        borderRadius: "6px",
-                        padding: "6px 8px",
-                        fontWeight: selectedCategory === cat.name ? 700 : 500,
+            {/* EXACT 3 CARDS PER ROW GRID */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+              {currentBlogs.map((article) => (
+                <article
+                  key={article.id}
+                  onClick={() => setSelectedArticle(article)}
+                  className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col cursor-pointer border border-gray-100 group"
+                >
+                  {/* Image & Date Badge */}
+                  <div className="relative w-full h-44 bg-gray-100 overflow-hidden">
+                    <img
+                      src={article.image}
+                      alt={article.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src =
+                          "https://shatavariayurveda.com/_ipx/f_webp/images/blog/ayurvedic-consultation-europe.png";
                       }}
-                    >
-                      <span>{cat.icon}</span>
-                      <p>{cat.name}</p>
-                      <b>({categoryCounts[cat.name] || 0})</b>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* POPULAR POSTS */}
-              <div className={styles.sideBox}>
-                <div className={styles.sideTitle}>
-                  <h3>Popular Posts</h3>
-                  <LeafIcon size={14} />
-                </div>
-
-                <div className={styles.popularPosts}>
-                  {publishedBlogs.slice(0, 4).map((post) => (
-                    <div
-                      key={post.id}
-                      onClick={() => setSelectedArticle(post)}
-                      style={{
-                        cursor: "pointer",
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "12px",
-                        marginBottom: "12px",
-                      }}
-                    >
-                      <img
-                        src={post.image}
-                        alt={post.title}
-                        style={{
-                          width: "56px",
-                          height: "56px",
-                          objectFit: "cover",
-                          borderRadius: "6px",
-                        }}
-                        onError={(e) => {
-                          (e.target as HTMLImageElement).src =
-                            "https://vaidyarajindia.com/images/combo-products.jpg";
-                        }}
-                      />
-
-                      <span>
-                        <strong style={{ fontSize: "13px", display: "block", color: "#1e2d18" }}>
-                          {post.title}
-                        </strong>
-                        <small style={{ color: "#718468", fontSize: "11px" }}>
-                          {post.month} {post.date}, {post.year || "2024"}
-                        </small>
+                    />
+                    <div className="absolute top-3 left-3 bg-[#2D5A27] text-white rounded-lg px-2.5 py-1 text-center shadow-md">
+                      <span className="block text-sm font-bold leading-none">
+                        {article.date}
+                      </span>
+                      <span className="block text-[10px] uppercase tracking-wider leading-tight">
+                        {article.month}
                       </span>
                     </div>
-                  ))}
-                </div>
-              </div>
+                  </div>
 
-              {/* TAGS */}
-              <div className={styles.sideBox}>
-                <div className={styles.sideTitle}>
-                  <h3>Tags</h3>
-                  <LeafIcon size={14} />
-                </div>
+                  {/* Body Content */}
+                  <div className="p-4 flex flex-col flex-grow">
+                    <span className="text-[10px] font-bold text-[#2D5A27] uppercase tracking-wider mb-1.5">
+                      {article.category}
+                    </span>
 
-                <div className={styles.tags}>
-                  <span># Ayurveda</span>
-                  <span># Health</span>
-                  <span># Wellness</span>
-                  <span># Herbs</span>
-                  <span># Yoga</span>
-                  <span># Panchakarma</span>
-                  <span># Diet</span>
-                  <span># Natural Healing</span>
-                </div>
+                    <h3 className="text-sm font-bold text-[#1E2D18] leading-snug mb-2 line-clamp-2 group-hover:text-[#2D5A27] transition-colors">
+                      {article.title}
+                    </h3>
+
+                    <p className="text-xs text-gray-600 leading-relaxed mb-4 line-clamp-3 flex-grow">
+                      {article.excerpt}
+                    </p>
+
+                    {/* Footer / Read More */}
+                    <div className="pt-3 border-t border-gray-100 flex items-center justify-between text-[11px] text-gray-500 mt-auto">
+                      <span className="flex items-center gap-1">
+                        <Clock className="w-3.5 h-3.5 text-gray-400" />
+                        {article.time}
+                      </span>
+
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setSelectedArticle(article);
+                        }}
+                        className="flex items-center gap-1 font-semibold text-[#2D5A27] hover:underline"
+                      >
+                        Read More <ArrowRight className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+
+            {/* Empty Search Result State */}
+            {filteredArticles.length === 0 && (
+              <div className="text-center py-16 bg-white rounded-xl shadow-sm border border-gray-100 my-4">
+                <p className="text-gray-500 text-sm mb-4">
+                  No articles found matching &quot;{searchQuery}&quot;.
+                </p>
+                <button
+                  onClick={() => {
+                    setSearchQuery("");
+                    setSelectedCategory("All Categories");
+                  }}
+                  className="px-4 py-2 bg-[#2D5A27] text-white font-semibold text-xs rounded-md hover:bg-[#23471e] transition"
+                >
+                  Reset Filters
+                </button>
               </div>
-            </aside>
+            )}
+
+            {/* PAGINATION NUMBERS */}
+            {totalPages > 1 && (
+              <div className="flex justify-center items-center gap-1.5 mt-10">
+                <button
+                  onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                  disabled={currentPage === 1}
+                  className="w-8 h-8 flex items-center justify-center rounded-full border border-gray-200 text-gray-600 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-gray-100 text-xs"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                </button>
+
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                  <button
+                    key={page}
+                    onClick={() => setCurrentPage(page)}
+                    className={`w-8 h-8 rounded-full text-xs font-semibold transition-colors ${
+                      currentPage === page
+                        ? "bg-[#2D5A27] text-white"
+                        : "bg-white border border-gray-200 text-gray-700 hover:bg-gray-50"
+                    }`}
+                  >
+                    {page}
+                  </button>
+                ))}
+
+                <button
+                  onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+                  disabled={currentPage === totalPages}
+                  className="w-8 h-8 flex items-center justify-center rounded-full border border-gray-200 text-gray-600 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-gray-100 text-xs"
+                >
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
+            )}
           </div>
+
+          {/* RIGHT SIDEBAR (25% Width on Desktop) */}
+          <aside className="lg:col-span-1 space-y-6">
+            {/* Search Box */}
+            <div className="bg-white p-5 rounded-xl border border-gray-100 shadow-sm">
+              <h3 className="text-sm font-bold text-[#1E2D18] mb-3">Search Blog</h3>
+              <div className="relative flex items-center">
+                <input
+                  type="text"
+                  placeholder="Search articles..."
+                  value={searchQuery}
+                  onChange={handleSearchChange}
+                  className="w-full pl-3 pr-10 py-2 border border-gray-200 rounded-lg text-xs outline-none focus:border-[#2D5A27]"
+                />
+                <button
+                  aria-label="Search"
+                  type="button"
+                  className="absolute right-1 p-1.5 bg-[#2D5A27] text-white rounded-md hover:bg-[#23471e] transition"
+                >
+                  <Search className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            </div>
+
+            {/* Categories */}
+            <div className="bg-white p-5 rounded-xl border border-gray-100 shadow-sm">
+              <div className="flex items-center justify-between mb-3 border-b border-gray-100 pb-2">
+                <h3 className="text-sm font-bold text-[#1E2D18]">Categories</h3>
+                <LeafIcon size={14} />
+              </div>
+
+              <ul className="space-y-1">
+                {CATEGORY_LIST.map((cat) => {
+                  const isSelected = selectedCategory === cat.name;
+                  return (
+                    <li
+                      key={cat.name}
+                      onClick={() => handleCategorySelect(cat.name)}
+                      className={`flex items-center justify-between p-2 rounded-lg cursor-pointer text-xs transition ${
+                        isSelected
+                          ? "bg-[#eef4e7] font-bold text-[#1E2D18]"
+                          : "hover:bg-gray-50 text-gray-600"
+                      }`}
+                    >
+                      <div className="flex items-center gap-2">
+                        <span>{cat.icon}</span>
+                        <span className="capitalize">{cat.name.toLowerCase()}</span>
+                      </div>
+                      <span className="text-gray-400 font-normal">
+                        ({categoryCounts[cat.name] || 0})
+                      </span>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+
+            {/* Popular Posts */}
+            <div className="bg-white p-5 rounded-xl border border-gray-100 shadow-sm">
+              <div className="flex items-center justify-between mb-4 border-b border-gray-100 pb-2">
+                <h3 className="text-sm font-bold text-[#1E2D18]">Popular Posts</h3>
+                <LeafIcon size={14} />
+              </div>
+
+              <div className="space-y-3">
+                {publishedBlogs.slice(0, 4).map((post) => (
+                  <div
+                    key={post.id}
+                    onClick={() => setSelectedArticle(post)}
+                    className="flex items-center gap-3 cursor-pointer group"
+                  >
+                    <img
+                      src={post.image}
+                      alt={post.title}
+                      className="w-12 h-12 rounded-md object-cover flex-shrink-0"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src =
+                          "https://shatavariayurveda.com/_ipx/f_webp/images/blog/ayurvedic-consultation-europe.png";
+                      }}
+                    />
+                    <div className="flex-1 min-w-0">
+                      <h4 className="text-xs font-semibold text-[#1E2D18] line-clamp-2 leading-tight group-hover:text-[#2D5A27] transition-colors">
+                        {post.title}
+                      </h4>
+                      <p className="text-[10px] text-gray-400 mt-0.5">
+                        {post.month} {post.date}, {post.year || "2026"}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Tags Section */}
+            <div className="bg-white p-5 rounded-xl border border-gray-100 shadow-sm">
+              <div className="flex items-center justify-between mb-3 border-b border-gray-100 pb-2">
+                <h3 className="text-sm font-bold text-[#1E2D18]">Tags</h3>
+                <LeafIcon size={14} />
+              </div>
+
+              <div className="flex flex-wrap gap-1.5">
+                {[
+                  "# Ayurveda",
+                  "# Health",
+                  "# Wellness",
+                  "# Herbs",
+                  "# Yoga",
+                  "# Panchakarma",
+                  "# Diet",
+                  "# Natural Healing",
+                ].map((tag) => (
+                  <span
+                    key={tag}
+                    className="bg-gray-100 text-gray-600 px-2.5 py-1 rounded-full text-[11px] font-medium hover:bg-[#eef4e7] hover:text-[#2D5A27] cursor-pointer transition"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </aside>
+
         </div>
       </section>
 
-      {/* FULL ARTICLE VIEW MODAL */}
+      {/* READ ARTICLE MODAL */}
       {selectedArticle && (
         <div
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: "rgba(0,0,0,0.6)",
-            backdropFilter: "blur(4px)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            zIndex: 999999,
-            padding: "20px",
-          }}
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4"
           onClick={() => setSelectedArticle(null)}
         >
           <div
-            style={{
-              backgroundColor: "#ffffff",
-              borderRadius: "16px",
-              maxWidth: "750px",
-              width: "100%",
-              maxHeight: "85vh",
-              overflowY: "auto",
-              padding: "32px",
-              boxShadow: "0 20px 40px rgba(0,0,0,0.2)",
-            }}
+            className="bg-white rounded-2xl max-w-2xl w-full max-h-[85vh] overflow-y-auto p-6 md:p-8 shadow-2xl relative"
             onClick={(e) => e.stopPropagation()}
           >
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "flex-start",
-                marginBottom: "16px",
-              }}
-            >
-              <span
-                style={{
-                  display: "inline-block",
-                  padding: "4px 12px",
-                  borderRadius: "12px",
-                  fontSize: "12px",
-                  fontWeight: 700,
-                  backgroundColor: "#e8f4e1",
-                  color: "#285e1b",
-                  textTransform: "uppercase",
-                }}
-              >
+            <div className="flex items-center justify-between mb-4">
+              <span className="px-3 py-1 rounded-full text-xs font-bold uppercase bg-[#e8f4e1] text-[#2D5A27]">
                 {selectedArticle.category}
               </span>
               <button
                 onClick={() => setSelectedArticle(null)}
-                style={{
-                  background: "none",
-                  border: "none",
-                  fontSize: "24px",
-                  cursor: "pointer",
-                  color: "#6b7280",
-                }}
+                className="text-gray-400 hover:text-gray-600 text-2xl leading-none"
               >
                 &times;
               </button>
             </div>
 
-            <h2
-              style={{
-                fontSize: "24px",
-                fontWeight: 700,
-                color: "#1e2d18",
-                marginBottom: "12px",
-              }}
-            >
+            <h2 className="text-xl md:text-2xl font-bold text-[#1E2D18] mb-3">
               {selectedArticle.title}
             </h2>
 
-            <div
-              style={{
-                display: "flex",
-                gap: "16px",
-                fontSize: "13px",
-                color: "#718468",
-                marginBottom: "20px",
-              }}
-            >
-              <span>📅 {selectedArticle.date} {selectedArticle.month} {selectedArticle.year || "2024"}</span>
+            <div className="flex flex-wrap gap-4 text-xs text-gray-500 mb-5">
+              <span>📅 {selectedArticle.date} {selectedArticle.month} {selectedArticle.year || "2026"}</span>
               <span>⏱ {selectedArticle.time}</span>
               <span>✍ {selectedArticle.author || "Dr. Sharma"}</span>
             </div>
 
-            <div style={{ width: "100%", borderRadius: "12px", overflow: "hidden", marginBottom: "20px" }}>
+            <div className="w-full rounded-xl overflow-hidden mb-5 max-h-72 bg-gray-100">
               <img
                 src={selectedArticle.image}
                 alt={selectedArticle.title}
-                style={{ width: "100%", maxHeight: "360px", objectFit: "cover" }}
+                className="w-full h-full object-cover"
                 onError={(e) => {
                   (e.target as HTMLImageElement).src =
                     "https://shatavariayurveda.com/_ipx/f_webp/images/blog/ayurvedic-consultation-europe.png";
@@ -516,64 +478,24 @@ export default function BlogPage() {
               />
             </div>
 
-            <p
-              style={{
-                fontSize: "16px",
-                lineHeight: "1.7",
-                color: "#374151",
-                marginBottom: "16px",
-                fontWeight: 500,
-              }}
-            >
+            <p className="text-sm font-medium leading-relaxed text-gray-800 mb-4">
               {selectedArticle.excerpt}
             </p>
 
-            <div
-              style={{
-                fontSize: "15px",
-                lineHeight: "1.8",
-                color: "#4b5563",
-                whiteSpace: "pre-line",
-              }}
-            >
+            <div className="text-xs md:text-sm leading-relaxed text-gray-600 whitespace-pre-line border-t border-gray-100 pt-4">
               {selectedArticle.content || selectedArticle.excerpt}
             </div>
 
-            <div
-              style={{
-                marginTop: "28px",
-                paddingTop: "20px",
-                borderTop: "1px solid #e5e7eb",
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-              }}
-            >
+            <div className="mt-6 pt-4 border-t border-gray-200 flex items-center justify-between">
               <Link
                 href="/book-appointment"
-                style={{
-                  padding: "10px 20px",
-                  backgroundColor: "#2f6823",
-                  color: "#ffffff",
-                  borderRadius: "8px",
-                  textDecoration: "none",
-                  fontWeight: 600,
-                  fontSize: "14px",
-                }}
+                className="px-4 py-2 bg-[#2D5A27] text-white rounded-lg font-semibold text-xs md:text-sm hover:bg-[#23471e] transition"
               >
                 Book a Consultation
               </Link>
               <button
                 onClick={() => setSelectedArticle(null)}
-                style={{
-                  padding: "10px 20px",
-                  backgroundColor: "#f3f4f6",
-                  color: "#374151",
-                  border: "none",
-                  borderRadius: "8px",
-                  fontWeight: 600,
-                  cursor: "pointer",
-                }}
+                className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg font-semibold text-xs md:text-sm hover:bg-gray-200 transition"
               >
                 Close
               </button>
@@ -582,39 +504,44 @@ export default function BlogPage() {
         </div>
       )}
 
-      {/* NEWSLETTER */}
-      <section className={styles.newsletterSection}>
-        <div className={styles.container}>
-          <div className={styles.newsletter}>
-            <div className={styles.newsletterIcon}>
-              <span>
-                <LeafIcon size={42} />
-              </span>
-            </div>
-
-            <div className={styles.newsletterText}>
-              <small>Stay Updated with Ayurvedic Tips</small>
-              <h2>Subscribe to Our Newsletter</h2>
-              <p>
-                Get the latest health tips, Ayurvedic remedies and special
-                offers.
+      {/* NEWSLETTER FOOTER SECTION */}
+      <section className="py-10 px-4 md:px-12">
+        <div className="max-w-7xl mx-auto">
+          <div className="bg-[#2D5A27] text-white rounded-2xl p-8 md:p-10 flex flex-col lg:flex-row items-center justify-between gap-6 relative overflow-hidden">
+            <div className="text-center lg:text-left">
+              <small className="text-xs uppercase tracking-wider text-green-200 font-semibold">
+                Stay Updated with Ayurvedic Tips
+              </small>
+              <h2 className="text-2xl md:text-3xl font-bold mt-1 mb-1">
+                Subscribe to Our Newsletter
+              </h2>
+              <p className="text-xs md:text-sm text-green-100 max-w-md">
+                Get the latest health tips, Ayurvedic remedies and special offers.
               </p>
             </div>
 
-            <form className={styles.newsletterForm} onSubmit={handleSubscribe}>
+            <form
+              className="flex flex-col sm:flex-row gap-2.5 w-full lg:w-auto z-10"
+              onSubmit={handleSubscribe}
+            >
               <input
                 type="email"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email address"
+                className="px-4 py-2.5 rounded-lg border-none text-white outline-none text-xs min-w-[260px]"
               />
-
-              <button type="submit">Subscribe</button>
+              <button
+                type="submit"
+                className="px-5 py-2.5 bg-[#1E2D18] text-white font-semibold rounded-lg hover:bg-black transition text-xs"
+              >
+                Subscribe
+              </button>
             </form>
 
-            <div className={styles.newsletterLeaves}>
-              <LeafIcon size={72} />
+            <div className="absolute -right-6 -bottom-6 opacity-10 pointer-events-none">
+              <LeafIcon size={140} />
             </div>
           </div>
         </div>

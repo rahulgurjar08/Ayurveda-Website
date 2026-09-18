@@ -1,165 +1,49 @@
-"use client";
+'use client';
 
-import { FormEvent, useState } from "react";
-import styles from "./Contact.module.css";
-import { useApp } from "@/context/AppContext";
+import { useState, FormEvent } from 'react';
+import Image from 'next/image';
+import { useApp } from '@/context/AppContext';
 
-/* =========================================================
-   IMAGES
-========================================================= */
-
-const IMAGES = {
-  hero:
-    "https://images.unsplash.com/photo-1603398938378-e54eab446dde?auto=format&fit=crop&w=1000&q=85",
-
-  clinic:
-    "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=900&q=90",
-
-  herbs:
-    "https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=800&q=90",
-
-  help:
-    "https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=700&q=90",
-};
-
-/* =========================================================
-   ICONS
-========================================================= */
-
-function LeafIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M20.8 3.2C12.7 2.7 5.1 5.7 4 12.1c-.7 4.1 2.1 7 5.8 7 6.5 0 9.7-7.8 11-15.9Z" />
-      <path d="M3.5 21c3.1-5.1 7.1-8.2 13.3-11.1" />
-    </svg>
-  );
-}
-
-function PhoneIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M7 3h3l1.5 4-2 1.5a16 16 0 0 0 6 6L17 12l4 1.5v3c0 1.1-.9 2-2 2C10.7 18.5 5.5 13.3 5.5 5c0-1.1.9-2 2-2Z" />
-    </svg>
-  );
-}
-
-function MailIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <rect x="3" y="5" width="18" height="14" rx="2" />
-      <path d="m4 7 8 6 8-6" />
-    </svg>
-  );
-}
-
-function ClockIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <circle cx="12" cy="12" r="9" />
-      <path d="M12 7v5l3 2" />
-    </svg>
-  );
-}
-
-function LocationIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z" />
-      <circle cx="12" cy="10" r="2.5" />
-    </svg>
-  );
-}
-
-function CalendarIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <rect x="3" y="5" width="18" height="16" rx="2" />
-      <path d="M7 3v4M17 3v4M3 10h18" />
-    </svg>
-  );
-}
-
-function SendIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="m21 3-7.2 18-3.4-7.4L3 10.2 21 3Z" />
-      <path d="m10.4 13.6 4.4-4.4" />
-    </svg>
-  );
-}
-
-function ShieldIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M12 3 20 6v5c0 5.2-3.3 8.8-8 10-4.7-1.2-8-4.8-8-10V6l8-3Z" />
-      <path d="m8.5 12 2.3 2.3 4.8-5" />
-    </svg>
-  );
-}
-
-function EnvironmentIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M20 4C11 4 5 7 5 13c0 4 3 7 7 7 6 0 8-6 8-16Z" />
-      <path d="M4 21c3-5 7-8 13-11" />
-    </svg>
-  );
-}
-
-function TreatmentIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M8 4v16M16 4v16M4 8h16M4 16h16" />
-    </svg>
-  );
-}
-
-function CareIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M20.8 8.7c0 6.1-8.8 11.1-8.8 11.1S3.2 14.8 3.2 8.7A5.2 5.2 0 0 1 12 5.6a5.2 5.2 0 0 1 8.8 3.1Z" />
-    </svg>
-  );
-}
-
-function ChevronIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="m7 10 5 5 5-5" />
-    </svg>
-  );
-}
-
-function NewsletterIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <rect x="3" y="5" width="18" height="14" rx="2" />
-      <path d="m4 7 8 6 8-6" />
-    </svg>
-  );
-}
-
-/* =========================================================
-   CONTACT PAGE
-========================================================= */
-
-export default function ContactPage() {
+export default function ContactUsPage() {
   const { addEnquiry } = useApp();
-  const [subscribed, setSubscribed] = useState(false);
-  const [email, setEmail] = useState("");
+
+  // FAQ Accordion State
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  // Form Submission States
   const [contactSubmitted, setContactSubmitted] = useState(false);
+  const [subscribed, setSubscribed] = useState(false);
+  const [newsletterEmail, setNewsletterEmail] = useState("");
 
-  function handleNewsletter(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
+  const toggleFaq = (index: number) => {
+    setOpenFaq(openFaq === index ? null : index);
+  };
 
-    if (!email.trim()) return;
+  const faqs = [
+    {
+      q: 'Do I need to book an appointment?',
+      a: 'Yes, booking an appointment in advance helps us ensure dedicated time and care for your consultation.'
+    },
+    {
+      q: 'What should I bring for my first consultation?',
+      a: 'Please bring any previous medical reports, prescriptions, and a list of current medications you are taking.'
+    },
+    {
+      q: 'Are Ayurvedic treatments safe for everyone?',
+      a: 'Yes, our treatments are customized according to your body type (Prakriti) and are completely safe under expert guidance.'
+    },
+    {
+      q: 'How long does a consultation take?',
+      a: 'A typical initial consultation takes between 30 to 45 minutes.'
+    },
+    {
+      q: 'Do you offer online consultations?',
+      a: 'Yes, we provide video consultations for international and outstation patients.'
+    }
+  ];
 
-    setSubscribed(true);
-    setEmail("");
-  }
-
- 
-  const handleContact = (e: React.FormEvent<HTMLFormElement>) => {
+  // Contact Form Submission Handler
+  const handleContactSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const form = e.currentTarget;
@@ -168,7 +52,7 @@ export default function ContactPage() {
     const name = formData.get("name")?.toString().trim() || "";
     const phone = formData.get("phone")?.toString().trim() || "";
     const email = formData.get("email")?.toString().trim() || "";
-    const treatment = formData.get("treatment")?.toString().trim() || "";
+    const subject = formData.get("subject")?.toString().trim() || "General Enquiry";
     const message = formData.get("message")?.toString().trim() || "";
 
     if (name && phone) {
@@ -176,7 +60,7 @@ export default function ContactPage() {
         name,
         phone,
         email,
-        treatment: treatment || "General Enquiry",
+        treatment: subject,
         concern: message,
         source: "contact",
       });
@@ -185,645 +69,393 @@ export default function ContactPage() {
     setContactSubmitted(true);
 
     const whatsappNumber = "918239239249";
+    const whatsappMessage = `New Contact Form Enquiry 🌿\n\nName: ${name}\nPhone: ${phone}\nEmail: ${email}\nSubject: ${subject}\n\nMessage:\n${message}\n\n--------------------------------\nSent from Website`;
 
-    const whatsappMessage = `
-New Contact Form Enquiry 🌿
-
-Name: ${name}
-Phone: ${phone}
-Email: ${email}
-Interested Treatment: ${treatment}
-
-Message:
-${message}
-
---------------------------------
-Sent from Ayurveda Website
-`;
-
-    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-      whatsappMessage
-    )}`;
-
-    // Open WhatsApp
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
     window.open(whatsappURL, "_blank");
 
-    // Form reset
     form.reset();
   };
 
+  // Newsletter Handler
+  const handleNewsletterSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!newsletterEmail.trim()) return;
+    setSubscribed(true);
+    setNewsletterEmail("");
+  };
+
   return (
-    <main className={styles.contactPage}>
-      {/* =====================================================
-          HERO
-      ===================================================== */}
+    <div className="bg-[#f9faf6] text-gray-800 font-sans min-h-screen py-10 px-4 sm:px-8 lg:px-16 space-y-16 max-w-7xl mx-auto">
+      
+      {/* SECTION 1: HERO / CONTACT HEADER */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#F3F8F0] to-[#FAF9F5] min-h-[400px] sm:min-h-[440px] lg:min-h-[470px]">
 
-      <section className={styles.contactHero}>
-        <div className={styles.heroContainer}>
-          <div className={styles.heroContent}>
-            <div className={styles.heroBadge}>
-              <LeafIcon />
-              <span>We&apos;re Here for You</span>
-            </div>
+  {/* Right Side Image */}
+  <div className="absolute inset-y-0 right-0 w-full lg:w-[50%]">
+    <Image
+      src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?q=90&w=1000&auto=format&fit=crop"
+      alt="Ayurveda Herbal Care"
+      fill
+      priority
+      className="object-cover object-center"
+    />
 
-            <h1>
-              We&apos;re Here to Help
-              <br />
-              <span>You Live a Healthier Life</span>
-            </h1>
-
-            <p className={styles.heroDescription}>
-              Have questions about your health or our natural wellness
-              treatments? We&apos;re always happy to listen, guide, and help
-              you find the right path toward better health.
-            </p>
-
-            <div className={styles.heroActions}>
-              <a href="#contact-form" className={styles.primaryButton}>
-                Send Us a Message
-                <span>→</span>
-              </a>
-
-              <a href="#clinic" className={styles.secondaryButton}>
-                Visit Our Clinic
-              </a>
-            </div>
-
-            <div className={styles.heroMiniInfo}>
-              <div className={styles.miniInfoItem}>
-                <div className={styles.miniIcon}>
-                  <PhoneIcon />
-                </div>
-
-                <div>
-                  <span>Call Us</span>
-                  <strong>+91 82392 39249</strong>
-                </div>
-              </div>
-
-              <div className={styles.miniInfoItem}>
-                <div className={styles.miniIcon}>
-                  <CalendarIcon />
-                </div>
-
-                <div>
-                  <span>Appointments</span>
-                  <strong>Available Daily</strong>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className={styles.heroImageWrap}>
-            <div className={styles.heroImageShape}>
-              <img
-                src={IMAGES.hero}
-                alt="Natural wellness consultation"
-                className={styles.heroImage}
-              />
-            </div>
-
-            <div className={styles.heroFloatingCard}>
-              <div className={styles.floatingIcon}>
-                <LeafIcon />
-              </div>
-
-              <div>
-                <strong>Natural Wellness</strong>
-                <span>Personalized care for you</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* =====================================================
-          CONTACT MAIN
-      ===================================================== */}
-
-      <section className={styles.contactMain}>
-        <div className={styles.contactContainer}>
-          {/* CONTACT INFO */}
-
-          <div className={styles.contactInfo}>
-            <div className={styles.sectionEyebrow}>
-              <LeafIcon />
-              CONTACT US
-            </div>
-
-            <h2>
-              Let&apos;s Start a
-              <br />
-              <span>Conversation</span>
-            </h2>
-
-            <p className={styles.contactIntro}>
-              Whether you&apos;re looking for answers, need help choosing a
-              treatment, or simply want to know more about our approach, feel
-              free to reach out.
-            </p>
-
-            <div className={styles.infoCards}>
-              <div className={styles.infoCard}>
-                <div className={styles.infoIcon}>
-                  <PhoneIcon />
-                </div>
-
-                <div>
-                  <span>Phone</span>
-                  <a href="tel:+918239239249">+91 82392 39249</a>
-                  <small>Mon - Sat, 9 AM - 7 PM</small>
-                </div>
-              </div>
-
-              <div className={styles.infoCard}>
-                <div className={styles.infoIcon}>
-                  <MailIcon />
-                </div>
-
-                <div>
-                  <span>Email</span>
-                  <a href="mailto:contact.prisminfotech@gmail.com">
-                    contact.prisminfotech@gmail.com
-                  </a>
-                  <small>We reply within 24 hours</small>
-                </div>
-              </div>
-
-              <div className={styles.infoCard}>
-                <div className={styles.infoIcon}>
-                  <LocationIcon />
-                </div>
-
-                <div>
-                  <span>Visit Us</span>
-                  <strong>Kota</strong>
-                  <small>Rajasthan</small>
-                </div>
-              </div>
-
-              <div className={styles.infoCard}>
-                <div className={styles.infoIcon}>
-                  <ClockIcon />
-                </div>
-
-                <div>
-                  <span>Working Hours</span>
-                  <strong>9:00 AM - 7:00 PM</strong>
-                  <small>Sunday: 10 AM - 2 PM</small>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* =====================================================
-              CONTACT FORM
-          ===================================================== */}
-
-<div
-  className={styles.contactFormCard}
-  id="contact-form"
->
-  <div className={styles.formHeader}>
-    <div className={styles.formIcon}>
-      <MailIcon />
-    </div>
-
-    <div>
-      <h3>Send Us a Message</h3>
-      <p>We&apos;ll get back to you as soon as possible.</p>
-    </div>
+    {/* Same Home Banner Fade */}
+    <div className="absolute inset-0 bg-gradient-to-r from-[#F3F8F0] via-[#F3F8F0]/70 to-transparent lg:from-[#F3F8F0] lg:via-[#F3F8F0]/60 lg:to-transparent" />
   </div>
 
-  <form
-    className={styles.contactForm}
-    onSubmit={handleContact}
-  >
-    {contactSubmitted && (
-      <div
-        style={{
-          backgroundColor: "#eaf5e6",
-          color: "#225819",
-          padding: "12px 16px",
-          borderRadius: "8px",
-          marginBottom: "16px",
-          fontWeight: 600,
-          fontSize: "14px",
-          border: "1px solid #bce3b2",
-        }}
-      >
-        ✓ Your inquiry has been submitted and recorded! Our team will get back to you shortly.
-      </div>
-    )}
+  {/* Content */}
+  <div className="relative z-10 max-w-7xl mx-auto min-h-[400px] sm:min-h-[440px] lg:min-h-[470px] px-6 sm:px-8 md:px-10 lg:px-12 flex items-center">
 
-    <div className={styles.formRow}>
-      <div className={styles.formGroup}>
-        <label htmlFor="name">Full Name</label>
+    <div className="w-full lg:w-[60%] py-8 lg:py-0">
 
-        <input
-          id="name"
-          name="name"
-          type="text"
-          placeholder="Enter your name"
-          required
-        />
+      {/* Label */}
+      <div className="inline-flex items-center gap-2 text-xs font-semibold text-emerald-800 uppercase tracking-wider mb-4">
+        <span>CONTACT US</span>
+        <span className="text-emerald-700">🌱</span>
       </div>
 
-      <div className={styles.formGroup}>
-        <label htmlFor="phone">Phone Number</label>
-
-        <input
-          id="phone"
-          name="phone"
-          type="tel"
-          placeholder="+91 98765 43210"
-          required
-        />
-      </div>
-    </div>
-
-    <div className={styles.formGroup}>
-      <label htmlFor="email">Email Address</label>
-
-      <input
-        id="email"
-        name="email"
-        type="email"
-        placeholder="Enter your email"
-        required
-      />
-    </div>
-
-    <div className={styles.formGroup}>
-      <label htmlFor="treatment">
-        Interested Treatment
-      </label>
-
-      <select
-        id="treatment"
-        name="treatment"
-        defaultValue=""
-        required
-      >
-        <option value="" disabled>
-          Select a treatment
-        </option>
-
-        <option value="Ayurvedic Consultation">
-          Ayurvedic Consultation
-        </option>
-
-        <option value="Panchakarma">
-          Panchakarma
-        </option>
-
-        <option value="Ayurvedic Massage">
-          Ayurvedic Massage
-        </option>
-
-        <option value="Wellness Therapy">
-          Wellness Therapy
-        </option>
-
-        <option value="Other">
-          Other
-        </option>
-      </select>
-    </div>
-
-    <div className={styles.formGroup}>
-      <label htmlFor="message">
-        Your Message
-      </label>
-
-      <textarea
-        id="message"
-        name="message"
-        rows={5}
-        placeholder="Tell us how we can help you..."
-        required
-      />
-    </div>
-
-    <div className={styles.formBottom}>
-      <div className={styles.formPrivacy}>
-        <ShieldIcon />
-
-        <span>
-          Your information is safe and will only be used
-          to contact you.
+      {/* Heading */}
+      <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[50px] font-extrabold text-emerald-950 leading-[1.08]">
+        We’re Here to Help
+        <br />
+        <span className="text-emerald-900">
+          You Live a Healthier Life
         </span>
+      </h1>
+
+      {/* Description */}
+      <p className="mt-5 text-gray-600 text-sm sm:text-base leading-relaxed max-w-xl">
+        Have questions or need guidance? Get in touch with us.
+        <br className="hidden sm:block" />
+        We’ll be happy to assist you on your healing journey.
+      </p>
+
+      {/* Benefits */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5 mt-6">
+
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 shrink-0 rounded-full bg-emerald-100/70 text-emerald-800 flex items-center justify-center text-lg">
+            🎧
+          </div>
+          <span className="text-xs font-bold text-gray-800 leading-tight">
+            Expert<br />Guidance
+          </span>
+        </div>
+
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 shrink-0 rounded-full bg-emerald-100/70 text-emerald-800 flex items-center justify-center text-lg">
+            🌿
+          </div>
+          <span className="text-xs font-bold text-gray-800 leading-tight">
+            Natural &amp;<br />Safe Care
+          </span>
+        </div>
+
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 shrink-0 rounded-full bg-emerald-100/70 text-emerald-800 flex items-center justify-center text-lg">
+            🕒
+          </div>
+          <span className="text-xs font-bold text-gray-800 leading-tight">
+            Quick<br />Response
+          </span>
+        </div>
+
       </div>
 
-      <button
-        type="submit"
-        className={styles.submitButton}
-      >
-        <span>Send Message</span>
-        <SendIcon />
-      </button>
     </div>
-  </form>
-</div>
-        </div>
-      </section>
 
-      {/* =====================================================
-          VISIT OUR CLINIC
-      ===================================================== */}
+  </div>
+</section>
 
-      <section
-        className={styles.clinicSection}
-        id="clinic"
-      >
-        <div className={styles.clinicContainer}>
-          <div className={styles.clinicImageCard}>
-            <img
-              src={IMAGES.clinic}
-              alt="Wellness clinic"
-              className={styles.clinicImage}
-            />
-
-            <div className={styles.clinicImageOverlay}>
-              <span>Peaceful Space</span>
-              <strong>Designed for Your Wellness</strong>
-            </div>
+      {/* SECTION 2: GET IN TOUCH & SEND US A MESSAGE */}
+      <section className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        {/* Left Column: Contact Information */}
+        <div className="lg:col-span-5 bg-white p-8 rounded-3xl border border-gray-100 shadow-sm space-y-6">
+          <div className="flex items-center gap-2">
+            <h2 className="text-xl font-bold text-emerald-950">Get in Touch</h2>
+            <span className="text-emerald-700">🌱</span>
           </div>
 
-          <div className={styles.clinicContent}>
-            <div className={styles.sectionEyebrow}>
-              <LeafIcon />
-              VISIT OUR CLINIC
-            </div>
-
-            <h2>
-              A Space Designed
-              <br />
-              <span>for Your Wellness</span>
-            </h2>
-
-            <p>
-              Step into a calm and welcoming environment where traditional
-              wellness wisdom meets modern comfort. Our clinic is designed to
-              help you slow down, reconnect, and focus on your health.
-            </p>
-
-            <div className={styles.clinicPoints}>
-              <div className={styles.clinicPoint}>
-                <div>
-                  <EnvironmentIcon />
-                </div>
-
-                <span>
-                  Peaceful &amp; natural
-                  <br />
-                  environment
-                </span>
-              </div>
-
-              <div className={styles.clinicPoint}>
-                <div>
-                  <TreatmentIcon />
-                </div>
-
-                <span>
-                  Personalized
-                  <br />
-                  treatments
-                </span>
-              </div>
-
-              <div className={styles.clinicPoint}>
-                <div>
-                  <CareIcon />
-                </div>
-
-                <span>
-                  Caring &amp; experienced
-                  <br />
-                  practitioners
-                </span>
-              </div>
-            </div>
-
-            <div className={styles.clinicAddress}>
-              <div className={styles.addressIcon}>
-                <LocationIcon />
-              </div>
-
+          <div className="space-y-5 text-xs sm:text-sm">
+            {/* Phone */}
+            <div className="flex items-start gap-3">
+              <span className="text-emerald-800 text-lg">📞</span>
               <div>
-                <strong>Ayur Wellness Clinic</strong>
-
-                <p>
-                  Green Park, New Delhi,
-                  <br />
-                  India
-                </p>
+                <p className="font-bold text-gray-900">Phone</p>
+                <a href="tel:+918239239249" className="text-gray-700 font-semibold hover:text-emerald-800 transition">
+                  +91 82392 39249
+                </a>
+                <p className="text-gray-400 text-[11px]">(Mon - Sat, 9:00 AM - 7:00 PM)</p>
               </div>
             </div>
-          </div>
 
-          {/* MAP */}
-
-          <div className={styles.mapCard}>
-            <iframe
-              src="https://www.google.com/maps?q=Green+Park,+New+Delhi,+India&output=embed"
-              title="Ayur Wellness Clinic location"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
-
-            <div className={styles.mapOverlay}>
-              <div className={styles.mapPin}>
-                <LocationIcon />
-              </div>
-
+            {/* Email - Restored Original Structure with mailto */}
+            <div className="flex items-start gap-3">
+              <span className="text-emerald-800 text-lg">✉️</span>
               <div>
-                <strong>Our Clinic</strong>
-                <span>Green Park, New Delhi</span>
+                <p className="font-bold text-gray-900">Email</p>
+                <a 
+                  href="mailto:info@ayurvedacare.com" 
+                  className="text-gray-700 font-semibold hover:text-emerald-800 transition"
+                >
+                  info@ayurvedacare.com
+                </a>
+                <p className="text-gray-400 text-[11px]">We reply within 24 hours</p>
+              </div>
+            </div>
+
+            {/* Address / Location - Restored Original Structure */}
+            <div className="flex items-start gap-3">
+              <span className="text-emerald-800 text-lg">📍</span>
+              <div>
+                <p className="font-bold text-gray-900">Address</p>
+                <p className="text-gray-700 font-medium leading-snug">
+                  kota, Rajasthan,<br />
+                 
+                </p>
+              </div>
+            </div>
+
+            {/* Consultation Hours */}
+            <div className="flex items-start gap-3">
+              <span className="text-emerald-800 text-lg">🕒</span>
+              <div>
+                <p className="font-bold text-gray-900">Consultation Hours</p>
+                <p className="text-gray-700">Monday - Saturday: 9:00 AM - 7:00 PM</p>
+                <p className="text-gray-700">Sunday: 10:00 AM - 2:00 PM</p>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-3 pt-2 border-t border-gray-100">
+              <span className="text-emerald-800 text-lg">📅</span>
+              <div>
+                <p className="font-bold text-gray-900">Book Appointment</p>
+                <p className="text-gray-600 text-xs">Book your consultation online. It&apos;s quick, easy & secure.</p>
               </div>
             </div>
           </div>
         </div>
-      </section>
 
-      {/* =====================================================
-          FAQ
-      ===================================================== */}
-
-      <section className={styles.faqHelpSection}>
-        <div className={styles.faqHelpContainer}>
-          <div className={styles.faqSection}>
-            <div className={styles.sectionEyebrow}>
-              <LeafIcon />
-              FAQ
-            </div>
-
-            <h2>
-              Frequently Asked
-              <br />
-              <span>Questions</span>
-            </h2>
-
-            <p className={styles.faqIntro}>
-              Find answers to some of the most common questions our patients
-              ask.
-            </p>
-
-            <div className={styles.faqList}>
-              <details>
-                <summary>
-                  <span>Do I need an appointment?</span>
-                  <ChevronIcon />
-                </summary>
-
-                <p>
-                  Yes, we recommend booking an appointment so we can give you
-                  dedicated time and personalized attention.
-                </p>
-              </details>
-
-              <details>
-                <summary>
-                  <span>What should I bring to my first consultation?</span>
-                  <ChevronIcon />
-                </summary>
-
-                <p>
-                  Please bring any previous health reports, current
-                  medications, and a brief history of your health concerns.
-                </p>
-              </details>
-
-              <details>
-                <summary>
-                  <span>How long does a consultation take?</span>
-                  <ChevronIcon />
-                </summary>
-
-                <p>
-                  A first consultation usually takes around 45–60 minutes,
-                  depending on your individual needs.
-                </p>
-              </details>
-
-              <details>
-                <summary>
-                  <span>Can I consult online?</span>
-                  <ChevronIcon />
-                </summary>
-
-                <p>
-                  Yes. Online consultations can be arranged for patients who
-                  cannot visit our clinic in person.
-                </p>
-              </details>
-            </div>
+        {/* Right Column: Form */}
+        <div className="lg:col-span-7 bg-white p-8 rounded-3xl border border-gray-100 shadow-sm space-y-6">
+          <div className="flex items-center gap-2">
+            <h2 className="text-xl font-bold text-emerald-950">Send Us a Message</h2>
+            <span className="text-emerald-700">🌱</span>
           </div>
 
-          {/* IMMEDIATE HELP */}
-
-          <div className={styles.helpCard}>
-            <div className={styles.helpImageWrap}>
-              <img
-                src={IMAGES.help}
-                alt="Wellness support"
-                className={styles.helpImage}
-              />
-            </div>
-
-            <div className={styles.helpContent}>
-              <div className={styles.helpIcon}>
-                <PhoneIcon />
-              </div>
-
-              <span className={styles.helpLabel}>
-                NEED IMMEDIATE HELP?
-              </span>
-
-              <h3>
-                We&apos;re Just
-                <br />
-                a Call Away
-              </h3>
-
-              <p>
-                If you have a question that can&apos;t wait, give us a call.
-                Our friendly team is ready to help.
-              </p>
-
-              <a
-                href="tel:+918239239249"
-                className={styles.helpButton}
-              >
-                <PhoneIcon />
-                +91 82392 39249
-              </a>
-
-              <span className={styles.helpHours}>
-                Mon - Sat · 9 AM - 7 PM
-              </span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* =====================================================
-          NEWSLETTER
-      ===================================================== */}
-
-      <section className={styles.newsletterSection}>
-        <div className={styles.newsletterContainer}>
-          <div className={styles.newsletterText}>
-            <div className={styles.newsletterIcon}>
-              <NewsletterIcon />
-            </div>
-
-            <div>
-              <span>STAY CONNECTED</span>
-
-              <h2>
-                Get Wellness Tips
-                <br />
-                <strong>in Your Inbox</strong>
-              </h2>
-
-              <p>
-                Simple, natural tips for a healthier and happier life.
-              </p>
-            </div>
-          </div>
-
-          {!subscribed ? (
-            <form
-              className={styles.newsletterForm}
-              onSubmit={handleNewsletter}
-            >
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Your email address"
-                aria-label="Email address"
-                required
-              />
-
-              <button type="submit">
-                Subscribe
-                <span>→</span>
-              </button>
-            </form>
-          ) : (
-            <div className={styles.successMessage}>
-              <LeafIcon />
-
-              <span>
-                Thank you! You&apos;re subscribed to our wellness tips.
-              </span>
+          {contactSubmitted && (
+            <div className="bg-emerald-50 text-emerald-900 border border-emerald-200 p-4 rounded-xl text-xs font-semibold">
+              ✓ Message Sent! Recorded in Admin and opened on WhatsApp.
             </div>
           )}
+
+          <form onSubmit={handleContactSubmit} className="space-y-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <input
+                type="text"
+                name="name"
+                required
+                placeholder="Your Name"
+                className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-xs focus:outline-none focus:border-emerald-700 transition"
+              />
+              <input
+                type="tel"
+                name="phone"
+                required
+                placeholder="Phone Number"
+                className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-xs focus:outline-none focus:border-emerald-700 transition"
+              />
+            </div>
+
+            <input
+              type="email"
+              name="email"
+              required
+              placeholder="Email Address"
+              className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-xs focus:outline-none focus:border-emerald-700 transition"
+            />
+
+            <input
+              type="text"
+              name="subject"
+              required
+              placeholder="Subject / Interested Treatment"
+              className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-xs focus:outline-none focus:border-emerald-700 transition"
+            />
+
+            <textarea
+              name="message"
+              rows={4}
+              required
+              placeholder="Your Message"
+              className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-xs focus:outline-none focus:border-emerald-700 transition"
+            ></textarea>
+
+            <button
+              type="submit"
+              className="w-full bg-emerald-900 hover:bg-emerald-950 text-white font-medium text-xs py-3.5 rounded-xl shadow transition flex items-center justify-center gap-2"
+            >
+              <span>🚀</span> Send Message
+            </button>
+
+            <div className="flex items-center justify-center gap-1.5 text-[11px] text-gray-400 pt-1">
+              <span>🔒</span>
+              <span>Your information is safe with us. We respect your privacy.</span>
+            </div>
+          </form>
         </div>
       </section>
-    </main>
+
+      {/* SECTION 3: VISIT OUR CLINIC & MAP */}
+      <section className="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div className="lg:col-span-4 space-y-6">
+          <div>
+            <div className="flex items-center gap-2 mb-1">
+              <h2 className="text-xl font-bold text-emerald-950">Visit Our Clinic</h2>
+              <span className="text-emerald-700">🌱</span>
+            </div>
+            <p className="text-xs text-gray-500 leading-relaxed">
+              Experience authentic Ayurvedic care in a calm, peaceful and healing environment.
+            </p>
+          </div>
+
+          <div className="flex justify-between items-center text-center gap-2">
+            <div className="flex flex-col items-center">
+              <span className="text-emerald-800 text-2xl mb-1">🌿</span>
+              <span className="text-[11px] font-bold text-gray-800">Peaceful<br />Environment</span>
+            </div>
+            <div className="flex flex-col items-center">
+              <span className="text-emerald-800 text-2xl mb-1">🥣</span>
+              <span className="text-[11px] font-bold text-gray-800">Authentic<br />Treatments</span>
+            </div>
+            <div className="flex flex-col items-center">
+              <span className="text-emerald-800 text-2xl mb-1">👨‍⚕️</span>
+              <span className="text-[11px] font-bold text-gray-800">Personalized<br />Care</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="lg:col-span-4 relative h-48 sm:h-56 rounded-2xl overflow-hidden shadow-inner">
+          <Image
+            src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=800&auto=format&fit=crop"
+            alt="Ayurveda Clinic Interior"
+            fill
+            className="object-cover"
+          />
+        </div>
+
+        <div className="lg:col-span-4 relative h-48 sm:h-56 rounded-2xl overflow-hidden border border-gray-200">
+          <iframe
+            src="https://www.google.com/maps?q=Green+Park,+New+Delhi,+India&output=embed"
+            title="Clinic Location Map"
+            className="w-full h-full border-0"
+            loading="lazy"
+          />
+        </div>
+      </section>
+
+      {/* SECTION 4: FAQS & IMMEDIATE HELP */}
+      <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="lg:col-span-7 space-y-4">
+          <div className="flex items-center gap-2 mb-2">
+            <h2 className="text-xl font-bold text-emerald-950">Frequently Asked Questions</h2>
+            <span className="text-emerald-700">🌱</span>
+          </div>
+
+          <div className="space-y-2.5">
+            {faqs.map((faq, idx) => (
+              <div key={idx} className="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm transition">
+                <button
+                  onClick={() => toggleFaq(idx)}
+                  className="w-full text-left p-4 text-xs font-bold text-gray-800 flex justify-between items-center hover:bg-gray-50"
+                >
+                  <span>{faq.q}</span>
+                  <span className="text-emerald-800 font-bold text-sm">
+                    {openFaq === idx ? '▲' : '▼'}
+                  </span>
+                </button>
+                {openFaq === idx && (
+                  <div className="px-4 pb-4 text-xs text-gray-500 border-t border-gray-50 pt-2 leading-relaxed">
+                    {faq.a}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="lg:col-span-5 bg-gradient-to-br from-emerald-50 to-white border border-emerald-100 p-8 rounded-3xl shadow-sm space-y-6 relative overflow-hidden">
+          <div className="flex items-start gap-3">
+            <div className="w-10 h-10 rounded-full bg-emerald-800 text-white flex items-center justify-center text-lg font-bold">
+              📞
+            </div>
+            <div>
+              <h3 className="text-lg font-bold text-emerald-950">Need Immediate Help?</h3>
+              <p className="text-xs text-gray-500 mt-0.5">Call us directly for any urgent queries or assistance.</p>
+            </div>
+          </div>
+
+          <div>
+            <a href="tel:+918239239249" className="text-xl font-extrabold text-emerald-900 hover:text-emerald-700 transition">
+              +91 82392 39249
+            </a>
+          </div>
+
+          <a
+            href="tel:+918239239249"
+            className="bg-emerald-900 hover:bg-emerald-950 text-white font-medium text-xs px-6 py-3 rounded-xl shadow transition inline-flex items-center gap-2"
+          >
+            <span>📞</span> Call Now
+          </a>
+
+          <div className="absolute -bottom-6 -right-6 w-32 h-32 opacity-20 pointer-events-none">
+            <Image
+              src="https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?q=80&w=400&auto=format&fit=crop"
+              alt="Herbal"
+              fill
+              className="object-cover rounded-full"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 5: SUBSCRIBE TO OUR NEWSLETTER */}
+      <section className="bg-emerald-950 text-white rounded-3xl p-8 sm:p-10 flex flex-col lg:flex-row items-center justify-between gap-6 shadow-md">
+        <div className="flex items-center gap-4">
+          <div className="w-12 h-12 rounded-2xl bg-emerald-800/60 border border-emerald-700/50 flex items-center justify-center text-xl shrink-0">
+            ✉️
+          </div>
+          <div>
+            <span className="text-[11px] text-emerald-300 font-semibold uppercase tracking-wider">Stay Updated with Ayurvedic Tips & Offers</span>
+            <h2 className="text-xl sm:text-2xl font-bold mt-0.5">Subscribe to Our Newsletter</h2>
+            <p className="text-xs text-emerald-200/70 mt-1">Get the latest health tips, Ayurvedic remedies and special offers.</p>
+          </div>
+        </div>
+
+        {!subscribed ? (
+          <form onSubmit={handleNewsletterSubmit} className="w-full lg:w-auto flex flex-col sm:flex-row items-center gap-2">
+            <input
+              type="email"
+              required
+              value={newsletterEmail}
+              onChange={(e) => setNewsletterEmail(e.target.value)}
+              placeholder="Enter your email address"
+              className="w-full sm:w-72 bg-white text-gray-800 placeholder-gray-400 text-xs px-4 py-3 rounded-xl focus:outline-none"
+            />
+            <button type="submit" className="w-full sm:w-auto bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs px-6 py-3 rounded-xl transition shrink-0">
+              Subscribe
+            </button>
+          </form>
+        ) : (
+          <div className="bg-emerald-900 border border-emerald-700 px-4 py-3 rounded-xl text-xs font-semibold text-emerald-200">
+            ✓ Thank you for subscribing to our wellness newsletter!
+          </div>
+        )}
+      </section>
+
+    </div>
   );
 }
