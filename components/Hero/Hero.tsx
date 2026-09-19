@@ -17,10 +17,13 @@ import {
   HeartHandshake, 
   Clock, 
   Quote,
-  X
+  X,
+  Stethoscope,
+  FileText,
+  UserCheck
 } from 'lucide-react';
 
-// Treatments Full Data with Modal Content
+// Treatments Data with matching Lucide icons
 const treatmentsData = [
   { 
     id: 'digestive-care',
@@ -68,7 +71,7 @@ const treatmentsData = [
     ],
     duration: '4 - 8 Weeks Program',
     suitableFor: 'Acne, Psoriasis, Eczema, Hyperpigmentation, Dry Skin',
-    image: 'https://plus.unsplash.com/premium_photo-1682097802069-404b1f37ec49?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+    image: 'https://images.unsplash.com/photo-1512290900676-26c2a4d4b52b?auto=format&fit=crop&q=80&w=1000'
   },
   { 
     id: 'stress-management',
@@ -105,10 +108,7 @@ const treatmentsData = [
 ];
 
 export default function Home() {
-  // Modal State Management
   const [selectedTreatment, setSelectedTreatment] = useState<typeof treatmentsData[0] | null>(null);
-
-  // Testimonials auto-slide state
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const testimonials = [
@@ -120,81 +120,93 @@ export default function Home() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
-    }, 2000);
+    }, 3000);
     return () => clearInterval(timer);
   }, [testimonials.length]);
 
   return (
     <main className="min-h-screen flex flex-col bg-[#FAF9F5] text-[#2C3E35] font-sans antialiased overflow-x-hidden relative">
       
-      {/* 2. HERO */}
+      {/* HERO SECTION */}
       <section className="relative overflow-hidden bg-[#F5F7EE]">
-        <div className="relative mx-auto flex min-h-[350px] max-w-7xl items-center px-5 sm:min-h-[400px] sm:px-8 lg:min-h-[460px] lg:px-10">
-          <div className="relative z-20 w-full lg:w-[53%]">
-            <div className="mb-2 flex items-center gap-1.5 text-[9px] font-semibold uppercase tracking-[1.5px] text-[#55723D] sm:text-[10px]">
-              <span className="text-[30px]">🌿</span>
+        <div className="relative mx-auto flex min-h-[420px] max-w-7xl items-center px-5 sm:min-h-[460px] sm:px-8 lg:min-h-[500px] lg:px-10">
+          <div className="relative z-20 w-full lg:w-[53%] py-8">
+            <div className="mb-2 flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[1.5px] text-[#55723D]">
+              <Leaf className="w-3.5 h-3.5 text-[#55723D]" />
               <span>Natural Healing, Holistic Living.</span>
             </div>
-            <h1 className="font-serif text-[28px] font-bold leading-[1.05] text-[#24351F] sm:text-[36px] lg:text-[62px]">
+            <h1 className="font-serif text-[32px] font-bold leading-[1.08] text-[#24351F] sm:text-[42px] lg:text-[58px]">
               Ayurvedic Care For
               <br />
               <span className="font-normal text-[#557C3B]">
                 A Better Life
               </span>
             </h1>
-            <p className="mt-3 max-w-[390px] text-[9px] leading-[1.55] text-[#5D685D] sm:text-[13px]">
+            <p className="mt-3 max-w-[420px] text-[11px] leading-[1.6] text-[#5D685D] sm:text-[13px]">
               Experience the power of Ayurveda with personalized
               treatments that heal the root cause and bring balance
               to your body, mind & soul.
             </p>
-            <div className="mt-4 flex items-center gap-2.5">
+
+            <div className="mt-5 flex items-center gap-3">
               <Link
                 href="/book-appointment"
-                className="rounded-md bg-[#35652F] px-4 py-2 text-[9px] font-semibold text-white transition hover:bg-[#294F25] sm:px-5 sm:py-2.5 sm:text-[14px]"
+                className="rounded-lg bg-[#35652F] px-5 py-2.5 text-[12px] font-semibold text-white transition hover:bg-[#294F25] sm:text-[14px]"
               >
                 Book Appointment
               </Link>
               <a
                 href="#treatments"
-                className="flex items-center gap-1.5 rounded-md border border-[#6C8365] bg-white/40 px-4 py-2 text-[9px] font-semibold text-[#45613D] transition hover:bg-white sm:px-5 sm:py-2.5 sm:text-[14px]"
+                className="flex items-center gap-1.5 rounded-lg border border-[#6C8365] bg-white/40 px-5 py-2.5 text-[12px] font-semibold text-[#45613D] transition hover:bg-white sm:text-[14px]"
               >
                 Explore Treatments
-                <ArrowRight className="h-3 w-3" />
+                <ArrowRight className="h-3.5 w-3.5" />
               </a>
             </div>
-            <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-[#DCE2D5] pt-3">
+
+            {/* Features Row */}
+            <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-[#DCE2D5] pt-4">
               <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="h-3.5 w-3.5 text-[#557C3B]" />
+                <Leaf className="h-3.5 w-3.5 text-[#557C3B]" />
                 <span className="text-[11px] font-medium text-[#465345] sm:text-[12px]">100% Natural</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="h-3.5 w-3.5 text-[#557C3B]" />
-                <span className="text-[8px] font-medium text-[#465345] sm:text-[12px]">Personalized Care</span>
+                <HeartHandshake className="h-3.5 w-3.5 text-[#557C3B]" />
+                <span className="text-[11px] font-medium text-[#465345] sm:text-[12px]">Personalized Care</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="h-3.5 w-3.5 text-[#557C3B]" />
-                <span className="text-[8px] font-medium text-[#465345] sm:text-[12px]">Expert Doctor</span>
+                <Stethoscope className="h-3.5 w-3.5 text-[#557C3B]" />
+                <span className="text-[11px] font-medium text-[#465345] sm:text-[12px]">Experienced Doctor</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="h-3.5 w-3.5 text-[#557C3B]" />
-                <span className="text-[8px] font-medium text-[#465345] sm:text-[12px]">Holistic Healing</span>
+                <Sparkles className="h-3.5 w-3.5 text-[#557C3B]" />
+                <span className="text-[11px] font-medium text-[#465345] sm:text-[12px]">Holistic Healing</span>
               </div>
             </div>
           </div>
 
-          <div className="absolute right-0 top-0 h-full w-[50%]">
+          {/* Doctor Hero Image */}
+          <div className="absolute right-0 top-0 h-full w-[50%] hidden lg:block">
             <img
-              src="https://images.unsplash.com/photo-1716816211590-c15a328a5ff0?q=80&w=823&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="Ayurvedic Doctor"
+              src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=1000"
+              alt="Ayurvedic Practitioner"
               className="h-full w-full object-cover object-center"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#F5F7EE] via-[#F5F7EE]/25 to-transparent" />
-            <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#F5F7EE]/30 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#F5F7EE] via-[#F5F7EE]/20 to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#F5F7EE]/40 to-transparent" />
+
+            <div className="absolute top-1/2 left-8 -translate-y-1/2 bg-white/90 backdrop-blur-md px-4 py-2.5 rounded-xl shadow-md border border-[#E0E6D8] flex items-center gap-2.5">
+              <Award className="w-5 h-5 text-[#35652F]" />
+              <div>
+                <p className="text-[11px] font-bold text-[#24351F] leading-tight">10+ Years</p>
+                <p className="text-[9px] text-[#606E5C]">Experience</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* 3. TREATMENTS SECTION */}
+      {/* TREATMENTS SECTION */}
       <section id="treatments" className="py-12 sm:py-16 px-4 sm:px-6 md:px-12 bg-white">
         <div className="max-w-7xl mx-auto text-center space-y-2 mb-10 sm:mb-12">
           <p className="text-xs font-semibold uppercase tracking-widest text-[#365337]">Our Treatments</p>
@@ -214,7 +226,6 @@ export default function Home() {
                   <p className="text-xs text-[#5C6F63] text-center leading-relaxed">{item.desc}</p>
                 </div>
                 <div className="pt-4 sm:pt-6 text-center">
-                  {/* BUTTON OPENS POPUP */}
                   <button 
                     onClick={() => setSelectedTreatment(item)}
                     className="inline-flex items-center gap-1 text-xs font-semibold text-[#365337] hover:underline cursor-pointer"
@@ -228,7 +239,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. WHY CHOOSE US */}
+      {/* WHY CHOOSE US */}
       <section className="py-12 sm:py-16 px-4 sm:px-6 md:px-12 bg-[#F3F5F0]">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           <div className="lg:col-span-6 space-y-4 sm:space-y-6 text-center lg:text-left">
@@ -242,28 +253,28 @@ export default function Home() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 pt-2">
               <div className="flex items-start gap-3 bg-white p-3.5 sm:p-4 rounded-xl shadow-xs text-left">
-                <ShieldCheck className="w-5 h-5 sm:w-6 sm:h-6 text-[#365337] flex-shrink-0 mt-0.5" />
+                <Stethoscope className="w-5 h-5 sm:w-6 sm:h-6 text-[#365337] flex-shrink-0 mt-0.5" />
                 <div>
                   <h4 className="font-bold text-xs sm:text-sm text-[#2C3E35]">Experienced Doctor</h4>
                   <p className="text-[11px] sm:text-xs text-[#5C6F63]">Expert practitioners dedicated to care.</p>
                 </div>
               </div>
               <div className="flex items-start gap-3 bg-white p-3.5 sm:p-4 rounded-xl shadow-xs text-left">
-                <HeartHandshake className="w-5 h-5 sm:w-6 sm:h-6 text-[#365337] flex-shrink-0 mt-0.5" />
+                <FileText className="w-5 h-5 sm:w-6 sm:h-6 text-[#365337] flex-shrink-0 mt-0.5" />
                 <div>
                   <h4 className="font-bold text-xs sm:text-sm text-[#2C3E35]">Personalized Plans</h4>
                   <p className="text-[11px] sm:text-xs text-[#5C6F63]">Tailored specifically for your body.</p>
                 </div>
               </div>
               <div className="flex items-start gap-3 bg-white p-3.5 sm:p-4 rounded-xl shadow-xs text-left">
-                <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-[#365337] flex-shrink-0 mt-0.5" />
+                <ShieldCheck className="w-5 h-5 sm:w-6 sm:h-6 text-[#365337] flex-shrink-0 mt-0.5" />
                 <div>
                   <h4 className="font-bold text-xs sm:text-sm text-[#2C3E35]">Natural & Safe</h4>
                   <p className="text-[11px] sm:text-xs text-[#5C6F63]">Zero side effects using pure herbs.</p>
                 </div>
               </div>
               <div className="flex items-start gap-3 bg-white p-3.5 sm:p-4 rounded-xl shadow-xs text-left">
-                <Smile className="w-5 h-5 sm:w-6 sm:h-6 text-[#365337] flex-shrink-0 mt-0.5" />
+                <UserCheck className="w-5 h-5 sm:w-6 sm:h-6 text-[#365337] flex-shrink-0 mt-0.5" />
                 <div>
                   <h4 className="font-bold text-xs sm:text-sm text-[#2C3E35]">Holistic Wellness</h4>
                   <p className="text-[11px] sm:text-xs text-[#5C6F63]">Balancing mind, body, and soul.</p>
@@ -285,16 +296,16 @@ export default function Home() {
             <div className="relative w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 bg-[#E5EFE6] rounded-full p-6 sm:p-8 flex items-center justify-center shadow-inner">
               <div className="w-full h-full rounded-full bg-cover bg-center border-4 sm:border-8 border-white shadow-md overflow-hidden relative">
                 <img 
-                  src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&q=80&w=800" 
-                  alt="Ayurveda Ingredients" 
+                  src="https://images.unsplash.com/photo-1617897903246-719242758050?auto=format&fit=crop&q=80&w=800" 
+                  alt="Ayurvedic Herbs" 
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 bg-white px-3.5 py-2 sm:px-4 sm:py-3 rounded-2xl shadow-lg flex items-center gap-2">
-                <span className="text-base sm:text-lg">🌿</span>
+                <Leaf className="w-4 h-4 text-[#35652F]" />
                 <div className="text-[11px] sm:text-xs">
                   <span className="font-bold block text-[#2C3E35]">100%</span>
-                  <span className="text-[#5C6F63]">Natural</span>
+                  <span className="text-[#5C6F63]">Natural Ayurveda</span>
                 </div>
               </div>
             </div>
@@ -302,7 +313,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. APPOINTMENT BANNER */}
+      {/* APPOINTMENT BANNER */}
       <section className="py-6 sm:py-8 px-4 sm:px-6 md:px-12 bg-white">
         <div className="max-w-7xl mx-auto bg-[#365337] text-white rounded-2xl p-6 sm:p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl text-center md:text-left">
           <div className="flex flex-col md:flex-row items-center gap-4">
@@ -324,7 +335,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 6. TESTIMONIALS SLIDER */}
+      {/* TESTIMONIALS SLIDER */}
       <section className="py-12 sm:py-16 px-4 sm:px-6 md:px-12 bg-white">
         <div className="max-w-7xl mx-auto text-center space-y-2 mb-10 sm:mb-12">
           <p className="text-xs font-semibold uppercase tracking-widest text-[#365337]">Patient Stories</p>
@@ -383,11 +394,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 7. TREATMENT DETAIL POPUP (MODAL) */}
+      {/* TREATMENT DETAIL MODAL */}
       {selectedTreatment && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs transition-opacity duration-300">
           <div className="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 border border-[#EBEFE8] shadow-2xl relative space-y-6">
-            {/* Close Button */}
             <button
               onClick={() => setSelectedTreatment(null)}
               className="absolute top-4 right-4 w-9 h-9 rounded-full bg-[#F5F7EE] hover:bg-[#E5EFE6] text-[#2C3E35] flex items-center justify-center transition cursor-pointer"
@@ -395,7 +405,6 @@ export default function Home() {
               <X className="w-5 h-5" />
             </button>
 
-            {/* Modal Header */}
             <div className="flex items-center gap-4 pr-8">
               <div className="w-12 h-12 rounded-2xl bg-[#E5EFE6] flex items-center justify-center text-[#365337] shrink-0">
                 <selectedTreatment.icon className="w-6 h-6" />
@@ -410,7 +419,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Treatment Image */}
             <div className="h-44 sm:h-52 w-full rounded-2xl overflow-hidden relative">
               <img
                 src={selectedTreatment.image}
@@ -419,12 +427,10 @@ export default function Home() {
               />
             </div>
 
-            {/* Full Detail */}
             <p className="text-xs sm:text-sm text-[#5C6F63] leading-relaxed">
               {selectedTreatment.fullDetail}
             </p>
 
-            {/* Key Benefits */}
             <div className="space-y-2">
               <h4 className="text-sm font-serif font-bold text-[#2C3E35]">
                 Key Benefits:
@@ -439,7 +445,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Metadata (Duration & Suitability) */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
               <div className="bg-[#FAF9F5] p-3 rounded-xl border border-[#EBEFE8]">
                 <strong className="block text-[11px] font-bold text-[#2C3E35]">Duration</strong>
@@ -451,7 +456,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Modal Actions */}
             <div className="pt-4 border-t border-[#EBEFE8] flex flex-col sm:flex-row items-center justify-between gap-3">
               <button
                 onClick={() => setSelectedTreatment(null)}

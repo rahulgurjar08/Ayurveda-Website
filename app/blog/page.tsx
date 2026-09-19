@@ -42,6 +42,7 @@ export default function BlogPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All Categories");
   const [selectedArticle, setSelectedArticle] = useState<BlogItem | null>(null);
+  const [sortBy, setSortBy] = useState<"latest" | "oldest">("latest");
 
   // Pagination State
   const [currentPage, setCurrentPage] = useState(1);
@@ -52,9 +53,9 @@ export default function BlogPage() {
     return (blogs || []).filter((b) => b.published !== false);
   }, [blogs]);
 
-  // Filtered Articles by Search and Category
+  // Filtered & Sorted Articles
   const filteredArticles = useMemo(() => {
-    return publishedBlogs.filter((article) => {
+    let result = publishedBlogs.filter((article) => {
       const q = searchQuery.toLowerCase().trim();
       const matchesSearch =
         !q ||
@@ -68,9 +69,18 @@ export default function BlogPage() {
 
       return matchesSearch && matchesCategory;
     });
-  }, [publishedBlogs, searchQuery, selectedCategory]);
 
-  // Calculate dynamic category counts
+    // Sorting Logic
+    return result.sort((a, b) => {
+      const dateA = new Date(`${a.month} ${a.date}, ${a.year || "2026"}`).getTime();
+      const dateB = new Date(`${b.month} ${b.date}, ${b.year || "2026"}`).getTime();
+
+      if (isNaN(dateA) || isNaN(dateB)) return 0;
+      return sortBy === "latest" ? dateB - dateA : dateA - dateB;
+    });
+  }, [publishedBlogs, searchQuery, selectedCategory, sortBy]);
+
+  // Dynamic category counts
   const categoryCounts = useMemo(() => {
     const counts: Record<string, number> = {};
     for (const cat of CATEGORY_LIST) {
@@ -112,57 +122,53 @@ export default function BlogPage() {
     <main className="min-h-screen bg-[#FAF8F5] text-gray-800">
       {/* HERO SECTION */}
       <section className="relative overflow-hidden bg-[#FAF8F5] min-h-[320px] sm:min-h-[360px] lg:min-h-[400px] border-b border-gray-200/60">
+        {/* Right Side Image */}
+        <div className="absolute inset-y-0 right-0 w-full lg:w-[52%]">
+          <img
+            src="/img15.png"
+            alt="Ayurvedic consultation and natural wellness"
+            className="w-full h-full object-cover object-center"
+          />
 
-{/* Right Side Image */}
-<div className="absolute inset-y-0 right-0 w-full lg:w-[52%]">
-  <img
-    src="https://shatavariayurveda.com/_ipx/f_webp/images/blog/ayurvedic-consultation-europe.png"
-    alt="Ayurvedic consultation and natural wellness"
-    className="w-full h-full object-cover object-center"
-  />
+          {/* Light Fade overlay */}
+          <div className="absolute inset-y-0 left-0 w-full sm:w-1/2 lg:w-1/3 bg-gradient-to-r from-[#FAF8F5] via-[#FAF8F5]/50 to-transparent pointer-events-none" />
+        </div>
 
-  {/* Same Home Page Fade */}
-  <div className="absolute inset-0 bg-gradient-to-r from-[#FAF8F5] via-[#FAF8F5]/80 to-transparent lg:from-[#FAF8F5] lg:via-[#FAF8F5]/65 lg:to-transparent" />
-</div>
+        {/* Main Content */}
+        <div className="relative z-10 max-w-7xl mx-auto min-h-[320px] sm:min-h-[360px] lg:min-h-[400px] px-6 sm:px-8 md:px-10 lg:px-12 flex items-center">
+          <div className="w-full lg:w-[58%] py-8 lg:py-0">
+            {/* Label */}
+            <div className="inline-flex items-center gap-2 text-[11px] sm:text-xs font-semibold tracking-widest text-[#2D5A27] uppercase mb-4">
+              <span>BLOG &amp; HEALTH TIPS</span>
+              <LeafIcon size={14} />
+            </div>
 
-{/* Main Content */}
-<div className="relative z-10 max-w-7xl mx-auto min-h-[320px] sm:min-h-[360px] lg:min-h-[400px] px-6 sm:px-8 md:px-10 lg:px-12 flex items-center">
+            {/* Heading */}
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-[52px] font-serif font-bold text-[#1E2D18] leading-[1.08]">
+              Ayurvedic Wisdom
+              <br />
+              <span className="italic font-normal text-[#2D5A27]">
+                For A Better Life
+              </span>
+            </h1>
 
-  <div className="w-full lg:w-[58%] py-8 lg:py-0">
+            {/* Description */}
+            <p className="mt-5 text-[#5C6F63] text-sm sm:text-base leading-relaxed max-w-lg">
+              Discover natural ways to improve your health and well-being with
+              Ayurveda. Tips, insights and expert advice for a balanced life.
+            </p>
+          </div>
+        </div>
+      </section>
 
-    {/* Label */}
-    <div className="inline-flex items-center gap-2 text-[11px] sm:text-xs font-semibold tracking-widest text-[#2D5A27] uppercase mb-4">
-      <span>BLOG &amp; HEALTH TIPS</span>
-      <LeafIcon size={14} />
-    </div>
-
-    {/* Heading */}
-    <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-[52px] font-serif font-bold text-[#1E2D18] leading-[1.08]">
-      Ayurvedic Wisdom
-      <br />
-      <span className="italic font-normal text-[#2D5A27]">
-        For A Better Life
-      </span>
-    </h1>
-
-    {/* Description */}
-    <p className="mt-5 text-[#5C6F63] text-sm sm:text-base leading-relaxed max-w-lg">
-      Discover natural ways to improve your health and well-being with
-      Ayurveda. Tips, insights and expert advice for a balanced life.
-    </p>
-
-  </div>
-
-</div>
-</section>
       {/* MAIN CONTENT AREA */}
       <section className="py-10 px-4 md:px-12">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-8">
           
-          {/* LEFT 3-COLUMNS ARTICLE GRID (75% Width on Desktop) */}
+          {/* LEFT 3-COLUMNS ARTICLE GRID */}
           <div className="lg:col-span-3">
             {/* Header & Sort Control */}
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-3">
               <div className="flex items-center gap-2">
                 <h2 className="text-xl font-bold text-[#1E2D18]">
                   {selectedCategory === "All Categories" ? "Latest Articles" : selectedCategory}
@@ -172,7 +178,7 @@ export default function BlogPage() {
                 </span>
               </div>
 
-              <div className="mt-2 sm:mt-0 flex items-center gap-3">
+              <div className="flex items-center gap-3">
                 {selectedCategory !== "All Categories" && (
                   <button
                     onClick={() => handleCategorySelect("All Categories")}
@@ -183,15 +189,19 @@ export default function BlogPage() {
                 )}
                 <div className="text-xs text-gray-500 flex items-center gap-1.5">
                   <span>Sort by:</span>
-                  <select className="bg-white border border-gray-200 rounded px-2 py-1 text-gray-700 outline-none text-xs">
-                    <option>Latest</option>
-                    <option>Oldest</option>
+                  <select
+                    value={sortBy}
+                    onChange={(e) => setSortBy(e.target.value as "latest" | "oldest")}
+                    className="bg-white border border-gray-200 rounded px-2 py-1 text-gray-700 outline-none text-xs cursor-pointer"
+                  >
+                    <option value="latest">Latest</option>
+                    <option value="oldest">Oldest</option>
                   </select>
                 </div>
               </div>
             </div>
 
-            {/* EXACT 3 CARDS PER ROW GRID */}
+            {/* 3 CARDS PER ROW GRID */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
               {currentBlogs.map((article) => (
                 <article
@@ -241,15 +251,9 @@ export default function BlogPage() {
                         {article.time}
                       </span>
 
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setSelectedArticle(article);
-                        }}
-                        className="flex items-center gap-1 font-semibold text-[#2D5A27] hover:underline"
-                      >
+                      <span className="flex items-center gap-1 font-semibold text-[#2D5A27] group-hover:underline">
                         Read More <ArrowRight className="w-3.5 h-3.5" />
-                      </button>
+                      </span>
                     </div>
                   </div>
                 </article>
@@ -274,7 +278,7 @@ export default function BlogPage() {
               </div>
             )}
 
-            {/* PAGINATION NUMBERS */}
+            {/* PAGINATION */}
             {totalPages > 1 && (
               <div className="flex justify-center items-center gap-1.5 mt-10">
                 <button
@@ -310,7 +314,7 @@ export default function BlogPage() {
             )}
           </div>
 
-          {/* RIGHT SIDEBAR (25% Width on Desktop) */}
+          {/* RIGHT SIDEBAR */}
           <aside className="lg:col-span-1 space-y-6">
             {/* Search Box */}
             <div className="bg-white p-5 rounded-xl border border-gray-100 shadow-sm">
@@ -422,6 +426,11 @@ export default function BlogPage() {
                 ].map((tag) => (
                   <span
                     key={tag}
+                    onClick={() => {
+                      const cleanTag = tag.replace("# ", "");
+                      setSearchQuery(cleanTag);
+                      setCurrentPage(1);
+                    }}
                     className="bg-gray-100 text-gray-600 px-2.5 py-1 rounded-full text-[11px] font-medium hover:bg-[#eef4e7] hover:text-[#2D5A27] cursor-pointer transition"
                   >
                     {tag}
@@ -505,47 +514,81 @@ export default function BlogPage() {
       )}
 
       {/* NEWSLETTER FOOTER SECTION */}
-      <section className="py-10 px-4 md:px-12">
-        <div className="max-w-7xl mx-auto">
-          <div className="bg-[#2D5A27] text-white rounded-2xl p-8 md:p-10 flex flex-col lg:flex-row items-center justify-between gap-6 relative overflow-hidden">
-            <div className="text-center lg:text-left">
-              <small className="text-xs uppercase tracking-wider text-green-200 font-semibold">
-                Stay Updated with Ayurvedic Tips
-              </small>
-              <h2 className="text-2xl md:text-3xl font-bold mt-1 mb-1">
-                Subscribe to Our Newsletter
-              </h2>
-              <p className="text-xs md:text-sm text-green-100 max-w-md">
-                Get the latest health tips, Ayurvedic remedies and special offers.
-              </p>
-            </div>
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-10">
+  <div className="relative overflow-hidden bg-[#F4F4EC] rounded-3xl py-10 sm:py-12 px-6 sm:px-12 border border-[#e8ebd9] flex flex-col md:flex-row items-center justify-between gap-8 min-h-[180px]">
+    
+    {/* Right Corner Botanical Line-Art Sketch */}
+    <div className="absolute right-0 bottom-0 top-0 w-48 sm:w-64 pointer-events-none opacity-50 flex items-center justify-end z-0">
+      <svg
+        viewBox="0 0 200 200"
+        fill="none"
+        stroke="#22441f"
+        strokeWidth="1"
+        className="w-full h-full object-contain object-right-bottom"
+      >
+        <path d="M 170 200 Q 150 110 180 10" />
+        <path d="M 160 140 C 190 120, 200 80, 190 50 C 165 60, 155 95, 160 140 Z" fill="#22441f" fillOpacity="0.1" />
+        <path d="M 155 100 C 120 90, 100 60, 110 30 C 130 40, 145 70, 155 100 Z" fill="#22441f" fillOpacity="0.1" />
+        <path d="M 168 60 C 190 40, 195 20, 188 5 C 172 12, 165 35, 168 60 Z" fill="#22441f" fillOpacity="0.1" />
+        <path d="M 150 160 C 120 150, 110 120, 120 95 C 138 105, 148 130, 150 160 Z" fill="#22441f" fillOpacity="0.1" />
+        <path d="M 160 140 C 170 110, 180 80, 190 50" strokeWidth="0.5" />
+        <path d="M 155 100 C 138 80, 122 55, 110 30" strokeWidth="0.5" />
+      </svg>
+    </div>
 
-            <form
-              className="flex flex-col sm:flex-row gap-2.5 w-full lg:w-auto z-10"
-              onSubmit={handleSubscribe}
-            >
-              <input
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email address"
-                className="px-4 py-2.5 rounded-lg border-none text-white outline-none text-xs min-w-[260px]"
-              />
-              <button
-                type="submit"
-                className="px-5 py-2.5 bg-[#1E2D18] text-white font-semibold rounded-lg hover:bg-black transition text-xs"
-              >
-                Subscribe
-              </button>
-            </form>
+    {/* Left Side Content */}
+    <div className="relative z-10 flex flex-col sm:flex-row items-center sm:items-start md:items-center gap-5 sm:gap-6 text-center sm:text-left">
+      <div className="w-18 h-18 sm:w-20 sm:h-20 rounded-full bg-white flex items-center justify-center shrink-0 shadow-sm border border-[#e2e6d8]">
+        <svg
+          className="w-10 h-10 text-[#22441f]"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+        >
+          <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" opacity="0.8" />
+          <path d="M12 2C10.5 3.5 9 6 12 9C15 6 13.5 3.5 12 2Z" fill="#22441f" />
+          <path d="M9 5C7.8 6.2 6.6 8.2 9 10.6C11.4 8.2 10.2 6.2 9 5Z" fill="#22441f" />
+          <path d="M15 5C13.8 6.2 12.6 8.2 15 10.6C17.4 8.2 16.2 6.2 15 5Z" fill="#22441f" />
+        </svg>
+      </div>
 
-            <div className="absolute -right-6 -bottom-6 opacity-10 pointer-events-none">
-              <LeafIcon size={140} />
-            </div>
-          </div>
-        </div>
-      </section>
+      <div>
+        <p className="text-xs font-semibold text-[#22441f] mb-1">
+          Stay Updated with Ayurvedic Tips
+        </p>
+        <h3 className="text-2xl sm:text-3xl font-serif text-[#1e3328] font-bold leading-snug">
+          Subscribe to Our Newsletter
+        </h3>
+        <p className="text-xs sm:text-sm text-[#4f6356] mt-1.5 font-sans">
+          Get the latest health tips, Ayurvedic remedies and special offers.
+        </p>
+      </div>
+    </div>
+
+    {/* Right Side Input Form */}
+    <div className="relative z-10 w-full md:w-auto shrink-0">
+      <form
+        onSubmit={handleSubscribe}
+        className="flex items-center w-full max-w-md bg-white rounded-xl p-1.5 border border-[#d8dec9] shadow-xs"
+      >
+        <input
+          type="email"
+          placeholder="Enter your email address"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="w-full sm:w-72 px-4 py-2.5 text-xs sm:text-sm text-[#2c3e35] placeholder:text-gray-400 bg-transparent outline-none border-none"
+          required
+        />
+        <button
+          type="submit"
+          className="bg-[#2a4d38] hover:bg-[#1e3328] text-white text-xs sm:text-sm font-semibold px-6 py-3 rounded-lg transition-colors shrink-0 cursor-pointer"
+        >
+          Subscribe
+        </button>
+      </form>
+    </div>
+
+  </div>
+</section>
     </main>
   );
 }
