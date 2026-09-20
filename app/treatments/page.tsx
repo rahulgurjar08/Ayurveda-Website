@@ -196,8 +196,8 @@ export default function TreatmentsPage() {
           <div className="w-full lg:w-[58%] py-10">
             <p className="text-[#365337] text-xs font-bold uppercase tracking-widest mb-2.5">OUR TREATMENTS</p>
             <h1 className="text-4xl sm:text-5xl font-serif font-bold text-[#233B27]">
-              Natural Healing Solutions <br />
-              <span className="text-[#4D7B3D]">For Every Health Need</span>
+              Natural Healing  <br />Solutions <br />
+              <span className="text-[#4D7B3D]">For Every Health <br /> Need</span>
             </h1>
             <p className="mt-3.5 text-sm text-[#526A5C] max-w-lg">
               Ayurveda offers a holistic approach to heal the root cause of disorders and bring balance to your body, mind and soul.

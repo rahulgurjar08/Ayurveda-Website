@@ -207,7 +207,7 @@ export default function ContactUsPage() {
           href="tel:+919876543210"
           className="text-gray-700 font-semibold hover:text-emerald-800"
         >
-          +91 98765 43210
+          +91 82392 39249
         </a>
         <p className="text-gray-400 text-[10px]">
           (Mon - Sat, 9:00 AM - 7:00 PM)
@@ -223,10 +223,10 @@ export default function ContactUsPage() {
       <div className="pt-0.5">
         <p className="font-bold text-gray-900">Email</p>
         <a
-          href="mailto:info@ayurvedacare.com"
+          href="mailtocontact.prisminfotech@gmail.com"
           className="text-gray-700 font-semibold hover:text-emerald-800"
         >
-          info@ayurvedacare.com
+        contact.prisminfotech@gmail.com
         </a>
         <p className="text-gray-400 text-[10px]">
           We reply within 24 hours

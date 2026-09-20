@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { Search, Clock, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { useApp } from "@/context/AppContext";
 import type { BlogItem } from "@/types";
@@ -43,6 +43,13 @@ export default function BlogPage() {
   const [selectedCategory, setSelectedCategory] = useState("All Categories");
   const [selectedArticle, setSelectedArticle] = useState<BlogItem | null>(null);
   const [sortBy, setSortBy] = useState<"latest" | "oldest">("latest");
+
+  // Hydration fix state
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   // Pagination State
   const [currentPage, setCurrentPage] = useState(1);
@@ -116,6 +123,11 @@ export default function BlogPage() {
     if (!email.trim()) return;
     alert("Thank you for subscribing to Ayurvedic Wisdom newsletter!");
     setEmail("");
+  }
+
+  // Prevent server-client markup mismatch during hydration
+  if (!isMounted) {
+    return null;
   }
 
   return (
@@ -515,80 +527,80 @@ export default function BlogPage() {
 
       {/* NEWSLETTER FOOTER SECTION */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 py-10">
-  <div className="relative overflow-hidden bg-[#F4F4EC] rounded-3xl py-10 sm:py-12 px-6 sm:px-12 border border-[#e8ebd9] flex flex-col md:flex-row items-center justify-between gap-8 min-h-[180px]">
-    
-    {/* Right Corner Botanical Line-Art Sketch */}
-    <div className="absolute right-0 bottom-0 top-0 w-48 sm:w-64 pointer-events-none opacity-50 flex items-center justify-end z-0">
-      <svg
-        viewBox="0 0 200 200"
-        fill="none"
-        stroke="#22441f"
-        strokeWidth="1"
-        className="w-full h-full object-contain object-right-bottom"
-      >
-        <path d="M 170 200 Q 150 110 180 10" />
-        <path d="M 160 140 C 190 120, 200 80, 190 50 C 165 60, 155 95, 160 140 Z" fill="#22441f" fillOpacity="0.1" />
-        <path d="M 155 100 C 120 90, 100 60, 110 30 C 130 40, 145 70, 155 100 Z" fill="#22441f" fillOpacity="0.1" />
-        <path d="M 168 60 C 190 40, 195 20, 188 5 C 172 12, 165 35, 168 60 Z" fill="#22441f" fillOpacity="0.1" />
-        <path d="M 150 160 C 120 150, 110 120, 120 95 C 138 105, 148 130, 150 160 Z" fill="#22441f" fillOpacity="0.1" />
-        <path d="M 160 140 C 170 110, 180 80, 190 50" strokeWidth="0.5" />
-        <path d="M 155 100 C 138 80, 122 55, 110 30" strokeWidth="0.5" />
-      </svg>
-    </div>
+        <div className="relative overflow-hidden bg-[#F4F4EC] rounded-3xl py-10 sm:py-12 px-6 sm:px-12 border border-[#e8ebd9] flex flex-col md:flex-row items-center justify-between gap-8 min-h-[180px]">
+          
+          {/* Right Corner Botanical Line-Art Sketch */}
+          <div className="absolute right-0 bottom-0 top-0 w-48 sm:w-64 pointer-events-none opacity-50 flex items-center justify-end z-0">
+            <svg
+              viewBox="0 0 200 200"
+              fill="none"
+              stroke="#22441f"
+              strokeWidth="1"
+              className="w-full h-full object-contain object-right-bottom"
+            >
+              <path d="M 170 200 Q 150 110 180 10" />
+              <path d="M 160 140 C 190 120, 200 80, 190 50 C 165 60, 155 95, 160 140 Z" fill="#22441f" fillOpacity="0.1" />
+              <path d="M 155 100 C 120 90, 100 60, 110 30 C 130 40, 145 70, 155 100 Z" fill="#22441f" fillOpacity="0.1" />
+              <path d="M 168 60 C 190 40, 195 20, 188 5 C 172 12, 165 35, 168 60 Z" fill="#22441f" fillOpacity="0.1" />
+              <path d="M 150 160 C 120 150, 110 120, 120 95 C 138 105, 148 130, 150 160 Z" fill="#22441f" fillOpacity="0.1" />
+              <path d="M 160 140 C 170 110, 180 80, 190 50" strokeWidth="0.5" />
+              <path d="M 155 100 C 138 80, 122 55, 110 30" strokeWidth="0.5" />
+            </svg>
+          </div>
 
-    {/* Left Side Content */}
-    <div className="relative z-10 flex flex-col sm:flex-row items-center sm:items-start md:items-center gap-5 sm:gap-6 text-center sm:text-left">
-      <div className="w-18 h-18 sm:w-20 sm:h-20 rounded-full bg-white flex items-center justify-center shrink-0 shadow-sm border border-[#e2e6d8]">
-        <svg
-          className="w-10 h-10 text-[#22441f]"
-          viewBox="0 0 24 24"
-          fill="currentColor"
-        >
-          <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" opacity="0.8" />
-          <path d="M12 2C10.5 3.5 9 6 12 9C15 6 13.5 3.5 12 2Z" fill="#22441f" />
-          <path d="M9 5C7.8 6.2 6.6 8.2 9 10.6C11.4 8.2 10.2 6.2 9 5Z" fill="#22441f" />
-          <path d="M15 5C13.8 6.2 12.6 8.2 15 10.6C17.4 8.2 16.2 6.2 15 5Z" fill="#22441f" />
-        </svg>
-      </div>
+          {/* Left Side Content */}
+          <div className="relative z-10 flex flex-col sm:flex-row items-center sm:items-start md:items-center gap-5 sm:gap-6 text-center sm:text-left">
+            <div className="w-18 h-18 sm:w-20 sm:h-20 rounded-full bg-white flex items-center justify-center shrink-0 shadow-sm border border-[#e2e6d8]">
+              <svg
+                className="w-10 h-10 text-[#22441f]"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" opacity="0.8" />
+                <path d="M12 2C10.5 3.5 9 6 12 9C15 6 13.5 3.5 12 2Z" fill="#22441f" />
+                <path d="M9 5C7.8 6.2 6.6 8.2 9 10.6C11.4 8.2 10.2 6.2 9 5Z" fill="#22441f" />
+                <path d="M15 5C13.8 6.2 12.6 8.2 15 10.6C17.4 8.2 16.2 6.2 15 5Z" fill="#22441f" />
+              </svg>
+            </div>
 
-      <div>
-        <p className="text-xs font-semibold text-[#22441f] mb-1">
-          Stay Updated with Ayurvedic Tips
-        </p>
-        <h3 className="text-2xl sm:text-3xl font-serif text-[#1e3328] font-bold leading-snug">
-          Subscribe to Our Newsletter
-        </h3>
-        <p className="text-xs sm:text-sm text-[#4f6356] mt-1.5 font-sans">
-          Get the latest health tips, Ayurvedic remedies and special offers.
-        </p>
-      </div>
-    </div>
+            <div>
+              <p className="text-xs font-semibold text-[#22441f] mb-1">
+                Stay Updated with Ayurvedic Tips
+              </p>
+              <h3 className="text-2xl sm:text-3xl font-serif text-[#1e3328] font-bold leading-snug">
+                Subscribe to Our Newsletter
+              </h3>
+              <p className="text-xs sm:text-sm text-[#4f6356] mt-1.5 font-sans">
+                Get the latest health tips, Ayurvedic remedies and special offers.
+              </p>
+            </div>
+          </div>
 
-    {/* Right Side Input Form */}
-    <div className="relative z-10 w-full md:w-auto shrink-0">
-      <form
-        onSubmit={handleSubscribe}
-        className="flex items-center w-full max-w-md bg-white rounded-xl p-1.5 border border-[#d8dec9] shadow-xs"
-      >
-        <input
-          type="email"
-          placeholder="Enter your email address"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="w-full sm:w-72 px-4 py-2.5 text-xs sm:text-sm text-[#2c3e35] placeholder:text-gray-400 bg-transparent outline-none border-none"
-          required
-        />
-        <button
-          type="submit"
-          className="bg-[#2a4d38] hover:bg-[#1e3328] text-white text-xs sm:text-sm font-semibold px-6 py-3 rounded-lg transition-colors shrink-0 cursor-pointer"
-        >
-          Subscribe
-        </button>
-      </form>
-    </div>
+          {/* Right Side Input Form */}
+          <div className="relative z-10 w-full md:w-auto shrink-0">
+            <form
+              onSubmit={handleSubscribe}
+              className="flex items-center w-full max-w-md bg-white rounded-xl p-1.5 border border-[#d8dec9] shadow-xs"
+            >
+              <input
+                type="email"
+                placeholder="Enter your email address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full sm:w-72 px-4 py-2.5 text-xs sm:text-sm text-[#2c3e35] placeholder:text-gray-400 bg-transparent outline-none border-none"
+                required
+              />
+              <button
+                type="submit"
+                className="bg-[#2a4d38] hover:bg-[#1e3328] text-white text-xs sm:text-sm font-semibold px-6 py-3 rounded-lg transition-colors shrink-0 cursor-pointer"
+              >
+                Subscribe
+              </button>
+            </form>
+          </div>
 
-  </div>
-</section>
+        </div>
+      </section>
     </main>
   );
 }

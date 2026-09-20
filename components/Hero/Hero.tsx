@@ -129,8 +129,8 @@ export default function Home() {
       
       {/* HERO SECTION */}
       <section className="relative overflow-hidden bg-[#F5F7EE]">
-        <div className="relative mx-auto flex min-h-[420px] max-w-7xl items-center px-5 sm:min-h-[460px] sm:px-8 lg:min-h-[500px] lg:px-10">
-          <div className="relative z-20 w-full lg:w-[53%] py-8">
+        <div className="relative mx-auto flex flex-col lg:flex-row max-w-7xl items-center justify-between px-5 py-6 sm:py-8 lg:min-h-[500px] lg:px-10">
+          <div className="relative z-20 w-full lg:w-[53%] py-4 lg:py-8">
             <div className="mb-2 flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[1.5px] text-[#55723D]">
               <Leaf className="w-3.5 h-3.5 text-[#55723D]" />
               <span>Natural Healing, Holistic Living.</span>
@@ -185,21 +185,23 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Doctor Hero Image */}
-          <div className="absolute right-0 top-0 h-full w-[50%] hidden lg:block">
-            <img
-              src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=1000"
-              alt="Ayurvedic Practitioner"
-              className="h-full w-full object-cover object-center"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#F5F7EE] via-[#F5F7EE]/20 to-transparent" />
-            <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#F5F7EE]/40 to-transparent" />
+          {/* Doctor Hero Image (Responsive for both Mobile and Laptop) */}
+          <div className="relative w-full lg:absolute lg:right-0 lg:top-0 lg:h-full lg:w-[45%] mt-6 lg:mt-0 flex justify-center items-center">
+            <div className="relative w-[280px] h-[320px] sm:w-[360px] sm:h-[400px] lg:w-full lg:h-full">
+              <img
+                src="/doc1.png"
+                alt="Ayurvedic Practitioner"
+                className="h-full w-full object-cover object-center rounded-2xl lg:rounded-none"
+              />
+              <div className="absolute inset-y-0 left-0 w-[40%] bg-gradient-to-r from-[#F5F7EE] to-transparent hidden lg:block" />
+              <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#F5F7EE]/40 to-transparent hidden lg:block" />
 
-            <div className="absolute top-1/2 left-8 -translate-y-1/2 bg-white/90 backdrop-blur-md px-4 py-2.5 rounded-xl shadow-md border border-[#E0E6D8] flex items-center gap-2.5">
-              <Award className="w-5 h-5 text-[#35652F]" />
-              <div>
-                <p className="text-[11px] font-bold text-[#24351F] leading-tight">10+ Years</p>
-                <p className="text-[9px] text-[#606E5C]">Experience</p>
+              <div className="absolute top-1/2 left-4 lg:left-8 -translate-y-1/2 bg-white/90 backdrop-blur-md px-4 py-2.5 rounded-xl shadow-md border border-[#E0E6D8] flex items-center gap-2.5">
+                <Award className="w-5 h-5 text-[#35652F]" />
+                <div>
+                  <p className="text-[11px] font-bold text-[#24351F] leading-tight">10+ Years</p>
+                  <p className="text-[9px] text-[#606E5C]">Experience</p>
+                </div>
               </div>
             </div>
           </div>
@@ -242,7 +244,9 @@ export default function Home() {
       {/* WHY CHOOSE US */}
       <section className="py-12 sm:py-16 px-4 sm:px-6 md:px-12 bg-[#F3F5F0]">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-          <div className="lg:col-span-6 space-y-4 sm:space-y-6 text-center lg:text-left">
+          
+          {/* Left Text Content */}
+          <div className="lg:col-span-6 space-y-4 sm:space-y-6 text-left">
             <p className="text-xs font-semibold uppercase tracking-widest text-[#365337]">Why Choose Us</p>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-[#2C3E35] leading-tight">
               Healing With Tradition <br className="hidden sm:inline" /> Caring With Compassion
@@ -285,31 +289,24 @@ export default function Home() {
             <div className="pt-2">
               <Link 
                 href="/book-appointment" 
-                className="bg-[#365337] hover:bg-[#2C422D] text-white px-6 py-3 rounded-full text-xs sm:text-sm font-medium transition shadow-sm inline-block"
+                className="bg-[#365337] hover:bg-[#2C422D] text-white px-6 py-3 rounded-full text-xs sm:text-sm font-medium transition shadow-sm inline-flex items-center justify-center"
               >
                 Know More About Us
               </Link>
             </div>
           </div>
 
-          <div className="lg:col-span-6 flex justify-center">
-            <div className="relative w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 bg-[#E5EFE6] rounded-full p-6 sm:p-8 flex items-center justify-center shadow-inner">
-              <div className="w-full h-full rounded-full bg-cover bg-center border-4 sm:border-8 border-white shadow-md overflow-hidden relative">
-                <img 
-                  src="https://images.unsplash.com/photo-1617897903246-719242758050?auto=format&fit=crop&q=80&w=800" 
-                  alt="Ayurvedic Herbs" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 bg-white px-3.5 py-2 sm:px-4 sm:py-3 rounded-2xl shadow-lg flex items-center gap-2">
-                <Leaf className="w-4 h-4 text-[#35652F]" />
-                <div className="text-[11px] sm:text-xs">
-                  <span className="font-bold block text-[#2C3E35]">100%</span>
-                  <span className="text-[#5C6F63]">Natural Ayurveda</span>
-                </div>
-              </div>
+          {/* Right Image Content */}
+          <div className="lg:col-span-6 flex justify-center items-center w-full">
+            <div className="relative w-full max-w-lg p-2 flex items-center justify-center bg-transparent">
+              <img 
+                src="/img8.png" 
+                alt="Ayurvedic Herbs" 
+                className="w-full h-auto max-h-[420px] object-contain"
+              />
             </div>
           </div>
+
         </div>
       </section>
 
@@ -470,10 +467,10 @@ export default function Home() {
               >
                 <Calendar className="w-4 h-4" /> Book Consultation
               </Link>
-            </div>
           </div>
         </div>
-      )}
+      </div>
+    )}
 
     </main>
   );
