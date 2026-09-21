@@ -78,15 +78,15 @@ export default function Footer() {
               <ul className="space-y-2.5 text-xs sm:text-sm text-[#556B5D]">
                 <li className="flex items-start space-x-2.5">
                   <FaPhoneAlt className="text-[#2C5E3B] mt-1 flex-shrink-0" size={13} />
-                  <a href="tel:+919876543210" className="hover:text-[#2C5E3B] transition">+91 98765 43210</a>
+                  <a href="tel:+9182392 39249" className="hover:text-[#2C5E3B] transition">+91 82392 39249</a>
                 </li>
                 <li className="flex items-start space-x-2.5">
                   <FaEnvelope className="text-[#2C5E3B] mt-1 flex-shrink-0" size={13} />
-                  <a href="mailto:info@ayurvedacare.com" className="hover:text-[#2C5E3B] transition truncate">info@ayurvedacare.com</a>
+                  <a href="mailto:contact.prisminfotech@gmail.com" className="hover:text-[#2C5E3B] transition truncate">contact.prisminfotech@gmail.com</a>
                 </li>
                 <li className="flex items-start space-x-2.5">
                   <FaMapMarkerAlt className="text-[#2C5E3B] mt-1 flex-shrink-0" size={13} />
-                  <span>123, Green Park, New Delhi, India - 110016</span>
+                  <span>Kota , Rajasthan</span>
                 </li>
               </ul>
 
@@ -102,13 +102,7 @@ export default function Footer() {
             </div>
 
             {/* Ayurvedic Mortar & Pestle Image using direct web link */}
-            <div className="hidden lg:block pt-2">
-              <img 
-                src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=500&auto=format&fit=crop&q=60" 
-                alt="Ayurvedic Herbs and Mortar" 
-                className="w-44 h-auto object-contain ml-auto opacity-90 rounded-md mix-blend-multiply"
-              />
-            </div>
+            
           </div>
 
         </div>

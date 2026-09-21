@@ -189,7 +189,7 @@ export default function Home() {
           <div className="relative w-full lg:absolute lg:right-0 lg:top-0 lg:h-full lg:w-[45%] mt-6 lg:mt-0 flex justify-center items-center">
             <div className="relative w-[280px] h-[320px] sm:w-[360px] sm:h-[400px] lg:w-full lg:h-full">
               <img
-                src="/doc1.png"
+                src="/home.jpeg"
                 alt="Ayurvedic Practitioner"
                 className="h-full w-full object-cover object-center rounded-2xl lg:rounded-none"
               />
@@ -300,7 +300,7 @@ export default function Home() {
           <div className="lg:col-span-6 flex justify-center items-center w-full">
             <div className="relative w-full max-w-lg p-2 flex items-center justify-center bg-transparent">
               <img 
-                src="/img8.png" 
+                src="/home1.jpeg" 
                 alt="Ayurvedic Herbs" 
                 className="w-full h-auto max-h-[420px] object-contain"
               />

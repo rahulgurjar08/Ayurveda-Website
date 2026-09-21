@@ -242,9 +242,7 @@ export default function ContactUsPage() {
       <div className="pt-0.5">
         <p className="font-bold text-gray-900">Address</p>
         <p className="text-gray-600 font-medium leading-relaxed">
-          123, Green Park, New Delhi,
-          <br />
-          India - 110016
+          Kota ,Rajasthan
         </p>
       </div>
     </div>
@@ -500,10 +498,10 @@ export default function ContactUsPage() {
       {/* Phone Number Display */}
       <div>
         <a
-          href="tel:+919509790248"
+          href="tel:+91 82392 39249"
           className="text-xl sm:text-2xl font-bold text-emerald-950 hover:text-emerald-800 tracking-tight transition"
         >
-          +91 9509790248
+          +91 82392 39249
         </a>
       </div>
 
